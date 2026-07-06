@@ -1,0 +1,19 @@
+# Credentials — never commit these
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+venv/
+.venv/
+
+# Local audit dumps (posted_history.json IS tracked — it's bot state)
+data/articles.json
+data/ranked_tweets.json
+
+# IDE
+.vscode/
+.idea/
+.spyproject/

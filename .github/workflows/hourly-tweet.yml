@@ -1,0 +1,73 @@
+name: Hourly tweet
+
+on:
+  schedule:
+    # Every hour, on the hour (UTC — GitHub Actions cron is always UTC).
+    # NOTE: GitHub does not guarantee exact timing; scheduled runs can be
+    # delayed by several minutes (occasionally more) under load.
+    - cron: "0 * * * *"
+  # Manual trigger button in the Actions tab, for testing.
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (compose but do not post)"
+        type: boolean
+        default: false
+
+# Never let two runs overlap (e.g. a delayed run colliding with the next
+# hour's) — they'd race on posted_history.json.
+concurrency:
+  group: hourly-tweet
+  cancel-in-progress: false
+
+permissions:
+  contents: write  # needed to commit posted_history.json back to the repo
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run bot (single cycle)
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          # Optional — leave the secret unset to use the free composer:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            python main.py --once --dry-run
+          else
+            python main.py --once
+          fi
+
+      - name: Persist posted history
+        # Runners are ephemeral: without this commit, the dedup history
+        # would reset every hour and the bot could re-post the same story.
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/posted_history.json
+          if git diff --cached --quiet; then
+            echo "No history changes to commit (nothing was posted this cycle)."
+          else
+            git commit -m "chore: update posted history [skip ci]"
+            # Rebase in case another workflow/manual commit landed meanwhile.
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi

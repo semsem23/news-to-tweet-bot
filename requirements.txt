@@ -1,0 +1,15 @@
+# Core
+feedparser>=6.0
+requests>=2.31
+tweepy>=4.14
+python-dotenv>=1.0
+
+# Local scheduler mode only (not needed by the GitHub Actions workflow,
+# which uses its own cron trigger with --once; harmless to install anyway)
+apscheduler>=3.10,<4
+
+# Optional — only used if ANTHROPIC_API_KEY is set (paid rephrasing)
+anthropic>=0.40
+
+# Optional — only used if INCLUDE_LINK is re-enabled in bot/config.py
+googlenewsdecoder>=0.1.6
