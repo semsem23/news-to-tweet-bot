@@ -44,10 +44,14 @@ PARIS_TZ = ZoneInfo("Europe/Paris")
 
 FEED_URL = os.environ.get(
     "FEED_URL",
-    "https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en",
+    "https://news.google.com/rss/headlines/section/topic/NATION?hl=en-US&gl=US&ceid=US:en",
 )
 REQUEST_TIMEOUT = 15  # seconds
 USER_AGENT = "Mozilla/5.0 (compatible; NewsToTweetBot/1.0; +https://github.com/)"
+
+# https://news.google.com/rss/headlines/section/topic/NATION?hl=en-US&gl=US&ceid=US:en
+# https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en
+
 
 # --------------------------------------------------------------------------
 # Ranking
