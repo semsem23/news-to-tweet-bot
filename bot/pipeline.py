@@ -67,8 +67,13 @@ def run_cycle(client: tweepy.Client, dry_run: bool = False, now_override: dateti
     dt_paris = now.astimezone(PARIS_TZ) if now_override else None
     posted = history.prune_history(history.load_history(), now)
 
-    candidate = history.pick_non_duplicate(ranked, posted)
-    if candidate is None:
+    # Filter to non-duplicate candidates
+    non_duplicate_candidates = []
+    for cand in ranked:
+        if not history.is_duplicate(cand, posted):
+            non_duplicate_candidates.append(cand)
+
+    if not non_duplicate_candidates:
         log.info(
             "All %d top-ranked candidates are duplicates of stories posted in "
             "the last %dh; nothing new to post this cycle.",
@@ -76,7 +81,8 @@ def run_cycle(client: tweepy.Client, dry_run: bool = False, now_override: dateti
         )
         return
 
-    # Trending topic gating: filter candidates to only those matching actual trends
+    # Trending topic gating: cycle through candidates to find one matching actual trends
+    candidate = None
     if TRENDING_ENABLED:
         geos = _get_trending_geos_for_current_time(dt_paris)
         if geos:
@@ -86,28 +92,45 @@ def run_cycle(client: tweepy.Client, dry_run: bool = False, now_override: dateti
                     "Fetched %d trending topics from %s for trending filter.",
                     len(trending_tokens), geos,
                 )
+                if trending_tokens:
+                    log.debug("Trending queries: %s",
+                             [' '.join(ts) for ts in trending_tokens[:3]])  # Show first 3
 
-                if trending_tokens and not trends.matches_trending(
-                    candidate.title, trending_tokens, TRENDING_MATCH_THRESHOLD
-                ):
-                    log.info(
-                        "Selected candidate '%s' does not match any trending topic "
-                        "(threshold=%.2f); skipping this cycle.",
-                        candidate.title, TRENDING_MATCH_THRESHOLD,
-                    )
-                    return
-                elif not trending_tokens:
+                    # Try each non-duplicate candidate in rank order
+                    for cand in non_duplicate_candidates:
+                        log.debug("Testing candidate for trending match: '%s'", cand.title)
+                        if trends.matches_trending(
+                            cand.title, trending_tokens, TRENDING_MATCH_THRESHOLD
+                        ):
+                            candidate = cand
+                            log.info("Candidate matches trending topic: '%s'", cand.title)
+                            break
+
+                    if candidate is None:
+                        log.info(
+                            "None of %d non-duplicate candidates match trending topics "
+                            "(threshold=%.2f); skipping this cycle.",
+                            len(non_duplicate_candidates), TRENDING_MATCH_THRESHOLD,
+                        )
+                        return
+                else:
                     log.warning(
                         "No trending data available; skipping trending filter for this cycle."
                     )
+                    candidate = non_duplicate_candidates[0]
             except Exception as exc:  # noqa: BLE001 — network errors, etc.
                 log.warning(
                     "Trending fetch failed (%s); proceeding without trending filter. "
-                    "This cycle may post a non-trending story.",
+                    "Using first non-duplicate candidate.",
                     exc,
                 )
+                candidate = non_duplicate_candidates[0]
         else:
-            log.warning("No geos configured for trending filter; skipping.")
+            log.warning("No geos configured for trending filter; using first non-duplicate.")
+            candidate = non_duplicate_candidates[0]
+    else:
+        # Trending disabled: use first non-duplicate
+        candidate = non_duplicate_candidates[0]
 
     if INCLUDE_LINK and RESOLVE_REAL_ARTICLE_URL:
         resolved_link = fetcher.resolve_article_url(candidate.link)
