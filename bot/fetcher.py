@@ -22,6 +22,7 @@ from .config import (
     RESOLVE_REAL_ARTICLE_URL,
     URL_RESOLVE_TIMEOUT,
     USER_AGENT,
+    get_active_feed_urls,
     log,
 )
 from .models import Article
@@ -46,6 +47,53 @@ def fetch_raw_feed(url: str = FEED_URL) -> feedparser.FeedParserDict:
         raise RuntimeError(f"Could not parse RSS feed: {parsed.bozo_exception}")
 
     return parsed
+
+
+def fetch_active_feeds() -> feedparser.FeedParserDict:
+    """
+    Fetch feed(s) based on current Paris time and env override.
+
+    If FEED_URL env var is set, fetch only that (for testing/CI).
+    Otherwise, use get_active_feed_urls() to determine which feeds to fetch
+    (normally 1, sometimes 2 during overlap windows).
+
+    Returns a merged feedparser dict with entries from all fetched feeds.
+    Raises RuntimeError if all feeds fail.
+    """
+    # Check for env override first
+    if FEED_URL:
+        return fetch_raw_feed(FEED_URL)
+
+    urls = get_active_feed_urls()
+    log.info("Active feed URLs for this cycle: %s", urls)
+
+    if not urls:
+        raise RuntimeError("No feed URLs configured")
+
+    # Fetch all active feeds and merge entries
+    all_entries = []
+    last_error = None
+
+    for url in urls:
+        try:
+            parsed = fetch_raw_feed(url)
+            all_entries.extend(parsed.entries)
+            log.info("Fetched %d entries from %s", len(parsed.entries), url)
+        except RuntimeError as exc:
+            log.warning("Failed to fetch %s: %s", url, exc)
+            last_error = exc
+
+    if not all_entries:
+        if last_error:
+            raise RuntimeError(
+                f"All {len(urls)} feed(s) failed. Last error: {last_error}"
+            ) from last_error
+        raise RuntimeError("No entries fetched from any feed")
+
+    # Return a fake feedparser dict with merged entries
+    merged = feedparser.FeedParserDict()
+    merged.entries = all_entries
+    return merged
 
 
 def split_title_and_source(raw_title: str, fallback_source: str = "") -> tuple[str, str]:
@@ -161,6 +209,7 @@ def resolve_article_url(link: str, timeout: float = URL_RESOLVE_TIMEOUT) -> str:
 
 __all__ = [
     "fetch_raw_feed",
+    "fetch_active_feeds",
     "parse_entries",
     "split_title_and_source",
     "to_paris_iso",

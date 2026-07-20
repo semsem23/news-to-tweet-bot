@@ -21,6 +21,7 @@ from .config import (
     RECENCY_HALF_LIFE_HOURS,
     SOURCE_PROMINENCE,
     STOPWORDS,
+    TOPIC_PENALTIES,
     TOP_N,
     TOP_STORY_AGE_WINDOWS,
     TOP_STORY_MAX_AGE_HOURS,
@@ -143,6 +144,31 @@ def headline_style_penalty(title: str) -> float:
     return 1.0
 
 
+def topic_penalty(title: str) -> float:
+    """
+    Multiplier in (0, 1] applied to a story's composite score based on its topic.
+
+    Certain topics (e.g., politics) can be interesting but tend to dominate feeds.
+    This penalty allows routine stories in those categories to be deprioritized
+    while still letting genuinely huge stories (high repetition/recency) break through.
+
+    Returns the penalty multiplier if title matches a topic category's keywords,
+    otherwise 1.0 (no penalty).
+    """
+    if not TOPIC_PENALTIES:
+        return 1.0
+
+    title_tokens = tokenize(title)
+    if not title_tokens:
+        return 1.0
+
+    for topic_name, (penalty_multiplier, keywords) in TOPIC_PENALTIES.items():
+        if title_tokens & keywords:
+            return penalty_multiplier
+
+    return 1.0
+
+
 def score_cluster(cluster: list[dict], max_cluster_size: int, now: datetime) -> RankedStory:
     # Representative = article from the most prominent source in the cluster.
     rep = max(cluster, key=lambda a: prominence_of(a["source"]))
@@ -152,12 +178,13 @@ def score_cluster(cluster: list[dict], max_cluster_size: int, now: datetime) -> 
     prominence = max(prominence_of(a["source"]) for a in cluster)
     freshest_age = min(age_hours_of(a["published_paris"], now) for a in cluster)
     style_penalty = headline_style_penalty(rep["title"])
+    topic_penalty_val = topic_penalty(rep["title"])
 
     composite = (
         WEIGHT_REPETITION * repetition
         + WEIGHT_RECENCY * recency
         + WEIGHT_PROMINENCE * prominence
-    ) * style_penalty
+    ) * style_penalty * topic_penalty_val
 
     return RankedStory(
         title=rep["title"],
@@ -178,6 +205,7 @@ def score_cluster(cluster: list[dict], max_cluster_size: int, now: datetime) -> 
             "recency": round(recency, 3),
             "prominence": round(prominence, 3),
             "style_penalty": round(style_penalty, 2),
+            "topic_penalty": round(topic_penalty_val, 2),
         },
     )
 
