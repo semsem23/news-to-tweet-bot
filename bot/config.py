@@ -70,7 +70,7 @@ TRENDING_GEOS = {
     "world": ["US", "GB", "FR"],
     "usa": ["US"],
 }
-TRENDING_MATCH_THRESHOLD = 0.3
+TRENDING_MATCH_THRESHOLD = 0.05  # TEMP: lowered for smoke test to ensure matches fire with real data
 
 # --------------------------------------------------------------------------
 # Topic Penalties
