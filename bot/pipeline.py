@@ -46,8 +46,11 @@ def _get_trending_geos_for_current_time(dt_paris: datetime | None = None) -> lis
 def run_cycle(client: tweepy.Client, dry_run: bool = False, now_override: datetime | None = None) -> None:
     log.info("=== Cycle start ===")
 
+    now = now_override or datetime.now(timezone.utc)
+    dt_paris = now.astimezone(PARIS_TZ)
+
     try:
-        parsed_feed = fetcher.fetch_active_feeds()
+        parsed_feed = fetcher.fetch_active_feeds(dt_paris)
     except RuntimeError as exc:
         log.error("Fetch failed: %s. Skipping this cycle.", exc)
         return
@@ -63,8 +66,6 @@ def run_cycle(client: tweepy.Client, dry_run: bool = False, now_override: dateti
         log.warning("Ranking produced no candidates this cycle; skipping.")
         return
 
-    now = now_override or datetime.now(timezone.utc)
-    dt_paris = now.astimezone(PARIS_TZ) if now_override else None
     posted = history.prune_history(history.load_history(), now)
 
     # Filter to non-duplicate candidates

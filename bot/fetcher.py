@@ -49,13 +49,16 @@ def fetch_raw_feed(url: str = FEED_URL) -> feedparser.FeedParserDict:
     return parsed
 
 
-def fetch_active_feeds() -> feedparser.FeedParserDict:
+def fetch_active_feeds(dt_paris: datetime | None = None) -> feedparser.FeedParserDict:
     """
-    Fetch feed(s) based on current Paris time and env override.
+    Fetch feed(s) based on Paris time and env override.
 
     If FEED_URL env var is set, fetch only that (for testing/CI).
     Otherwise, use get_active_feed_urls() to determine which feeds to fetch
     (normally 1, sometimes 2 during overlap windows).
+
+    Args:
+        dt_paris: datetime in Paris timezone. If None, uses current time.
 
     Returns a merged feedparser dict with entries from all fetched feeds.
     Raises RuntimeError if all feeds fail.
@@ -64,7 +67,7 @@ def fetch_active_feeds() -> feedparser.FeedParserDict:
     if FEED_URL:
         return fetch_raw_feed(FEED_URL)
 
-    urls = get_active_feed_urls()
+    urls = get_active_feed_urls(dt_paris)
     log.info("Active feed URLs for this cycle: %s", urls)
 
     if not urls:
