@@ -57,9 +57,12 @@ FEED_WINDOW_OVERLAP_MINUTES = 60    # Minutes before/after boundary to fetch bot
 
 # Support env override for local testing / CI (takes precedence over time-based logic)
 FEED_URL = os.environ.get("FEED_URL", "")
-
 REQUEST_TIMEOUT = 15  # seconds
 USER_AGENT = "Mozilla/5.0 (compatible; NewsToTweetBot/1.0; +https://github.com/)"
+
+# https://news.google.com/rss/headlines/section/topic/NATION?hl=en-US&gl=US&ceid=US:en
+# https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en
+
 
 # --------------------------------------------------------------------------
 # Trending Topic Gating
