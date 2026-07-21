@@ -42,16 +42,54 @@ PARIS_TZ = ZoneInfo("Europe/Paris")
 # Fetching
 # --------------------------------------------------------------------------
 
-FEED_URL = os.environ.get(
-    "FEED_URL",
-    "https://news.google.com/rss/headlines/section/topic/NATION?hl=en-US&gl=US&ceid=US:en",
-)
+FEED_URL_WORLD = "https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en"
+FEED_URL_USA = "https://news.google.com/rss/headlines/section/topic/NATION?hl=en-US&gl=US&ceid=US:en"
+
+FEED_URLS = {
+    "WORLD": FEED_URL_WORLD,
+    "USA": FEED_URL_USA,
+}
+
+# Time-based feed switching (Paris timezone)
+FEED_SWITCH_HOUR_WORLD_START = 7    # 07:00 Paris time: switch to WORLD edition
+FEED_SWITCH_HOUR_USA_START = 18     # 18:00 Paris time: switch to USA edition
+FEED_WINDOW_OVERLAP_MINUTES = 60    # Minutes before/after boundary to fetch both feeds
+
+# Support env override for local testing / CI (takes precedence over time-based logic)
+FEED_URL = os.environ.get("FEED_URL", "")
 REQUEST_TIMEOUT = 15  # seconds
 USER_AGENT = "Mozilla/5.0 (compatible; NewsToTweetBot/1.0; +https://github.com/)"
 
 # https://news.google.com/rss/headlines/section/topic/NATION?hl=en-US&gl=US&ceid=US:en
 # https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en
 
+
+# --------------------------------------------------------------------------
+# Trending Topic Gating
+# --------------------------------------------------------------------------
+
+TRENDING_ENABLED = True
+TRENDING_GEOS = {
+    "world": ["US", "GB", "FR"],
+    "usa": ["US"],
+}
+TRENDING_MATCH_THRESHOLD = 0.3
+
+# --------------------------------------------------------------------------
+# Topic Penalties
+# --------------------------------------------------------------------------
+
+# Keywords are stemmed using the same stem() function as ranker.py
+# so they match tokenized headlines. See ranker.stem() for stem rules.
+TOPIC_PENALTIES = {
+    "politics": (
+        0.45,
+        {
+            "senat", "congr", "parli", "elect", "minis",  # senate, congress, parliament, election, minister
+            "presi", "supre", "court", "lawma", "govern",  # president, supreme, court, lawmakers, governor
+        },
+    ),
+}
 
 # --------------------------------------------------------------------------
 # Ranking
@@ -152,3 +190,57 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S",
 )
 log = logging.getLogger("news_to_tweet_bot")
+
+# --------------------------------------------------------------------------
+# Feed selection logic
+# --------------------------------------------------------------------------
+
+from datetime import datetime, timedelta
+
+def get_active_feed_urls(dt_paris: datetime | None = None) -> list[str]:
+    """
+    Return the list of active feed URLs for a given Paris-local time.
+
+    Normally returns [FEED_URL_WORLD] (07:00-18:00) or [FEED_URL_USA] (18:00-07:00).
+    During overlap windows (60 minutes before/after each boundary), returns both.
+
+    Args:
+        dt_paris: datetime in Paris timezone. If None, uses current time.
+
+    Returns:
+        List of feed URLs to fetch. Normally 1, sometimes 2 during overlap windows.
+    """
+    if dt_paris is None:
+        dt_paris = datetime.now(PARIS_TZ)
+
+    hour = dt_paris.hour
+    minute = dt_paris.minute
+
+    # Minute-of-day for the current time
+    minute_of_day = hour * 60 + minute
+
+    # Boundaries in minutes since midnight
+    world_start_minutes = FEED_SWITCH_HOUR_WORLD_START * 60
+    usa_start_minutes = FEED_SWITCH_HOUR_USA_START * 60
+    overlap_window_minutes = FEED_WINDOW_OVERLAP_MINUTES
+
+    active_urls = []
+
+    # Check if we're near the USA->WORLD boundary (07:00)
+    if abs(minute_of_day - world_start_minutes) <= overlap_window_minutes:
+        # Within overlap window around 07:00
+        active_urls.append(FEED_URL_WORLD)
+        active_urls.append(FEED_URL_USA)
+    # Check if we're near the WORLD->USA boundary (18:00)
+    elif abs(minute_of_day - usa_start_minutes) <= overlap_window_minutes:
+        # Within overlap window around 18:00
+        active_urls.append(FEED_URL_WORLD)
+        active_urls.append(FEED_URL_USA)
+    # During regular WORLD hours (07:00-18:00, outside overlap)
+    elif world_start_minutes <= minute_of_day < usa_start_minutes:
+        active_urls.append(FEED_URL_WORLD)
+    # During regular USA hours (18:00-07:00, outside overlap)
+    else:
+        active_urls.append(FEED_URL_USA)
+
+    return active_urls

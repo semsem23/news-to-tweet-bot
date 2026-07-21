@@ -9,6 +9,7 @@ machine or server instead.
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from datetime import datetime
 
@@ -45,6 +46,28 @@ def run_scheduler(client, dry_run: bool, run_immediately: bool) -> None:
     scheduler.start()
 
 
+def _parse_now_override(now_str: str) -> datetime | None:
+    """
+    Parse a datetime string (ISO 8601 format) into a timezone-aware datetime.
+
+    Used for testing feed switching with specific times. Only available in debug mode.
+
+    Examples:
+      "2026-07-21T10:00:00+02:00"  (WORLD window: 07:00-18:00 Paris)
+      "2026-07-21T22:00:00+02:00"  (USA window: 18:00-07:00 Paris)
+    """
+    try:
+        dt = datetime.fromisoformat(now_str)
+        if dt.tzinfo is None:
+            raise ValueError("Datetime must include timezone (e.g., +02:00)")
+        return dt
+    except ValueError as exc:
+        raise ValueError(
+            f"Invalid datetime format: {now_str}. "
+            f"Use ISO 8601 with timezone (e.g., '2026-07-21T10:00:00+02:00'): {exc}"
+        ) from exc
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Automated News-to-Tweet Bot")
     parser.add_argument(
@@ -59,7 +82,31 @@ def main() -> None:
         "--no-immediate", action="store_true",
         help="When starting the local scheduler, wait for the next hour mark instead of posting right away.",
     )
+    parser.add_argument(
+        "--now", type=str, default=None,
+        help=(
+            "DEBUG ONLY: Override current time for testing feed switching. "
+            "Use ISO 8601 format with timezone, e.g., '2026-07-21T10:00:00+02:00'. "
+            "Ignored in GitHub Actions (GITHUB_ACTIONS env var set)."
+        ),
+    )
     args = parser.parse_args()
+
+    # Prevent --now from accidentally being used in production
+    if args.now and os.environ.get("GITHUB_ACTIONS"):
+        log.error("--now flag is not allowed in GitHub Actions. Exiting.")
+        sys.exit(1)
+
+    # Parse --now or DEBUG_NOW env var override
+    now_override = None
+    if args.now or os.environ.get("DEBUG_NOW"):
+        now_str = args.now or os.environ.get("DEBUG_NOW")
+        try:
+            now_override = _parse_now_override(now_str)
+            log.info("DEBUG: Overriding current time to %s", now_override.isoformat())
+        except ValueError as exc:
+            log.error(str(exc))
+            sys.exit(1)
 
     try:
         client = build_x_client()
@@ -68,7 +115,7 @@ def main() -> None:
         sys.exit(1)
 
     if args.once:
-        run_cycle(client, dry_run=args.dry_run)
+        run_cycle(client, dry_run=args.dry_run, now_override=now_override)
     else:
         run_scheduler(client, dry_run=args.dry_run, run_immediately=not args.no_immediate)
 
