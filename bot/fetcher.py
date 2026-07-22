@@ -22,55 +22,20 @@ from .config import (
     RESOLVE_REAL_ARTICLE_URL,
     URL_RESOLVE_TIMEOUT,
     USER_AGENT,
-    get_active_feed_urls,
     log,
 )
 from .models import Article
 
 UTC = timezone.utc
 
-FETCH_RETRY_ATTEMPTS = 2
-FETCH_RETRY_DELAY_SECONDS = 5
-
-
-def _failure_label(exc: requests.RequestException) -> str:
-    """Short label for a fetch failure, for retry log lines (e.g. "503" or "ConnectionError")."""
-    if isinstance(exc, requests.HTTPError) and exc.response is not None:
-        return str(exc.response.status_code)
-    return type(exc).__name__
-
 
 def fetch_raw_feed(url: str = FEED_URL) -> feedparser.FeedParserDict:
-    """Download and parse the RSS feed. Raises RuntimeError on failure.
-
-    Retries up to FETCH_RETRY_ATTEMPTS times (with a short delay between
-    attempts) on 5xx responses or network/timeout errors, since those are
-    often transient. 4xx responses are not retried — a client error won't
-    fix itself.
-    """
-    last_exc: requests.RequestException | None = None
-
-    for attempt in range(FETCH_RETRY_ATTEMPTS + 1):
-        try:
-            resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT)
-            resp.raise_for_status()
-            break
-        except requests.HTTPError as exc:
-            status = exc.response.status_code if exc.response is not None else None
-            if status is not None and 400 <= status < 500:
-                raise RuntimeError(f"Failed to fetch RSS feed from {url}: {exc}") from exc
-            last_exc = exc
-        except requests.RequestException as exc:
-            last_exc = exc
-
-        if attempt < FETCH_RETRY_ATTEMPTS:
-            log.warning(
-                "Retry %d/%d after %s, waiting %ds...",
-                attempt + 1, FETCH_RETRY_ATTEMPTS, _failure_label(last_exc), FETCH_RETRY_DELAY_SECONDS,
-            )
-            time.sleep(FETCH_RETRY_DELAY_SECONDS)
-    else:
-        raise RuntimeError(f"Failed to fetch RSS feed from {url}: {last_exc}") from last_exc
+    """Download and parse the RSS feed. Raises RuntimeError on failure."""
+    try:
+        resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT)
+        resp.raise_for_status()
+    except requests.RequestException as exc:
+        raise RuntimeError(f"Failed to fetch RSS feed from {url}: {exc}") from exc
 
     parsed = feedparser.parse(resp.content)
 
@@ -81,56 +46,6 @@ def fetch_raw_feed(url: str = FEED_URL) -> feedparser.FeedParserDict:
         raise RuntimeError(f"Could not parse RSS feed: {parsed.bozo_exception}")
 
     return parsed
-
-
-def fetch_active_feeds(dt_paris: datetime | None = None) -> feedparser.FeedParserDict:
-    """
-    Fetch feed(s) based on Paris time and env override.
-
-    If FEED_URL env var is set, fetch only that (for testing/CI).
-    Otherwise, use get_active_feed_urls() to determine which feeds to fetch
-    (normally 1, sometimes 2 during overlap windows).
-
-    Args:
-        dt_paris: datetime in Paris timezone. If None, uses current time.
-
-    Returns a merged feedparser dict with entries from all fetched feeds.
-    Raises RuntimeError if all feeds fail.
-    """
-    # Check for env override first
-    if FEED_URL:
-        return fetch_raw_feed(FEED_URL)
-
-    urls = get_active_feed_urls(dt_paris)
-    log.info("Active feed URLs for this cycle: %s", urls)
-
-    if not urls:
-        raise RuntimeError("No feed URLs configured")
-
-    # Fetch all active feeds and merge entries
-    all_entries = []
-    last_error = None
-
-    for url in urls:
-        try:
-            parsed = fetch_raw_feed(url)
-            all_entries.extend(parsed.entries)
-            log.info("Fetched %d entries from %s", len(parsed.entries), url)
-        except RuntimeError as exc:
-            log.warning("Failed to fetch %s: %s", url, exc)
-            last_error = exc
-
-    if not all_entries:
-        if last_error:
-            raise RuntimeError(
-                f"All {len(urls)} feed(s) failed. Last error: {last_error}"
-            ) from last_error
-        raise RuntimeError("No entries fetched from any feed")
-
-    # Return a fake feedparser dict with merged entries
-    merged = feedparser.FeedParserDict()
-    merged.entries = all_entries
-    return merged
 
 
 def split_title_and_source(raw_title: str, fallback_source: str = "") -> tuple[str, str]:
@@ -246,7 +161,6 @@ def resolve_article_url(link: str, timeout: float = URL_RESOLVE_TIMEOUT) -> str:
 
 __all__ = [
     "fetch_raw_feed",
-    "fetch_active_feeds",
     "parse_entries",
     "split_title_and_source",
     "to_paris_iso",
