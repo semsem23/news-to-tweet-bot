@@ -29,14 +29,48 @@ from .models import Article
 
 UTC = timezone.utc
 
+FETCH_RETRY_ATTEMPTS = 2
+FETCH_RETRY_DELAY_SECONDS = 5
+
+
+def _failure_label(exc: requests.RequestException) -> str:
+    """Short label for a fetch failure, for retry log lines (e.g. "503" or "ConnectionError")."""
+    if isinstance(exc, requests.HTTPError) and exc.response is not None:
+        return str(exc.response.status_code)
+    return type(exc).__name__
+
 
 def fetch_raw_feed(url: str = FEED_URL) -> feedparser.FeedParserDict:
-    """Download and parse the RSS feed. Raises RuntimeError on failure."""
-    try:
-        resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT)
-        resp.raise_for_status()
-    except requests.RequestException as exc:
-        raise RuntimeError(f"Failed to fetch RSS feed from {url}: {exc}") from exc
+    """Download and parse the RSS feed. Raises RuntimeError on failure.
+
+    Retries up to FETCH_RETRY_ATTEMPTS times (with a short delay between
+    attempts) on 5xx responses or network/timeout errors, since those are
+    often transient. 4xx responses are not retried — a client error won't
+    fix itself.
+    """
+    last_exc: requests.RequestException | None = None
+
+    for attempt in range(FETCH_RETRY_ATTEMPTS + 1):
+        try:
+            resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT)
+            resp.raise_for_status()
+            break
+        except requests.HTTPError as exc:
+            status = exc.response.status_code if exc.response is not None else None
+            if status is not None and 400 <= status < 500:
+                raise RuntimeError(f"Failed to fetch RSS feed from {url}: {exc}") from exc
+            last_exc = exc
+        except requests.RequestException as exc:
+            last_exc = exc
+
+        if attempt < FETCH_RETRY_ATTEMPTS:
+            log.warning(
+                "Retry %d/%d after %s, waiting %ds...",
+                attempt + 1, FETCH_RETRY_ATTEMPTS, _failure_label(last_exc), FETCH_RETRY_DELAY_SECONDS,
+            )
+            time.sleep(FETCH_RETRY_DELAY_SECONDS)
+    else:
+        raise RuntimeError(f"Failed to fetch RSS feed from {url}: {last_exc}") from last_exc
 
     parsed = feedparser.parse(resp.content)
 

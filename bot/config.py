@@ -71,9 +71,9 @@ USER_AGENT = "Mozilla/5.0 (compatible; NewsToTweetBot/1.0; +https://github.com/)
 TRENDING_ENABLED = True
 TRENDING_GEOS = {
     "world": ["US", "GB", "FR"],
-    "usa": ["US"],
+    "usa": ["US", "CA", "GB"],
 }
-TRENDING_MATCH_THRESHOLD = 0.3
+TRENDING_MATCH_THRESHOLD = 0.22
 
 # --------------------------------------------------------------------------
 # Topic Penalties
