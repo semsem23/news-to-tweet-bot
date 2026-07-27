@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import logging
 import os
+from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -42,15 +43,24 @@ PARIS_TZ = ZoneInfo("Europe/Paris")
 # Fetching
 # --------------------------------------------------------------------------
 
-FEED_URL = os.environ.get(
-    "FEED_URL",
-    "https://news.google.com/rss/headlines/section/topic/NATION?hl=en-US&gl=US&ceid=US:en",
-)
+NATION_FEED = "https://news.google.com/rss/headlines/section/topic/NATION?hl=en-US&gl=US&ceid=US:en"
+WORLD_FEED = "https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en"
+
+def _get_feed_url() -> str:
+	"""Determine FEED_URL based on Paris time.
+
+	18:00-06:00 (6 PM - 6 AM) Paris time: NATION feed
+	07:00-17:00 (7 AM - 5 PM) Paris time: WORLD feed
+	"""
+	paris_hour = datetime.now(PARIS_TZ).hour
+	if 18 <= paris_hour or paris_hour < 7:
+		return NATION_FEED
+	else:
+		return WORLD_FEED
+
+FEED_URL = os.environ.get("FEED_URL", _get_feed_url())
 REQUEST_TIMEOUT = 15  # seconds
 USER_AGENT = "Mozilla/5.0 (compatible; NewsToTweetBot/1.0; +https://github.com/)"
-
-# https://news.google.com/rss/headlines/section/topic/NATION?hl=en-US&gl=US&ceid=US:en
-# https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en
 
 
 # --------------------------------------------------------------------------
