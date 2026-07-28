@@ -150,8 +150,11 @@ class TestTopicPenalty:
         assert top_political[0].score < top_non_political[0].score
 
 
-class TestFreshnessEnforcement:
-    def test_fresh_lower_score_story_promoted_over_stale_high_score(self):
+class TestImportanceOverFreshness:
+    def test_major_corroborated_story_beats_fresher_minor_one(self):
+        """A 2h-old story confirmed by three top-tier outlets should outrank
+        a single-source, low-tier story that broke 20 minutes ago — recency
+        is a tiebreaker, not a hard gate on the #1 slot."""
         articles = [
             # High score (3-source cluster, top sources) but ~2h old
             art("World leaders reach historic climate accord at summit", "Reuters", 2.0, "https://x1"),
@@ -161,12 +164,27 @@ class TestFreshnessEnforcement:
             art("Small plane makes emergency landing near downtown airport", "Regional News Network", 0.33, "https://y1"),
         ]
         top = rank_articles(articles, top_n=5)
-        assert top[0].title.startswith("Small plane")
-        assert top[0].age_hours < 1.0
+        assert top[0].title.startswith("World leaders")
+        assert top[1].title.startswith("Small plane")
+
+    def test_story_beyond_ceiling_is_excluded_even_if_high_scoring(self):
+        """MAX_STORY_AGE_HOURS is a hard sanity floor: a 9h-old story with a
+        big, top-tier cluster (which would out-score everything else) must
+        still be dropped, while a fresher single-source story survives."""
+        articles = [
+            art("Central bank holds interest rates steady", "Reuters", 9.0, "https://z1"),
+            art("Central bank keeps rates unchanged, says economy resilient", "BBC", 9.1, "https://z2"),
+            art("Central bank leaves interest rates untouched again", "AP", 8.9, "https://z3"),
+            art("Small plane makes emergency landing near downtown airport", "Regional News Network", 2.0, "https://z4"),
+        ]
+        top = rank_articles(articles, top_n=5)
+        titles = [s.title for s in top]
+        assert not any(t.startswith("Central bank") for t in titles)
+        assert titles[0].startswith("Small plane")
 
     def test_no_fresh_story_falls_back_to_score_order(self):
         articles = [
-            art("Central bank holds interest rates steady", "Reuters", 8.0, "https://z1"),
+            art("Central bank holds interest rates steady", "Reuters", 10.0, "https://z1"),
             art("Regional election results confirm ruling party majority", "BBC", 12.0, "https://z2"),
         ]
         top = rank_articles(articles, top_n=5)

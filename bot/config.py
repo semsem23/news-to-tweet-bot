@@ -108,13 +108,18 @@ RECENCY_HALF_LIFE_HOURS = 3.0
 # same underlying story.
 CLUSTER_SIMILARITY_THRESHOLD = 0.45
 
-# Hard constraint: whichever story lands in the #1 slot must be based on
-# a report no older than this, regardless of its composite score.
-TOP_STORY_MAX_AGE_HOURS = 1.0
+# Soft ceiling, not a "#1 must be this fresh" gate: stories older than this
+# are dropped from ranking outright (stale wire copy Google News sometimes
+# resurfaces), but within the ceiling, recency is only ~35% of the
+# composite score below and acts as a tiebreaker — a well-corroborated
+# story from a couple of hours ago can and should outrank a thinner, fresher
+# one.
+MAX_STORY_AGE_HOURS = 8.0
 
-# If nothing in the pull is under TOP_STORY_MAX_AGE_HOURS, widen step by
-# step rather than either going silent or ignoring freshness altogether.
-TOP_STORY_AGE_WINDOWS = [TOP_STORY_MAX_AGE_HOURS, 2.0, 3.0, 6.0]
+# Below this age a story is labeled "breaking" for tweet-phrasing purposes
+# only (e.g. keeping a "Breaking:"/"Just In:" prefix in rephraser.py) — it
+# has no effect on ranking or score.
+BREAKING_NEWS_MAX_AGE_HOURS = 1.0
 
 # Prominence lookup — coarse tiers. Unknown sources default to 0.5.
 SOURCE_PROMINENCE = {

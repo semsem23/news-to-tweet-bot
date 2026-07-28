@@ -4,8 +4,11 @@ A single RSS pull has no engagement metrics, so trendiness is approximated
 from three signals: cross-source repetition (40%), recency (35%, 3h
 half-life exponential decay), and source prominence (25%) — multiplied by
 a style penalty that down-ranks question/explainer/opinion headlines in
-favor of hard news. A hard freshness constraint then guarantees the #1
-slot goes to a recent story (<1h, progressively widened to 6h if needed).
+favor of hard news. Stories older than MAX_STORY_AGE_HOURS are excluded
+outright as a sanity floor; within that ceiling, importance (repetition +
+prominence) drives rank and recency only acts as a tiebreaker, so a
+well-corroborated story from a couple of hours ago can, and should, outrank
+a thinly-sourced one that broke twenty minutes ago.
 """
 
 from __future__ import annotations
@@ -16,15 +19,15 @@ from datetime import datetime, timezone
 from typing import Optional
 
 from .config import (
+    BREAKING_NEWS_MAX_AGE_HOURS,
     CLUSTER_SIMILARITY_THRESHOLD,
     DEFAULT_PROMINENCE,
+    MAX_STORY_AGE_HOURS,
     RECENCY_HALF_LIFE_HOURS,
     SOURCE_PROMINENCE,
     STOPWORDS,
     TOPIC_PENALTIES,
     TOP_N,
-    TOP_STORY_AGE_WINDOWS,
-    TOP_STORY_MAX_AGE_HOURS,
     WEIGHT_PROMINENCE,
     WEIGHT_RECENCY,
     WEIGHT_REPETITION,
@@ -198,7 +201,7 @@ def score_cluster(cluster: list[dict], max_cluster_size: int, now: datetime) -> 
             + [{"title": a["title"], "source": a["source"]} for a in cluster if a is not rep]
         ),
         age_hours=round(freshest_age, 3),
-        is_breaking=freshest_age < TOP_STORY_MAX_AGE_HOURS,
+        is_breaking=freshest_age < BREAKING_NEWS_MAX_AGE_HOURS,
         score=round(composite, 4),
         score_breakdown={
             "repetition": round(repetition, 3),
@@ -210,39 +213,24 @@ def score_cluster(cluster: list[dict], max_cluster_size: int, now: datetime) -> 
     )
 
 
-def enforce_top_story_freshness(
-    scored: list[RankedStory], windows: list[float] = TOP_STORY_AGE_WINDOWS
+def exclude_stale_stories(
+    scored: list[RankedStory], max_age_hours: float = MAX_STORY_AGE_HOURS
 ) -> list[RankedStory]:
     """
-    Guarantees position #1 is the freshest reasonably-available story,
-    without ever leaving the slot empty: try the strict window first; if
-    nothing qualifies, progressively widen (1h -> 2h -> 3h -> 6h) and take
-    the highest-scoring story clearing the first non-empty window. Only if
-    every window is empty fall back to pure highest-score, with a warning.
+    Drops stories older than the absolute ceiling before ranking. This is a
+    sanity floor, not a freshness gate on the #1 slot — importance already
+    outweighs recency in the composite score, so ranking is left to
+    score_cluster()/sort. Falls back to the full list (with a warning)
+    if every story in the pull is stale, rather than going silent.
     """
-    if not scored:
-        return scored
-
-    if scored[0].age_hours < windows[0]:
-        return scored
-
-    for w in windows:
-        candidates = [s for s in scored if s.age_hours < w]
-        if candidates:
-            best = candidates[0]  # `scored` is already score-sorted
-            rest = [s for s in scored if s is not best]
-            if w > windows[0]:
-                print(
-                    f"NOTE: nothing under {windows[0]}h available; widened to "
-                    f"{w}h and promoted '{best.title}' ({best.age_hours}h old).",
-                    file=sys.stderr,
-                )
-            return [best] + rest
+    fresh = [s for s in scored if s.age_hours <= max_age_hours]
+    if fresh:
+        return fresh
 
     print(
-        f"WARNING: no story younger than {windows[-1]}h was found in this "
-        f"pull; cannot satisfy any freshness window. Falling back to the "
-        f"highest-scoring story overall.",
+        f"WARNING: every story in this pull is older than {max_age_hours}h; "
+        f"excluding all of them would leave nothing to post. Ranking by "
+        f"score alone instead.",
         file=sys.stderr,
     )
     return scored
@@ -254,6 +242,6 @@ def rank_articles(articles: list[dict], top_n: int = TOP_N) -> list[RankedStory]
     now = datetime.now(timezone.utc)
 
     scored = [score_cluster(c, max_size, now) for c in clusters]
+    scored = exclude_stale_stories(scored)
     scored.sort(key=lambda s: s.score, reverse=True)
-    scored = enforce_top_story_freshness(scored)
     return scored[:top_n]
