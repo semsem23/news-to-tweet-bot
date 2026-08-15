@@ -12,11 +12,12 @@ fetch RSS  →  cluster & rank  →  freshness check  →  dedup  →  compose t
 
 | Signal | Weight | What it measures |
 |---|---|---|
-| Cross-source repetition | 40% | How many outlets covered the same event (headlines clustered by token overlap) |
-| Recency | 35% | Exponential decay, 3-hour half-life |
-| Source prominence | 25% | Reuters/AP/BBC tier down to unknown outlets |
+| Feed position | 65% | Position in Google's feed (article #0 scores 1.0; last scores 0.0) |
+| Recency | 25% | Exponential decay, 3-hour half-life |
+| Source prominence | 5% | Reuters/AP/BBC tier down to unknown outlets |
+| Cross-source repetition | 5% | How many outlets covered the same event (headlines clustered by token overlap) |
 
-The composite is multiplied by a **style penalty** that down-ranks question/explainer/opinion/live-blog headlines in favor of hard news, and a **freshness constraint** guarantees the posted story is under 1 hour old (progressively widened to 2h/3h/6h if the pull has nothing that fresh).
+The composite is multiplied by a gentle **style penalty** (0.92–1.0) that nudges down question/explainer/opinion/live-blog headlines — now that feed position dominates, these refinements break near-ties rather than demoting strong stories. A **freshness constraint** guarantees the posted story is under 1 hour old (progressively widened to 2h/3h/6h if the pull has nothing that fresh).
 
 **Tweet composition** (free, no LLM): the headline is tightened AP-style (filler phrases stripped, wordy constructions contracted), attributed to its source, and — when multiple outlets covered the story — expanded with how other outlets worded it:
 

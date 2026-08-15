@@ -1,11 +1,11 @@
 """Ranking: clustering near-duplicate headlines and scoring "trendiness".
 
-A single RSS pull has no engagement metrics, so trendiness is approximated
-from three signals: cross-source repetition (40%), recency (35%, 3h
-half-life exponential decay), and source prominence (25%) — multiplied by
-a style penalty that down-ranks question/explainer/opinion headlines in
-favor of hard news. A hard freshness constraint then guarantees the #1
-slot goes to a recent story (<1h, progressively widened to 6h if needed).
+Feed position is the dominant signal (65%) since it captures Google's own
+trendiness ranking. Recency (25%, 3h half-life exponential decay), prominence
+(5%), and repetition (5%) serve as gentle tiebreakers. A style penalty
+further refines near-ties, slightly down-ranking question/explainer/opinion
+headlines. A hard freshness constraint guarantees the #1 slot goes to a
+recent story (<1h, progressively widened to 6h if needed).
 """
 
 from __future__ import annotations
@@ -24,6 +24,7 @@ from .config import (
     TOP_N,
     TOP_STORY_AGE_WINDOWS,
     TOP_STORY_MAX_AGE_HOURS,
+    WEIGHT_FEED_POSITION,
     WEIGHT_PROMINENCE,
     WEIGHT_RECENCY,
     WEIGHT_REPETITION,
@@ -112,74 +113,89 @@ def recency_score(published_paris_iso: str, now: Optional[datetime] = None) -> f
     return 0.5 ** (age_hours / RECENCY_HALF_LIFE_HOURS)
 
 
+def feed_position_score(min_index: int, feed_len: int) -> float:
+	"""Score an article's position in Google's feed.
+
+	Feed item #0 (most prominent in feed) scores 1.0; last item scores 0.0.
+	If feed has ≤1 item, returns 1.0.
+	"""
+	if feed_len <= 1:
+		return 1.0
+	return 1.0 - (min_index / (feed_len - 1))
+
+
 def headline_style_penalty(title: str) -> float:
-    """
-    Multiplier in (0, 1] applied to a story's composite score.
-    Question-style, explainer, opinion, live-blog, and listicle headlines
-    are inherently soft/analytical rather than punchy breaking news — a
-    trending-news bot should prefer hard-news headlines from the same pull
-    when they exist. Penalized (not excluded): if a cycle's pull contains
-    ONLY soft headlines, one can still be posted rather than going silent.
-    """
-    t = title.strip().lower()
+	"""Gentle multiplier for refining near-ties when feed position leads scoring.
 
-    if t.endswith("?"):
-        return 0.55
-    if re.match(r"^(what|why|how|who|when|where|is|are|can|could|should|will|does|do)\b", t):
-        return 0.65
+	Question-style, explainer, opinion, live-blog, and listicle headlines are
+	inherently soft/analytical rather than breaking news. These penalties are
+	intentionally gentle (0.92-0.94) now that feed position (65%) dominates the
+	score — they break near-ties, not rank out strong stories.
+	"""
+	t = title.strip().lower()
 
-    soft_markers = (
-        "explained", "explainer", "analysis:", "opinion:", "editorial:",
-        "live updates", "live blog", "in pictures", "in photos", "watch:",
-        "what we know", "what to know", "everything you need to know",
-        "takeaways", "recap", "timeline:", "factbox", "q&a", "faq",
-    )
-    if any(marker in t for marker in soft_markers):
-        return 0.6
+	if t.endswith("?"):
+		return 0.92
+	if re.match(r"^(what|why|how|who|when|where|is|are|can|could|should|will|does|do)\b", t):
+		return 0.94
 
-    if re.match(r"^\d+\s+(things|ways|reasons|takeaways|questions|photos|charts|maps)\b", t):
-        return 0.6
+	soft_markers = (
+		"explained", "explainer", "analysis:", "opinion:", "editorial:",
+		"live updates", "live blog", "in pictures", "in photos", "watch:",
+		"what we know", "what to know", "everything you need to know",
+		"takeaways", "recap", "timeline:", "factbox", "q&a", "faq",
+	)
+	if any(marker in t for marker in soft_markers):
+		return 0.93
 
-    return 1.0
+	if re.match(r"^\d+\s+(things|ways|reasons|takeaways|questions|photos|charts|maps)\b", t):
+		return 0.93
+
+	return 1.0
 
 
-def score_cluster(cluster: list[dict], max_cluster_size: int, now: datetime) -> RankedStory:
-    # Representative = article from the most prominent source in the cluster.
-    rep = max(cluster, key=lambda a: prominence_of(a["source"]))
+def score_cluster(cluster: list[dict], max_cluster_size: int, feed_len: int, now: datetime) -> RankedStory:
+	# Representative = article from the most prominent source in the cluster.
+	rep = max(cluster, key=lambda a: prominence_of(a["source"]))
 
-    repetition = len(cluster) / max_cluster_size if max_cluster_size else 0.0
-    recency = max(recency_score(a["published_paris"], now) for a in cluster)
-    prominence = max(prominence_of(a["source"]) for a in cluster)
-    freshest_age = min(age_hours_of(a["published_paris"], now) for a in cluster)
-    style_penalty = headline_style_penalty(rep["title"])
+	# Compute scores from all signals.
+	min_index = min(a["feed_index"] for a in cluster)
+	position = feed_position_score(min_index, feed_len)
+	repetition = len(cluster) / max_cluster_size if max_cluster_size else 0.0
+	recency = max(recency_score(a["published_paris"], now) for a in cluster)
+	prominence = max(prominence_of(a["source"]) for a in cluster)
+	freshest_age = min(age_hours_of(a["published_paris"], now) for a in cluster)
+	style_penalty = headline_style_penalty(rep["title"])
 
-    composite = (
-        WEIGHT_REPETITION * repetition
-        + WEIGHT_RECENCY * recency
-        + WEIGHT_PROMINENCE * prominence
-    ) * style_penalty
+	composite = (
+		WEIGHT_FEED_POSITION * position
+		+ WEIGHT_RECENCY * recency
+		+ WEIGHT_PROMINENCE * prominence
+		+ WEIGHT_REPETITION * repetition
+	) * style_penalty
 
-    return RankedStory(
-        title=rep["title"],
-        source=rep["source"],
-        link=rep["link"],
-        published_paris=rep["published_paris"],
-        cluster_size=len(cluster),
-        cluster_sources=sorted({a["source"] for a in cluster}),
-        cluster_headlines=(
-            [{"title": rep["title"], "source": rep["source"]}]
-            + [{"title": a["title"], "source": a["source"]} for a in cluster if a is not rep]
-        ),
-        age_hours=round(freshest_age, 3),
-        is_breaking=freshest_age < TOP_STORY_MAX_AGE_HOURS,
-        score=round(composite, 4),
-        score_breakdown={
-            "repetition": round(repetition, 3),
-            "recency": round(recency, 3),
-            "prominence": round(prominence, 3),
-            "style_penalty": round(style_penalty, 2),
-        },
-    )
+	return RankedStory(
+		title=rep["title"],
+		source=rep["source"],
+		link=rep["link"],
+		published_paris=rep["published_paris"],
+		cluster_size=len(cluster),
+		cluster_sources=sorted({a["source"] for a in cluster}),
+		cluster_headlines=(
+			[{"title": rep["title"], "source": rep["source"]}]
+			+ [{"title": a["title"], "source": a["source"]} for a in cluster if a is not rep]
+		),
+		age_hours=round(freshest_age, 3),
+		is_breaking=freshest_age < TOP_STORY_MAX_AGE_HOURS,
+		score=round(composite, 4),
+		score_breakdown={
+			"feed_position": round(position, 3),
+			"repetition": round(repetition, 3),
+			"recency": round(recency, 3),
+			"prominence": round(prominence, 3),
+			"style_penalty": round(style_penalty, 2),
+		},
+	)
 
 
 def enforce_top_story_freshness(
@@ -221,11 +237,16 @@ def enforce_top_story_freshness(
 
 
 def rank_articles(articles: list[dict], top_n: int = TOP_N) -> list[RankedStory]:
-    clusters = cluster_articles(articles)
-    max_size = max(len(c) for c in clusters)
-    now = datetime.now(timezone.utc)
+	# Tag each article with its 0-based position in the feed (Google's order).
+	feed_len = len(articles)
+	for i, art in enumerate(articles):
+		art["feed_index"] = i
 
-    scored = [score_cluster(c, max_size, now) for c in clusters]
-    scored.sort(key=lambda s: s.score, reverse=True)
-    scored = enforce_top_story_freshness(scored)
-    return scored[:top_n]
+	clusters = cluster_articles(articles)
+	max_size = max(len(c) for c in clusters)
+	now = datetime.now(timezone.utc)
+
+	scored = [score_cluster(c, max_size, feed_len, now) for c in clusters]
+	scored.sort(key=lambda s: s.score, reverse=True)
+	scored = enforce_top_story_freshness(scored)
+	return scored[:top_n]

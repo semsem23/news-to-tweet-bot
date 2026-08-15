@@ -3,8 +3,10 @@
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
+from bot.config import WEIGHT_FEED_POSITION, WEIGHT_PROMINENCE, WEIGHT_RECENCY, WEIGHT_REPETITION
 from bot.ranker import (
     cluster_articles,
+    feed_position_score,
     headline_style_penalty,
     jaccard,
     rank_articles,
@@ -12,6 +14,28 @@ from bot.ranker import (
 )
 
 PARIS = ZoneInfo("Europe/Paris")
+
+
+class TestWeightsAndFeedPosition:
+	def test_weights_sum_to_one(self):
+		total = WEIGHT_FEED_POSITION + WEIGHT_RECENCY + WEIGHT_PROMINENCE + WEIGHT_REPETITION
+		assert abs(total - 1.0) < 0.001, f"Weights sum to {total}, not 1.0"
+
+	def test_feed_position_score_first_item(self):
+		assert feed_position_score(0, 10) == 1.0
+
+	def test_feed_position_score_last_item(self):
+		assert feed_position_score(9, 10) == 0.0
+
+	def test_feed_position_score_middle_item(self):
+		score = feed_position_score(5, 10)
+		assert 0.4 < score < 0.6  # Middle-ish (0.5)
+
+	def test_feed_position_score_single_item(self):
+		assert feed_position_score(0, 1) == 1.0
+
+	def test_feed_position_score_zero_items(self):
+		assert feed_position_score(0, 0) == 1.0
 
 
 def ts(hours_ago: float) -> str:
@@ -68,13 +92,15 @@ class TestStylePenalty:
     def test_hard_news_untouched(self):
         assert headline_style_penalty("Putin visits military installation, vowing to take more of Ukraine") == 1.0
 
-    def test_hard_news_beats_fresher_explainer(self):
+    def test_feed_position_dominates_ranking(self):
+        # Feed position (#0) is 65% dominant; hard-news at position 0 beats older stale one at #1.
         articles = [
-            art("What is the religious and political messaging behind the funeral?", "Al Jazeera", 0.2, "https://a"),
             art("Funeral draws hundreds of thousands to Tehran streets", "Reuters", 0.5, "https://b"),
+            art("What is the religious and political messaging behind the funeral?", "Al Jazeera", 0.2, "https://a"),
         ]
         top = rank_articles(articles, top_n=2)
         assert top[0].title.startswith("Funeral draws")
+        assert "feed_position" in top[0].score_breakdown
 
 
 class TestFreshnessEnforcement:
