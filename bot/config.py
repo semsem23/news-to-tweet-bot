@@ -44,19 +44,20 @@ PARIS_TZ = ZoneInfo("Europe/Paris")
 # --------------------------------------------------------------------------
 
 NATION_FEED = "https://news.google.com/rss/headlines/section/topic/NATION?hl=en-US&gl=US&ceid=US:en"
-WORLD_FEED = "https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en"
+# WORLD_FEED = "https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en"
+ENTERTAINMENT = "https://news.google.com/rss/headlines/section/topic/ENTERTAINMENT?hl=en-US&gl=US&ceid=US:en"
 
 def _get_feed_url() -> str:
 	"""Determine FEED_URL based on Paris time.
 
 	18:00-06:00 (6 PM - 6 AM) Paris time: NATION feed
-	07:00-17:00 (7 AM - 5 PM) Paris time: WORLD feed
+	07:00-17:00 (7 AM - 5 PM) Paris time: ENTERTAINMENT feed
 	"""
 	paris_hour = datetime.now(PARIS_TZ).hour
 	if 18 <= paris_hour or paris_hour < 7:
 		return NATION_FEED
 	else:
-		return WORLD_FEED
+		return ENTERTAINMENT
 
 FEED_URL = os.environ.get("FEED_URL", _get_feed_url())
 REQUEST_TIMEOUT = 15  # seconds
