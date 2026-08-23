@@ -16,8 +16,12 @@ import feedparser
 import requests
 
 from .config import (
-    FEED_URL,
+    EXCLUDE_HOROSCOPE,
+    EXCLUDE_QUESTION_HEADLINES,
+    FEEDS,
+    MIN_TWEET_CHARS,
     PARIS_TZ,
+    QUESTION_START_WORDS,
     REQUEST_TIMEOUT,
     RESOLVE_REAL_ARTICLE_URL,
     URL_RESOLVE_TIMEOUT,
@@ -29,8 +33,8 @@ from .models import Article
 UTC = timezone.utc
 
 
-def fetch_raw_feed(url: str = FEED_URL) -> feedparser.FeedParserDict:
-    """Download and parse the RSS feed. Raises RuntimeError on failure."""
+def fetch_raw_feed(url: str) -> feedparser.FeedParserDict:
+    """Download and parse a single RSS feed. Raises RuntimeError on failure."""
     try:
         resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=REQUEST_TIMEOUT)
         resp.raise_for_status()
@@ -40,12 +44,28 @@ def fetch_raw_feed(url: str = FEED_URL) -> feedparser.FeedParserDict:
     parsed = feedparser.parse(resp.content)
 
     if parsed.bozo and not parsed.entries:
-        # bozo=True just means "not strictly well-formed XML"; Google News
-        # feeds sometimes trip this flag even when entries parse fine, so
-        # only treat it as fatal if we got zero usable entries.
         raise RuntimeError(f"Could not parse RSS feed: {parsed.bozo_exception}")
 
     return parsed
+
+
+def fetch_all_feeds(feeds: dict[str, str] = FEEDS) -> dict[str, feedparser.FeedParserDict]:
+    """
+    Fetch all feeds. On per-feed failure, log and continue with remaining feeds.
+    Returns a dict mapping feed name to parsed feed. If all feeds fail, raises RuntimeError.
+    """
+    results = {}
+    for feed_name, feed_url in feeds.items():
+        try:
+            results[feed_name] = fetch_raw_feed(feed_url)
+            log.info("Fetched %s feed (%d entries)", feed_name, len(results[feed_name].entries))
+        except RuntimeError as exc:
+            log.warning("Failed to fetch %s feed: %s. Continuing with other feeds.", feed_name, exc)
+
+    if not results:
+        raise RuntimeError("All feeds failed to fetch")
+
+    return results
 
 
 def split_title_and_source(raw_title: str, fallback_source: str = "") -> tuple[str, str]:
@@ -73,7 +93,7 @@ def to_paris_iso(struct_time_utc: time.struct_time) -> tuple[str, str]:
     return dt_utc.isoformat(), dt_paris.isoformat()
 
 
-def parse_entries(parsed: feedparser.FeedParserDict) -> list[Article]:
+def parse_entries(parsed: feedparser.FeedParserDict, feed_name: str = "") -> list[Article]:
     articles: list[Article] = []
 
     for entry in parsed.entries:
@@ -101,10 +121,68 @@ def parse_entries(parsed: feedparser.FeedParserDict) -> list[Article]:
                 link=link,
                 published_utc=published_utc,
                 published_paris=published_paris,
+                feed=feed_name,
+                feeds=[feed_name] if feed_name else [],
             )
         )
 
     return articles
+
+
+def merge_and_dedup_articles(articles_by_feed: dict[str, list[Article]]) -> list[Article]:
+    """
+    Merge articles from all feeds, deduplicating by link.
+    Preserves the set of feeds each article appeared in.
+    """
+    by_link: dict[str, Article] = {}
+
+    for feed_name, articles in articles_by_feed.items():
+        for article in articles:
+            if article.link in by_link:
+                existing = by_link[article.link]
+                if feed_name not in existing.feeds:
+                    existing.feeds.append(feed_name)
+            else:
+                article.feeds = [feed_name] if feed_name else []
+                by_link[article.link] = article
+
+    result = list(by_link.values())
+    log.info("Merged %d articles from all feeds (after dedup by link)", len(result))
+    return result
+
+
+def compose_tweet_text(title: str, source: str) -> str:
+    """Build the composed tweet text (headline + source attribution)."""
+    return f"{title} ({source})"
+
+
+def is_disqualified(title: str, source: str) -> tuple[bool, str]:
+    """
+    Check if an article should be excluded from ranking.
+    Returns (is_disqualified, reason).
+    """
+    composed = compose_tweet_text(title, source)
+
+    # Horoscope filter
+    if EXCLUDE_HOROSCOPE:
+        clean_title = title.strip().lstrip('"\'').lower()
+        if clean_title.startswith("horoscope"):
+            return True, "horoscope"
+
+    # Question / interrogative filter
+    if EXCLUDE_QUESTION_HEADLINES:
+        clean_title = title.strip().lstrip('"\'').lower()
+        if clean_title.endswith("?"):
+            return True, "ends with question mark"
+        first_word = re.split(r"\s+", clean_title)[0].rstrip(".,!?;:") if clean_title else ""
+        if first_word in QUESTION_START_WORDS:
+            return True, f"starts with question word: {first_word}"
+
+    # Minimum length filter
+    if len(composed) < MIN_TWEET_CHARS:
+        return True, f"too short ({len(composed)} chars < {MIN_TWEET_CHARS} minimum)"
+
+    return False, ""
 
 
 def resolve_article_url(link: str, timeout: float = URL_RESOLVE_TIMEOUT) -> str:
@@ -161,9 +239,13 @@ def resolve_article_url(link: str, timeout: float = URL_RESOLVE_TIMEOUT) -> str:
 
 __all__ = [
     "fetch_raw_feed",
+    "fetch_all_feeds",
     "parse_entries",
+    "merge_and_dedup_articles",
     "split_title_and_source",
     "to_paris_iso",
     "resolve_article_url",
+    "compose_tweet_text",
+    "is_disqualified",
     "RESOLVE_REAL_ARTICLE_URL",
 ]

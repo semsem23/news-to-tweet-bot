@@ -10,35 +10,89 @@ from . import fetcher, history, ranker, rephraser
 from .config import (
     DEDUP_LOOKBACK_HOURS,
     INCLUDE_LINK,
+    POST_MIN_INTERVAL_MINUTES,
     RESOLVE_REAL_ARTICLE_URL,
     TOP_N,
     TWEET_MAX_CHARS,
     log,
 )
 from .models import PostedEntry
+from datetime import timedelta
 
 
 def run_cycle(client: tweepy.Client, dry_run: bool = False) -> None:
     log.info("=== Cycle start ===")
 
+    now = datetime.now(timezone.utc)
+
+    # Check 90-minute posting interval gate (skip if less than POST_MIN_INTERVAL_MINUTES since last post)
+    if not dry_run:
+        posted = history.load_history()
+        posted = history.prune_history(posted, now)
+        if posted:
+            last_post = max(posted, key=lambda e: e.posted_at)
+            last_posted_time = datetime.fromisoformat(last_post.posted_at)
+            time_since_last = now - last_posted_time
+            min_interval = timedelta(minutes=POST_MIN_INTERVAL_MINUTES)
+            if time_since_last < min_interval:
+                remaining = min_interval - time_since_last
+                log.info(
+                    "Interval gate: last post was %.1f min ago; "
+                    "need %.1f more min before next post. Skipping this cycle.",
+                    time_since_last.total_seconds() / 60,
+                    remaining.total_seconds() / 60,
+                )
+                return
+
+    # Fetch all feeds
     try:
-        parsed_feed = fetcher.fetch_raw_feed()
+        feeds_dict = fetcher.fetch_all_feeds()
     except RuntimeError as exc:
-        log.error("Fetch failed: %s. Skipping this cycle.", exc)
+        log.error("All feeds failed to fetch: %s. Skipping this cycle.", exc)
         return
 
-    articles = [a.to_dict() for a in fetcher.parse_entries(parsed_feed)]
-    if not articles:
-        log.warning("No articles returned from feed this cycle; skipping.")
+    # Parse entries from each feed, tagged with feed name
+    articles_by_feed: dict[str, list] = {}
+    for feed_name, parsed_feed in feeds_dict.items():
+        articles = fetcher.parse_entries(parsed_feed, feed_name=feed_name)
+        articles_by_feed[feed_name] = articles
+
+    # Merge and deduplicate by link
+    all_articles = fetcher.merge_and_dedup_articles({
+        feed_name: articles for feed_name, articles in articles_by_feed.items()
+    })
+
+    if not all_articles:
+        log.warning("No articles returned from feeds this cycle; skipping.")
         return
-    log.info("Fetched %d articles.", len(articles))
+
+    # Apply headline filters
+    filtered_articles = []
+    filtered_count = 0
+    for article in all_articles:
+        is_disq, reason = fetcher.is_disqualified(article.title, article.source)
+        if is_disq:
+            log.debug("Filtered %r: %s", article.title, reason)
+            filtered_count += 1
+        else:
+            filtered_articles.append(article)
+
+    log.info(
+        "Filtered %d articles (disqualified). %d articles remain for ranking.",
+        filtered_count, len(filtered_articles),
+    )
+
+    if not filtered_articles:
+        log.warning("All articles were filtered out; nothing to rank.")
+        return
+
+    articles = [a.to_dict() for a in filtered_articles]
 
     ranked = ranker.rank_articles(articles, top_n=TOP_N)
     if not ranked:
         log.warning("Ranking produced no candidates this cycle; skipping.")
         return
 
-    now = datetime.now(timezone.utc)
     posted = history.prune_history(history.load_history(), now)
 
     candidate = history.pick_non_duplicate(ranked, posted)
@@ -60,8 +114,6 @@ def run_cycle(client: tweepy.Client, dry_run: bool = False) -> None:
 
     tweet_length = rephraser.twitter_weighted_length(candidate.tweet)
     if tweet_length > TWEET_MAX_CHARS:
-        # Defensive check — build_tweet() already enforces the budget.
-        # Uses X's actual counting rule (URLs weighted as flat 23 chars).
         log.error(
             "Generated tweet exceeds X's char budget as X counts it (%d > %d); "
             "skipping rather than posting malformed content: %r",

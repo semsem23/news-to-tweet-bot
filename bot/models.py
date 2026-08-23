@@ -15,6 +15,8 @@ class Article:
     link: str
     published_utc: str
     published_paris: str
+    feed: str = ""
+    feeds: list[str] = field(default_factory=list)
 
     def to_dict(self) -> dict:
         return asdict(self)

@@ -43,23 +43,14 @@ PARIS_TZ = ZoneInfo("Europe/Paris")
 # Fetching
 # --------------------------------------------------------------------------
 
-NATION_FEED = "https://news.google.com/rss/headlines/section/topic/NATION?hl=en-US&gl=US&ceid=US:en"
-# WORLD_FEED = "https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en"
-ENTERTAINMENT = "https://news.google.com/rss/headlines/section/topic/ENTERTAINMENT?hl=en-US&gl=US&ceid=US:en"
+FEEDS = {
+    "WORLD": "https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en",
+    "NATION": "https://news.google.com/rss/headlines/section/topic/NATION?hl=en-US&gl=US&ceid=US:en",
+    "BUSINESS": "https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=en-US&gl=US&ceid=US:en",
+    "ENTERTAINMENT": "https://news.google.com/rss/headlines/section/topic/ENTERTAINMENT?hl=en-US&gl=US&ceid=US:en",
+    "SPORTS": "https://news.google.com/rss/headlines/section/topic/SPORTS?hl=en-US&gl=US&ceid=US:en",
+}
 
-def _get_feed_url() -> str:
-	"""Determine FEED_URL based on Paris time.
-
-	18:00-06:00 (6 PM - 6 AM) Paris time: NATION feed
-	07:00-17:00 (7 AM - 5 PM) Paris time: ENTERTAINMENT feed
-	"""
-	paris_hour = datetime.now(PARIS_TZ).hour
-	if 18 <= paris_hour or paris_hour < 7:
-		return NATION_FEED
-	else:
-		return ENTERTAINMENT
-
-FEED_URL = os.environ.get("FEED_URL", _get_feed_url())
 REQUEST_TIMEOUT = 15  # seconds
 USER_AGENT = "Mozilla/5.0 (compatible; NewsToTweetBot/1.0; +https://github.com/)"
 
@@ -136,12 +127,28 @@ ALT_HEADLINE_MAX_SIMILARITY = 0.6
 ANTHROPIC_MODEL = "claude-haiku-4-5-20251001"
 
 # --------------------------------------------------------------------------
+# Headline Filters
+# --------------------------------------------------------------------------
+
+MIN_TWEET_CHARS = 61
+EXCLUDE_HOROSCOPE = True
+EXCLUDE_QUESTION_HEADLINES = True
+QUESTION_START_WORDS = {
+    "what", "why", "how", "who", "when", "where", "which",
+    "is", "are", "can", "could", "should", "would", "will", "does", "do", "did",
+}
+
+# --------------------------------------------------------------------------
 # Posting
 # --------------------------------------------------------------------------
 
+# Minimum time between posts. The workflow runs every 30 minutes; this gate
+# ensures posts happen at least this long apart despite cron jitter.
+POST_MIN_INTERVAL_MINUTES = 90
+
 # How far back to look when checking for duplicates. Should comfortably
-# exceed the posting interval (1h) so a story that trends across several
-# consecutive hourly pulls doesn't get re-posted each time.
+# exceed the posting interval so a story that trends across several
+# consecutive pulls doesn't get re-posted each time.
 DEDUP_LOOKBACK_HOURS = 48
 
 # Reuse the clustering threshold so "the same story, reworded by a

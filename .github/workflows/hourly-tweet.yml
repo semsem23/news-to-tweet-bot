@@ -1,11 +1,13 @@
-name: Hourly tweet
+name: Tweet every 30 minutes
 
 on:
   schedule:
-    # Every hour, on the hour (UTC — GitHub Actions cron is always UTC).
+    # Every 30 minutes (UTC — GitHub Actions cron is always UTC).
     # NOTE: GitHub does not guarantee exact timing; scheduled runs can be
-    # delayed by several minutes (occasionally more) under load.
-    - cron: "17 * * * *"
+    # delayed by several minutes (occasionally more) under load. The interval
+    # gate in pipeline.py ensures posts don't happen more than every 90 minutes
+    # despite cron jitter.
+    - cron: "*/30 * * * *"
   # Manual trigger button in the Actions tab, for testing.
   workflow_dispatch:
     inputs:

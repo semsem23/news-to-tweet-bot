@@ -19,7 +19,7 @@ from .poster import build_x_client
 
 def run_scheduler(client, dry_run: bool, run_immediately: bool) -> None:
     from apscheduler.schedulers.blocking import BlockingScheduler
-    from apscheduler.triggers.cron import CronTrigger
+    from apscheduler.triggers.interval import IntervalTrigger
 
     scheduler = BlockingScheduler(timezone=PARIS_TZ)
 
@@ -29,17 +29,17 @@ def run_scheduler(client, dry_run: bool, run_immediately: bool) -> None:
         except Exception:  # noqa: BLE001
             # A single cycle's unexpected failure must never take the
             # whole scheduler down — log it and wait for the next tick.
-            log.exception("Unhandled error during scheduled cycle; will retry next hour.")
+            log.exception("Unhandled error during scheduled cycle; will retry on next interval.")
 
     scheduler.add_job(
         job,
-        trigger=CronTrigger(minute=0, timezone=PARIS_TZ),
-        id="hourly_post",
+        trigger=IntervalTrigger(minutes=90, timezone=PARIS_TZ),
+        id="interval_post",
         next_run_time=datetime.now(PARIS_TZ) if run_immediately else None,
     )
 
     log.info(
-        "Scheduler started: posting on the hour, Europe/Paris time%s.",
+        "Scheduler started: posting every 90 minutes, Europe/Paris time%s.",
         " (running first cycle now)" if run_immediately else "",
     )
     scheduler.start()
