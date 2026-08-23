@@ -81,6 +81,15 @@ TOP_STORY_MAX_AGE_HOURS = 1.0
 # step rather than either going silent or ignoring freshness altogether.
 TOP_STORY_AGE_WINDOWS = [TOP_STORY_MAX_AGE_HOURS, 2.0, 3.0, 6.0]
 
+# Momentum-aware freshness gate: a story whose momentum is at least this
+# may lead the ranking even when older than TOP_STORY_MAX_AGE_HOURS,
+# allowing a sustained-coverage trend to rank over a fresher one-off.
+TREND_LEAD_MOMENTUM_FLOOR = 0.35
+
+# ...but never let a story older than this lead, however strong its momentum.
+# Prevents stale trending stories from monopolizing the top slot.
+TREND_MAX_LEAD_AGE_HOURS = 6.0
+
 # Prominence lookup — coarse tiers. Unknown sources default to 0.5.
 SOURCE_PROMINENCE = {
     # Wire services / global gold-standard

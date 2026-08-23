@@ -24,6 +24,8 @@ from .config import (
     TOP_N,
     TOP_STORY_AGE_WINDOWS,
     TOP_STORY_MAX_AGE_HOURS,
+    TREND_LEAD_MOMENTUM_FLOOR,
+    TREND_MAX_LEAD_AGE_HOURS,
     WEIGHT_FEED_POSITION,
     WEIGHT_PROMINENCE,
     WEIGHT_RECENCY,
@@ -207,11 +209,24 @@ def enforce_top_story_freshness(
     nothing qualifies, progressively widen (1h -> 2h -> 3h -> 6h) and take
     the highest-scoring story clearing the first non-empty window. Only if
     every window is empty fall back to pure highest-score, with a warning.
+
+    A strongly-trending thread (momentum ≥ TREND_LEAD_MOMENTUM_FLOOR) may lead
+    even if older than the initial window, as long as it isn't stale
+    (< TREND_MAX_LEAD_AGE_HOURS). This lets a developing story beat a fresher
+    but one-off headline.
     """
     if not scored:
         return scored
 
-    if scored[0].age_hours < windows[0]:
+    top = scored[0]
+    # Momentum override: a trending thread may lead even if not <1h fresh,
+    # as long as it isn't stale (6h+). This preserves the freshness guarantee
+    # for non-trending stories while letting sustained coverage rank on merit.
+    if (top.score_breakdown.get("momentum", 0.0) >= TREND_LEAD_MOMENTUM_FLOOR
+            and top.age_hours < TREND_MAX_LEAD_AGE_HOURS):
+        return scored
+
+    if top.age_hours < windows[0]:
         return scored
 
     for w in windows:

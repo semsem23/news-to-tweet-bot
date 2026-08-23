@@ -93,6 +93,12 @@ def run_cycle(client: tweepy.Client, dry_run: bool = False) -> None:
         log.warning("Ranking produced no candidates this cycle; skipping.")
         return
 
+    # Log top 5 candidates with momentum breakdown for verification
+    for s in ranked[:5]:
+        log.info("cand score=%.4f age=%.2fh mom=%.3f | %s",
+                 s.score, s.age_hours,
+                 s.score_breakdown.get("momentum", 0.0), s.title[:70])
+
     posted = history.prune_history(history.load_history(), now)
 
     candidate = history.pick_non_duplicate(ranked, posted)
