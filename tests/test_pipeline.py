@@ -9,7 +9,7 @@ from bot.pipeline import run_cycle
 
 class TestIntervalGate:
     def test_interval_gate_skips_recent_post(self):
-        """If last post was <90 min ago, cycle should skip during non-dry-run."""
+        """If last post was <80 min ago, cycle should skip during non-dry-run."""
         client = MagicMock()
         now_utc = datetime.now(timezone.utc)
         recent_post_time = now_utc - timedelta(minutes=60)
@@ -32,7 +32,7 @@ class TestIntervalGate:
                     mock_fetch.assert_not_called()
 
     def test_interval_gate_allows_old_post(self):
-        """If last post was >90 min ago, cycle should proceed."""
+        """If last post was >80 min ago, cycle should proceed."""
         client = MagicMock()
         now_utc = datetime.now(timezone.utc)
         old_post_time = now_utc - timedelta(minutes=120)

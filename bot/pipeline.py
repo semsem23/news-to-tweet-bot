@@ -25,7 +25,7 @@ def run_cycle(client: tweepy.Client, dry_run: bool = False) -> None:
 
     now = datetime.now(timezone.utc)
 
-    # Check 90-minute posting interval gate (skip if less than POST_MIN_INTERVAL_MINUTES since last post)
+    # Check 80-minute posting interval gate (skip if less than POST_MIN_INTERVAL_MINUTES since last post)
     if not dry_run:
         posted = history.load_history()
         posted = history.prune_history(posted, now)

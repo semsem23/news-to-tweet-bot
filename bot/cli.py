@@ -33,13 +33,13 @@ def run_scheduler(client, dry_run: bool, run_immediately: bool) -> None:
 
     scheduler.add_job(
         job,
-        trigger=IntervalTrigger(minutes=90, timezone=PARIS_TZ),
+        trigger=IntervalTrigger(minutes=80, timezone=PARIS_TZ),
         id="interval_post",
         next_run_time=datetime.now(PARIS_TZ) if run_immediately else None,
     )
 
     log.info(
-        "Scheduler started: posting every 90 minutes, Europe/Paris time%s.",
+        "Scheduler started: posting every 80 minutes, Europe/Paris time%s.",
         " (running first cycle now)" if run_immediately else "",
     )
     scheduler.start()

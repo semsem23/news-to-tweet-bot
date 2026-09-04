@@ -153,7 +153,7 @@ QUESTION_START_WORDS = {
 
 # Minimum time between posts. The workflow runs every 30 minutes; this gate
 # ensures posts happen at least this long apart despite cron jitter.
-POST_MIN_INTERVAL_MINUTES = 90
+POST_MIN_INTERVAL_MINUTES = 80
 
 # How far back to look when checking for duplicates. Should comfortably
 # exceed the posting interval so a story that trends across several

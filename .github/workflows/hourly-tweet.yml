@@ -5,7 +5,7 @@ on:
     # Every 30 minutes (UTC — GitHub Actions cron is always UTC).
     # NOTE: GitHub does not guarantee exact timing; scheduled runs can be
     # delayed by several minutes (occasionally more) under load. The interval
-    # gate in pipeline.py ensures posts don't happen more than every 90 minutes
+    # gate in pipeline.py ensures posts don't happen more than every 80 minutes
     # despite cron jitter.
     - cron: "*/30 * * * *"
   # Manual trigger button in the Actions tab, for testing.
