@@ -1,13 +1,18 @@
-name: Tweet every 30 minutes
+name: Tweet every 80 minutes
 
 on:
   schedule:
-    # Every 30 minutes (UTC — GitHub Actions cron is always UTC).
+    # Every 80 minutes (UTC — GitHub Actions cron is always UTC). Cron has no
+    # native "every N minutes" step past 59, so 80 minutes is expressed as
+    # three fixed minute/hour pairs that land exactly 80 minutes apart and
+    # repeat on a 4-hour cycle (00:00, 01:20, 02:40, 04:00, 05:20, 06:40, ...).
     # NOTE: GitHub does not guarantee exact timing; scheduled runs can be
     # delayed by several minutes (occasionally more) under load. The interval
-    # gate in pipeline.py ensures posts don't happen more than every 80 minutes
-    # despite cron jitter.
-    - cron: "*/30 * * * *"
+    # gate in pipeline.py still enforces the 80-minute floor despite any
+    # cron jitter.
+    - cron: "0 0,4,8,12,16,20 * * *"
+    - cron: "20 1,5,9,13,17,21 * * *"
+    - cron: "40 2,6,10,14,18,22 * * *"
   # Manual trigger button in the Actions tab, for testing.
   workflow_dispatch:
     inputs:
