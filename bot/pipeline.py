@@ -6,9 +6,10 @@ from datetime import datetime, timezone
 
 import tweepy
 
-from . import fetcher, history, ranker, rephraser
+from . import fetcher, history, ranker, rephraser, trend_scoring
 from .config import (
     DEDUP_LOOKBACK_HOURS,
+    ENABLE_TREND_SCORING,
     INCLUDE_LINK,
     POST_MIN_INTERVAL_MINUTES,
     RESOLVE_REAL_ARTICLE_URL,
@@ -92,6 +93,9 @@ def run_cycle(client: tweepy.Client, dry_run: bool = False) -> None:
     if not ranked:
         log.warning("Ranking produced no candidates this cycle; skipping.")
         return
+
+    if ENABLE_TREND_SCORING:
+        ranked = trend_scoring.apply_trend_scoring(ranked)
 
     # Log top 5 candidates with momentum breakdown for verification
     for s in ranked[:5]:
