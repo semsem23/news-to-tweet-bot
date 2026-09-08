@@ -145,6 +145,14 @@ def run_cycle(client: tweepy.Client, dry_run: bool = False) -> None:
         log.warning("Post failed; not recording in history so it can be retried.")
         return
 
-    posted.append(PostedEntry(link=candidate.link, title=candidate.title, posted_at=now.isoformat()))
+    posted.append(PostedEntry(
+        link=candidate.link,
+        title=candidate.title,
+        posted_at=now.isoformat(),
+        tweet_id=tweet_id,
+        source=candidate.source,
+        score=candidate.score,
+        trend_score=candidate.score_breakdown.get("trend_score"),
+    ))
     history.save_history(posted)
     log.info("=== Cycle complete ===")
