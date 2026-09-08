@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
+from typing import Optional
 
 
 @dataclass
@@ -15,6 +16,8 @@ class Article:
     link: str
     published_utc: str
     published_paris: str
+    feed: str = ""
+    feeds: list[str] = field(default_factory=list)
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -43,11 +46,29 @@ class RankedStory:
 
 @dataclass
 class PostedEntry:
-    """A record of a successfully posted story, for dedup."""
+    """A record of a successfully posted story, for dedup (and, secondarily,
+    for after-the-fact analysis of what got posted and why).
+
+    tweet_id/source/score/trend_score are optional and default to None so
+    older entries in posted_history.json — written before these fields
+    existed — still load without error.
+    """
 
     link: str
     title: str
     posted_at: str  # ISO 8601 UTC
+    tweet_id: Optional[str] = None
+    source: Optional[str] = None
+    score: Optional[float] = None
+    trend_score: Optional[float] = None
 
     def to_dict(self) -> dict:
-        return {"link": self.link, "title": self.title, "posted_at": self.posted_at}
+        return {
+            "link": self.link,
+            "title": self.title,
+            "posted_at": self.posted_at,
+            "tweet_id": self.tweet_id,
+            "source": self.source,
+            "score": self.score,
+            "trend_score": self.trend_score,
+        }

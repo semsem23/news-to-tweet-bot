@@ -13,3 +13,10 @@ anthropic>=0.40
 
 # Optional — only used if INCLUDE_LINK is re-enabled in bot/config.py
 googlenewsdecoder>=0.1.6
+
+# Optional — only used by bot/trend_scoring.py when ENABLE_TREND_SCORING is
+# True in bot/config.py. Pure Python, lexicon bundled (no network download
+# at runtime), safe to install by default. spaCy is deliberately NOT listed
+# here: its entity-density signal requires downloading a separate model,
+# which would slow down and add a network dependency to every hourly run.
+vaderSentiment>=3.3

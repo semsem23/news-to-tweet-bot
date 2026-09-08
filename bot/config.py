@@ -43,22 +43,14 @@ PARIS_TZ = ZoneInfo("Europe/Paris")
 # Fetching
 # --------------------------------------------------------------------------
 
-NATION_FEED = "https://news.google.com/rss/headlines/section/topic/NATION?hl=en-US&gl=US&ceid=US:en"
-WORLD_FEED = "https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en"
+FEEDS = {
+    "WORLD": "https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en",
+    "NATION": "https://news.google.com/rss/headlines/section/topic/NATION?hl=en-US&gl=US&ceid=US:en",
+    "BUSINESS": "https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=en-US&gl=US&ceid=US:en",
+    "ENTERTAINMENT": "https://news.google.com/rss/headlines/section/topic/ENTERTAINMENT?hl=en-US&gl=US&ceid=US:en",
+    "SPORTS": "https://news.google.com/rss/headlines/section/topic/SPORTS?hl=en-US&gl=US&ceid=US:en",
+}
 
-def _get_feed_url() -> str:
-	"""Determine FEED_URL based on Paris time.
-
-	18:00-06:00 (6 PM - 6 AM) Paris time: NATION feed
-	07:00-17:00 (7 AM - 5 PM) Paris time: WORLD feed
-	"""
-	paris_hour = datetime.now(PARIS_TZ).hour
-	if 18 <= paris_hour or paris_hour < 7:
-		return NATION_FEED
-	else:
-		return WORLD_FEED
-
-FEED_URL = os.environ.get("FEED_URL", _get_feed_url())
 REQUEST_TIMEOUT = 15  # seconds
 USER_AGENT = "Mozilla/5.0 (compatible; NewsToTweetBot/1.0; +https://github.com/)"
 
@@ -70,9 +62,10 @@ USER_AGENT = "Mozilla/5.0 (compatible; NewsToTweetBot/1.0; +https://github.com/)
 TOP_N = 5
 
 # Scoring weights (must sum to 1.0)
-WEIGHT_REPETITION = 0.40
-WEIGHT_RECENCY = 0.35
-WEIGHT_PROMINENCE = 0.25
+WEIGHT_FEED_POSITION = 0.65
+WEIGHT_RECENCY = 0.25
+WEIGHT_PROMINENCE = 0.05
+WEIGHT_REPETITION = 0.05
 
 RECENCY_HALF_LIFE_HOURS = 3.0
 
@@ -87,6 +80,22 @@ TOP_STORY_MAX_AGE_HOURS = 1.0
 # If nothing in the pull is under TOP_STORY_MAX_AGE_HOURS, widen step by
 # step rather than either going silent or ignoring freshness altogether.
 TOP_STORY_AGE_WINDOWS = [TOP_STORY_MAX_AGE_HOURS, 2.0, 3.0, 6.0]
+
+# Momentum-aware freshness gate: a story whose momentum is at least this
+# may lead the ranking even when older than TOP_STORY_MAX_AGE_HOURS,
+# allowing a sustained-coverage trend to rank over a fresher one-off.
+TREND_LEAD_MOMENTUM_FLOOR = 0.35
+
+# ...but never let a story older than this lead, however strong its momentum.
+# Prevents stale trending stories from monopolizing the top slot.
+TREND_MAX_LEAD_AGE_HOURS = 6.0
+
+# Local "trend_score" re-ranking (bot/trend_scoring.py): sentiment, death/
+# violence keywords, geopolitical hotness, urgency markers, entity density.
+# Off by default for a gradual rollout. When enabled, it only reorders
+# ranked[1:] — the #1 slot stays whatever enforce_top_story_freshness above
+# already decided, so this can never undermine that freshness guarantee.
+ENABLE_TREND_SCORING = False
 
 # Prominence lookup — coarse tiers. Unknown sources default to 0.5.
 SOURCE_PROMINENCE = {
@@ -134,12 +143,28 @@ ALT_HEADLINE_MAX_SIMILARITY = 0.6
 ANTHROPIC_MODEL = "claude-haiku-4-5-20251001"
 
 # --------------------------------------------------------------------------
+# Headline Filters
+# --------------------------------------------------------------------------
+
+MIN_TWEET_CHARS = 61
+EXCLUDE_HOROSCOPE = True
+EXCLUDE_QUESTION_HEADLINES = True
+QUESTION_START_WORDS = {
+    "what", "why", "how", "who", "when", "where", "which",
+    "is", "are", "can", "could", "should", "would", "will", "does", "do", "did",
+}
+
+# --------------------------------------------------------------------------
 # Posting
 # --------------------------------------------------------------------------
 
+# Minimum time between posts. The workflow runs every 30 minutes; this gate
+# ensures posts happen at least this long apart despite cron jitter.
+POST_MIN_INTERVAL_MINUTES = 80
+
 # How far back to look when checking for duplicates. Should comfortably
-# exceed the posting interval (1h) so a story that trends across several
-# consecutive hourly pulls doesn't get re-posted each time.
+# exceed the posting interval so a story that trends across several
+# consecutive pulls doesn't get re-posted each time.
 DEDUP_LOOKBACK_HOURS = 48
 
 # Reuse the clustering threshold so "the same story, reworded by a
