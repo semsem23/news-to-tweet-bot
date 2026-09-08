@@ -151,8 +151,8 @@ QUESTION_START_WORDS = {
 # Posting
 # --------------------------------------------------------------------------
 
-# Minimum time between posts. The workflow runs every 30 minutes; this gate
-# ensures posts happen at least this long apart despite cron jitter.
+# Minimum time between posts. The workflow's cron is scheduled to run every
+# 80 minutes already; this gate is a safety net against cron jitter/overlap.
 POST_MIN_INTERVAL_MINUTES = 80
 
 # How far back to look when checking for duplicates. Should comfortably
