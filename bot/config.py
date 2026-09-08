@@ -90,6 +90,13 @@ TREND_LEAD_MOMENTUM_FLOOR = 0.35
 # Prevents stale trending stories from monopolizing the top slot.
 TREND_MAX_LEAD_AGE_HOURS = 6.0
 
+# Local "trend_score" re-ranking (bot/trend_scoring.py): sentiment, death/
+# violence keywords, geopolitical hotness, urgency markers, entity density.
+# Off by default for a gradual rollout. When enabled, it only reorders
+# ranked[1:] — the #1 slot stays whatever enforce_top_story_freshness above
+# already decided, so this can never undermine that freshness guarantee.
+ENABLE_TREND_SCORING = False
+
 # Prominence lookup — coarse tiers. Unknown sources default to 0.5.
 SOURCE_PROMINENCE = {
     # Wire services / global gold-standard
