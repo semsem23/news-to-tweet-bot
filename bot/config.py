@@ -91,11 +91,113 @@ TREND_LEAD_MOMENTUM_FLOOR = 0.35
 TREND_MAX_LEAD_AGE_HOURS = 6.0
 
 # Local "trend_score" re-ranking (bot/trend_scoring.py): sentiment, death/
-# violence keywords, geopolitical hotness, urgency markers, entity density.
+# violence keywords, live-coverage format, celebrity/sports, urgency markers.
 # Off by default for a gradual rollout. When enabled, it only reorders
 # ranked[1:] — the #1 slot stays whatever enforce_top_story_freshness above
 # already decided, so this can never undermine that freshness guarantee.
 ENABLE_TREND_SCORING = False
+
+# --------------------------------------------------------------------------
+# Trend scoring weights and keyword sets
+# --------------------------------------------------------------------------
+#
+# Calibrated 2026-09-12 against 706 posted tweets (Jun 28 - Aug 19 2026) joined
+# to their real per-post impressions. Baseline median = 21 impressions.
+#
+# Measured Spearman(trend_score, impressions) over those 706 posts:
+#     previous weights  +0.223
+#     these weights     +0.353
+# Bootstrap (400 resamples) 95% CI on the improvement: [+0.080, +0.191];
+# the gain holds in both chronological halves and survives excluding the
+# four "Watch Live" posts, so it is not an artifact of that small cohort.
+#
+# Per-feature Spearman vs. impressions measured on the same sample:
+#     death/violence keyword   +0.262      urgency marker       -0.005
+#     live-coverage format     +0.168      geopolitical count   +0.023
+#     |sentiment|              +0.185      question headline    -0.082
+#     very negative            +0.169      analytical/opinion   -0.005
+#
+# GEO is deliberately 0.0: geopolitical keyword count showed no usable
+# relationship with reach (median impressions by geo count: 21 / 20 / 21.5 /
+# 35 / 20), yet under the previous weights it was the single largest term
+# (0.20 x geo_factor up to 1.5 = 0.30). It promoted Ukraine/Iran liveblogs
+# that earned 15-72 impressions over "Watch Live" trial coverage that earned
+# 384-1225. Left in the output dict as a diagnostic; set above 0.0 only if a
+# future sample shows it earning its place.
+TREND_WEIGHTS = {
+    "watch_live": 0.75,   # broadcast/video coverage: n=4, median 401 imp (19.1x)
+    "live_blog": 0.25,    # text liveblog/"latest": n=35, median 41 imp (1.95x)
+    "death": 0.25,        # crime/violence/disaster: n=237, median 29 imp (1.38x)
+    "celebrity": 0.20,    # celebrity/sports: n=51, median 31 imp (1.48x)
+    "urgency": 0.10,      # weak on its own; kept small as a tiebreaker
+    "geo": 0.00,          # see note above — measured as noise, disabled
+    "sentiment_abs": 0.10,
+    "very_negative": 0.08,
+    "entity": 0.06,       # inert unless spacy + en_core_web_sm are installed;
+                          # NOT part of the 706-post calibration (spacy absent)
+    "question_penalty": 0.20,    # n=10, median 13 imp (0.62x baseline)
+    "analytical_penalty": 0.12,  # n=2 here; penalty carried over from the brief
+}
+
+TREND_SCORE_MAX = 1.25
+
+# Neutral headlines would otherwise land on the 0.0 floor, where the question
+# and analytical penalties become invisible and every low-signal candidate
+# ties — apply_trend_scoring sorts the tail by this value, so ties there are
+# decided arbitrarily. This offset lifts the neutral case off the floor so the
+# penalties can still separate candidates. A constant offset does not change
+# rank order anywhere else.
+TREND_SCORE_BASELINE = 0.25
+
+# Broadcast/video live coverage. Matched against the headline only — this is a
+# format signal that lives in the headline prefix, not in body text.
+WATCH_LIVE_MARKERS = ["watch live", "watch:"]
+
+# Text liveblogs and rolling "latest" pages. Real but far weaker than the
+# above, so scored separately rather than lumped into one "live" bucket.
+LIVE_BLOG_MARKERS = [
+    "live updates", "live:", "war live", "liveblog", "live blog",
+    "latest:", "updates:", " live ",
+]
+
+DEATH_KEYWORDS = [
+    "kill", "killed", "dead", "died", "death", "murder", "massacre",
+    "bomb", "blast", "explosion", "attack", "terror", "terrorism",
+    "hostage", "crash", "disaster", "flood", "quake", "missile", "strike",
+    # added in the 2026-09-12 calibration pass
+    "shooting", "shot", "stabbed", "wounded", "avalanche", "earthquake",
+    "wildfire",
+]
+
+# Celebrity / sports. Absent from the previous keyword set entirely, despite
+# this cohort running ~1.5x baseline (and Taylor Swift/Kelce posts ~7.8x).
+CELEBRITY_KEYWORDS = [
+    "taylor swift", "kelce", "kardashian", "beyonce", "drake",
+    "actor", "actress", "singer", "rapper", "album", "movie", "film",
+    "celebrity", "wedding", "divorce",
+    "nfl", "nba", "mlb", "fifa", "world cup", "olympic", "soccer",
+    "super bowl", "ufc", "boxing", "championship", "tournament",
+    "coach", "player",
+]
+
+HOT_GEOPOLITICAL_KEYWORDS = [
+    "israel", "gaza", "hamas", "netanyahu", "palestin", "west bank",
+    "iran", "trump", "putin", "ukraine", "zelensky", "russia",
+    "taiwan", "china", "india", "pakistan", "houthi", "yemen", "syria",
+    "lebanon", "hezbollah", "north korea", "kim",
+]
+
+# "now"/"today"/"fast"/"rapid"/"moment" were dropped: they fire on ordinary
+# headlines and diluted the signal to nothing (measured Spearman -0.005).
+URGENCY_WORDS = [
+    "breaking", "urgent", "alert", "just in", "developing", "unfolding",
+]
+
+# Analytical/explainer framing — underperforms per the Jun-Aug sample.
+ANALYTICAL_MARKERS = [
+    "analysis", "opinion", "explainer", "what to know", "here's why",
+    "here is why", "the case for", "commentary", "perspective",
+]
 
 # Prominence lookup — coarse tiers. Unknown sources default to 0.5.
 SOURCE_PROMINENCE = {
