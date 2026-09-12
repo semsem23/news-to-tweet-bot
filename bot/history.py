@@ -14,6 +14,7 @@ from typing import Optional
 from .config import (
     DEDUP_LOOKBACK_HOURS,
     DUPLICATE_SIMILARITY_THRESHOLD,
+    POST_ANALYTICS_PATH,
     POST_HISTORY_PATH,
     log,
 )
@@ -37,6 +38,42 @@ def save_history(history: list[PostedEntry]) -> None:
     POST_HISTORY_PATH.parent.mkdir(parents=True, exist_ok=True)
     with POST_HISTORY_PATH.open("w", encoding="utf-8") as f:
         json.dump([e.to_dict() for e in history], f, ensure_ascii=False, indent=2)
+
+
+def append_analytics(entry: PostedEntry, story: Optional[RankedStory] = None,
+                     rank_position: Optional[int] = None,
+                     candidate_count: Optional[int] = None) -> None:
+    """Append one posted story to the never-pruned analytics log.
+
+    save_history() writes back a list pruned to DEDUP_LOOKBACK_HOURS, so it
+    cannot accumulate the score/outcome sample needed to calibrate ranking
+    against real impressions. This log is append-only and keeps the ranking
+    context (score breakdown, age, cluster size, where it placed) alongside
+    the tweet_id, so a later join to exported analytics needs no guesswork.
+
+    Never raises: the post has already gone out by the time this runs, and a
+    logging failure must not fail the cycle or trigger a retry.
+    """
+    try:
+        record = entry.to_dict()
+        if story is not None:
+            record.update({
+                "age_hours": round(story.age_hours, 3),
+                "cluster_size": story.cluster_size,
+                "cluster_sources": story.cluster_sources,
+                "is_breaking": story.is_breaking,
+                "score_breakdown": story.score_breakdown,
+            })
+        if rank_position is not None:
+            record["rank_position"] = rank_position
+        if candidate_count is not None:
+            record["candidate_count"] = candidate_count
+
+        POST_ANALYTICS_PATH.parent.mkdir(parents=True, exist_ok=True)
+        with POST_ANALYTICS_PATH.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(record, ensure_ascii=False) + "\n")
+    except Exception as exc:  # noqa: BLE001 — analytics must never break a cycle
+        log.warning("Could not append to the analytics log (%s); continuing.", exc)
 
 
 def prune_history(history: list[PostedEntry], now: datetime) -> list[PostedEntry]:

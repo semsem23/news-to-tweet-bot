@@ -94,14 +94,21 @@ def run_cycle(client: tweepy.Client, dry_run: bool = False) -> None:
         log.warning("Ranking produced no candidates this cycle; skipping.")
         return
 
+    # Shadow mode: every candidate gets a trend_score on every cycle, whether
+    # or not ENABLE_TREND_SCORING is on, so the value that ends up in the
+    # analytics log is the score the story *would* have been ranked by. The
+    # flag below gates only whether that score is allowed to reorder anything.
+    trend_scoring.annotate_trend_scores(ranked)
+
     if ENABLE_TREND_SCORING:
         ranked = trend_scoring.apply_trend_scoring(ranked)
 
     # Log top 5 candidates with momentum breakdown for verification
     for s in ranked[:5]:
-        log.info("cand score=%.4f age=%.2fh mom=%.3f | %s",
+        log.info("cand score=%.4f age=%.2fh mom=%.3f trend=%.3f | %s",
                  s.score, s.age_hours,
-                 s.score_breakdown.get("momentum", 0.0), s.title[:70])
+                 s.score_breakdown.get("momentum", 0.0),
+                 s.score_breakdown.get("trend_score", 0.0), s.title[:70])
 
     posted = history.prune_history(history.load_history(), now)
 
@@ -145,7 +152,7 @@ def run_cycle(client: tweepy.Client, dry_run: bool = False) -> None:
         log.warning("Post failed; not recording in history so it can be retried.")
         return
 
-    posted.append(PostedEntry(
+    entry = PostedEntry(
         link=candidate.link,
         title=candidate.title,
         posted_at=now.isoformat(),
@@ -153,6 +160,19 @@ def run_cycle(client: tweepy.Client, dry_run: bool = False) -> None:
         source=candidate.source,
         score=candidate.score,
         trend_score=candidate.score_breakdown.get("trend_score"),
-    ))
+    )
+
+    posted.append(entry)
     history.save_history(posted)
+
+    # save_history() above writes back a list pruned to DEDUP_LOOKBACK_HOURS,
+    # so this entry vanishes from posted_history.json within 48h. Mirror it to
+    # the append-only log, which is what later calibration passes read.
+    history.append_analytics(
+        entry,
+        story=candidate,
+        rank_position=ranked.index(candidate) + 1 if candidate in ranked else None,
+        candidate_count=len(ranked),
+    )
+
     log.info("=== Cycle complete ===")

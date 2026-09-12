@@ -23,6 +23,14 @@ DATA_DIR = BASE_DIR / "data"
 # so it persists across ephemeral runners.
 POST_HISTORY_PATH = DATA_DIR / "posted_history.json"
 
+# Append-only record of every post, one JSON object per line. Distinct from
+# POST_HISTORY_PATH above, which is a *dedup cache*: the pipeline prunes it to
+# DEDUP_LOOKBACK_HOURS and writes the pruned list back, so anything older than
+# 48h disappears from it. That makes it useless as a calibration sample — the
+# history could only be reconstructed by walking 540 git commits. This file is
+# never pruned and never rewritten, only appended to.
+POST_ANALYTICS_PATH = DATA_DIR / "posted_analytics.jsonl"
+
 # Optional: load a .env file at the repo root, if present, so credentials
 # can be set once in a file for local runs. Real environment variables
 # (GitHub Actions secrets, systemd, Docker) always take precedence.

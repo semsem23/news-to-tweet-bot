@@ -1,10 +1,13 @@
 """Tests for local trend scoring (bot/trend_scoring.py)."""
 
+import json
 from datetime import datetime, timedelta, timezone
+from unittest.mock import patch
 from zoneinfo import ZoneInfo
 
-from bot.models import RankedStory
-from bot.trend_scoring import analyze_article, apply_trend_scoring
+from bot.config import DEDUP_LOOKBACK_HOURS
+from bot.models import PostedEntry, RankedStory
+from bot.trend_scoring import analyze_article, annotate_trend_scores, apply_trend_scoring
 
 PARIS = ZoneInfo("Europe/Paris")
 
@@ -200,3 +203,111 @@ class TestApplyTrendScoring:
 		assert result[0] is head
 		assert result[1] is high
 		assert result[2] is low
+
+
+class TestShadowMode:
+	"""annotate_trend_scores is the shadow-mode entry point: it must record a
+	score for every candidate while leaving the ranking completely alone, so
+	the score can be validated against real impressions before it is trusted
+	to reorder anything."""
+
+	def test_every_candidate_is_scored_including_the_head(self):
+		"""The posted story is whichever candidate clears the duplicate check
+		— often the head. An unscored head would leave holes in the sample."""
+		ranked = [
+			make_story("Head story about a calm trade summit"),
+			make_story("Deadly missile attack kills dozens"),
+			make_story("Central bank holds interest rates steady"),
+		]
+
+		annotate_trend_scores(ranked)
+
+		assert all("trend_score" in s.score_breakdown for s in ranked)
+
+	def test_order_is_not_changed(self):
+		head = make_story("Calm headline about trade talks")
+		violent = make_story("Deadly bombing kills dozens in attack")
+		neutral = make_story("Central bank holds interest rates steady")
+		ranked = [head, violent, neutral]
+
+		result = annotate_trend_scores(ranked)
+
+		assert result == [head, violent, neutral]
+		assert [s.title for s in ranked] == [head.title, violent.title, neutral.title]
+
+	def test_scores_match_apply_trend_scoring(self):
+		"""Shadow scores must be the same numbers the live re-ranking would
+		use, or the calibration sample would not describe the real behaviour."""
+		title = "BREAKING: deadly missile attack kills dozens in Israel Gaza"
+		shadow = make_story(title)
+		annotate_trend_scores([shadow])
+
+		expected = analyze_article(title, "")["trend_score"]
+
+		assert shadow.score_breakdown["trend_score"] == expected
+
+	def test_empty_list_is_safe(self):
+		assert annotate_trend_scores([]) == []
+
+
+class TestAnalyticsLog:
+	def test_append_writes_one_json_line_per_post(self, tmp_path):
+		from bot import history as history_module
+
+		log_path = tmp_path / "posted_analytics.jsonl"
+		entry = PostedEntry(
+			link="https://example.com/a",
+			title="Deadly missile attack kills dozens",
+			posted_at=datetime.now(timezone.utc).isoformat(),
+			tweet_id="123",
+			source="Reuters",
+			score=0.95,
+			trend_score=0.62,
+		)
+		story = make_story("Deadly missile attack kills dozens", trend_score=0.62)
+
+		with patch.object(history_module, "POST_ANALYTICS_PATH", log_path):
+			history_module.append_analytics(entry, story=story, rank_position=2, candidate_count=5)
+			history_module.append_analytics(entry, story=story, rank_position=1, candidate_count=5)
+
+		lines = log_path.read_text(encoding="utf-8").strip().splitlines()
+		assert len(lines) == 2
+
+		record = json.loads(lines[0])
+		assert record["tweet_id"] == "123"
+		assert record["trend_score"] == 0.62
+		assert record["rank_position"] == 2
+		assert record["candidate_count"] == 5
+		assert "score_breakdown" in record
+
+	def test_append_survives_an_unwritable_path(self, tmp_path):
+		"""The tweet is already posted by the time this runs — a logging
+		failure must not raise and trigger a retry of an existing post."""
+		from bot import history as history_module
+
+		unwritable = tmp_path / "a-file-not-a-dir" / "nested" / "out.jsonl"
+		unwritable.parent.parent.write_text("I am a file, not a directory")
+
+		entry = PostedEntry(
+			link="https://example.com/a",
+			title="Story",
+			posted_at=datetime.now(timezone.utc).isoformat(),
+		)
+
+		with patch.object(history_module, "POST_ANALYTICS_PATH", unwritable):
+			history_module.append_analytics(entry)  # must not raise
+
+	def test_analytics_log_is_not_pruned(self, tmp_path):
+		"""The whole point of the second file: prune_history drops entries
+		older than DEDUP_LOOKBACK_HOURS, the analytics log keeps them."""
+		from bot import history as history_module
+
+		log_path = tmp_path / "posted_analytics.jsonl"
+		old = datetime.now(timezone.utc) - timedelta(hours=DEDUP_LOOKBACK_HOURS + 24)
+		entry = PostedEntry(link="https://example.com/old", title="Old", posted_at=old.isoformat())
+
+		with patch.object(history_module, "POST_ANALYTICS_PATH", log_path):
+			history_module.append_analytics(entry)
+
+		assert history_module.prune_history([entry], datetime.now(timezone.utc)) == []
+		assert len(log_path.read_text(encoding="utf-8").strip().splitlines()) == 1

@@ -153,6 +153,26 @@ def _pseudo_content(story: RankedStory) -> str:
     )
 
 
+def annotate_trend_scores(ranked: list[RankedStory]) -> list[RankedStory]:
+    """Record trend_score on every candidate without changing their order.
+
+    This is the shadow-mode entry point: the pipeline calls it on every cycle
+    regardless of ENABLE_TREND_SCORING, so each posted story carries the
+    trend_score it *would* have been ranked by. That builds the score/outcome
+    sample needed to validate the weights against real impressions, without
+    letting an uncalibrated score change what actually gets posted.
+
+    Every candidate is scored, not just ranked[1:], because the story that
+    ends up posted is whichever one clears the duplicate check — often the
+    head — and an unscored winner would leave a hole in the sample.
+    """
+    for story in ranked:
+        metrics = analyze_article(story.title, _pseudo_content(story))
+        story.score_breakdown["trend_score"] = metrics["trend_score"]
+
+    return ranked
+
+
 def apply_trend_scoring(ranked: list[RankedStory]) -> list[RankedStory]:
     """Re-rank candidates by local trend_score, leaving position #1 untouched.
 
@@ -163,12 +183,9 @@ def apply_trend_scoring(ranked: list[RankedStory]) -> list[RankedStory]:
     if len(ranked) <= 1:
         return ranked
 
+    annotate_trend_scores(ranked)
+
     head, tail = ranked[0], ranked[1:]
-
-    for story in tail:
-        metrics = analyze_article(story.title, _pseudo_content(story))
-        story.score_breakdown["trend_score"] = metrics["trend_score"]
-
     tail.sort(key=lambda s: s.score_breakdown.get("trend_score", 0.0), reverse=True)
 
     return [head] + tail
