@@ -66,10 +66,16 @@ jobs:
       - name: Persist posted history
         # Runners are ephemeral: without this commit, the dedup history
         # would reset every hour and the bot could re-post the same story.
+        # posted_analytics.jsonl rides along — it is append-only, so it also
+        # needs committing back or each run's record is lost with the runner.
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/posted_history.json
+          # -A over the directory rather than naming both files: git add on a
+          # path that does not exist yet exits 128, and posted_analytics.jsonl
+          # is absent until the first post lands. Ignored dumps in data/ are
+          # still skipped via .gitignore.
+          git add -A data/
           if git diff --cached --quiet; then
             echo "No history changes to commit (nothing was posted this cycle)."
           else
