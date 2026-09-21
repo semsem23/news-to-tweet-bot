@@ -5,7 +5,9 @@ trendiness ranking. Recency (25%, 3h half-life exponential decay), prominence
 (5%), and repetition (5%) serve as gentle tiebreakers. A style penalty
 further refines near-ties, slightly down-ranking question/explainer/opinion
 headlines. A hard freshness constraint guarantees the #1 slot goes to a
-recent story (<1h, progressively widened to 6h if needed).
+recent story (<1h, progressively widened to 6h if needed) — unless an older
+story's momentum (bot/momentum.py: cross-source count + spike detection)
+clears TREND_LEAD_MOMENTUM_FLOOR, in which case it may lead instead.
 """
 
 from __future__ import annotations
@@ -31,6 +33,7 @@ from .config import (
     WEIGHT_RECENCY,
     WEIGHT_REPETITION,
 )
+from . import momentum
 from .models import RankedStory
 
 # --------------------------------------------------------------------------
@@ -262,6 +265,7 @@ def rank_articles(articles: list[dict], top_n: int = TOP_N) -> list[RankedStory]
 	now = datetime.now(timezone.utc)
 
 	scored = [score_cluster(c, max_size, feed_len, now) for c in clusters]
+	momentum.annotate_momentum(scored, now)
 	scored.sort(key=lambda s: s.score, reverse=True)
 	scored = enforce_top_story_freshness(scored)
 	return scored[:top_n]
