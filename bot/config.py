@@ -83,11 +83,11 @@ CLUSTER_SIMILARITY_THRESHOLD = 0.45
 
 # Hard constraint: whichever story lands in the #1 slot must be based on
 # a report no older than this, regardless of its composite score.
-TOP_STORY_MAX_AGE_HOURS = 1.0
+TOP_STORY_MAX_AGE_HOURS = 2.0
 
 # If nothing in the pull is under TOP_STORY_MAX_AGE_HOURS, widen step by
 # step rather than either going silent or ignoring freshness altogether.
-TOP_STORY_AGE_WINDOWS = [TOP_STORY_MAX_AGE_HOURS, 2.0, 3.0, 6.0]
+TOP_STORY_AGE_WINDOWS = [TOP_STORY_MAX_AGE_HOURS, 4.0, 6.0, 9.0]
 
 # Momentum-aware freshness gate: a story whose momentum is at least this
 # may lead the ranking even when older than TOP_STORY_MAX_AGE_HOURS,

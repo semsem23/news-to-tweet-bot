@@ -17,7 +17,7 @@ fetch RSS  →  cluster & rank  →  freshness check  →  dedup  →  compose t
 | Source prominence | 5% | Reuters/AP/BBC tier down to unknown outlets |
 | Cross-source repetition | 5% | How many outlets covered the same event (headlines clustered by token overlap) |
 
-The composite is multiplied by a gentle **style penalty** (0.92–1.0) that nudges down question/explainer/opinion/live-blog headlines — now that feed position dominates, these refinements break near-ties rather than demoting strong stories. A **freshness constraint** guarantees the posted story is under 1 hour old (progressively widened to 2h/3h/6h if the pull has nothing that fresh).
+The composite is multiplied by a gentle **style penalty** (0.92–1.0) that nudges down question/explainer/opinion/live-blog headlines — now that feed position dominates, these refinements break near-ties rather than demoting strong stories. A **freshness constraint** guarantees the posted story is under 2 hours old (progressively widened to 4h/6h/9h if the pull has nothing that fresh).
 
 **Tweet composition** (free, no LLM): the headline is tightened AP-style (filler phrases stripped, wordy constructions contracted), attributed to its source, and — when multiple outlets covered the story — expanded with how other outlets worded it:
 
