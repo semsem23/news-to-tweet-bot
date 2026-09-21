@@ -1,7 +1,7 @@
 """Ranking: clustering near-duplicate headlines and scoring "trendiness".
 
 Feed position is the dominant signal (65%) since it captures Google's own
-trendiness ranking. Recency (25%, 3h half-life exponential decay), prominence
+trendiness ranking. Recency (25%, 4h half-life exponential decay), prominence
 (5%), and repetition (5%) serve as gentle tiebreakers. A style penalty
 further refines near-ties, slightly down-ranking question/explainer/opinion
 headlines. A hard freshness constraint guarantees the #1 slot goes to a

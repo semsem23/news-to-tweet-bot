@@ -75,7 +75,7 @@ WEIGHT_RECENCY = 0.25
 WEIGHT_PROMINENCE = 0.05
 WEIGHT_REPETITION = 0.05
 
-RECENCY_HALF_LIFE_HOURS = 3.0
+RECENCY_HALF_LIFE_HOURS = 4.0
 
 # Token-overlap threshold above which two headlines are considered the
 # same underlying story.

@@ -13,7 +13,7 @@ fetch RSS  →  cluster & rank  →  freshness check  →  dedup  →  compose t
 | Signal | Weight | What it measures |
 |---|---|---|
 | Feed position | 65% | Position in Google's feed (article #0 scores 1.0; last scores 0.0) |
-| Recency | 25% | Exponential decay, 3-hour half-life |
+| Recency | 25% | Exponential decay, 4-hour half-life |
 | Source prominence | 5% | Reuters/AP/BBC tier down to unknown outlets |
 | Cross-source repetition | 5% | How many outlets covered the same event (headlines clustered by token overlap) |
 
