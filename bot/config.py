@@ -75,7 +75,7 @@ WEIGHT_RECENCY = 0.25
 WEIGHT_PROMINENCE = 0.05
 WEIGHT_REPETITION = 0.05
 
-RECENCY_HALF_LIFE_HOURS = 3.0
+RECENCY_HALF_LIFE_HOURS = 4.0
 
 # Token-overlap threshold above which two headlines are considered the
 # same underlying story.
@@ -83,11 +83,11 @@ CLUSTER_SIMILARITY_THRESHOLD = 0.45
 
 # Hard constraint: whichever story lands in the #1 slot must be based on
 # a report no older than this, regardless of its composite score.
-TOP_STORY_MAX_AGE_HOURS = 1.0
+TOP_STORY_MAX_AGE_HOURS = 2.0
 
 # If nothing in the pull is under TOP_STORY_MAX_AGE_HOURS, widen step by
 # step rather than either going silent or ignoring freshness altogether.
-TOP_STORY_AGE_WINDOWS = [TOP_STORY_MAX_AGE_HOURS, 2.0, 3.0, 6.0]
+TOP_STORY_AGE_WINDOWS = [TOP_STORY_MAX_AGE_HOURS, 4.0, 6.0, 9.0]
 
 # Momentum-aware freshness gate: a story whose momentum is at least this
 # may lead the ranking even when older than TOP_STORY_MAX_AGE_HOURS,
@@ -104,6 +104,53 @@ TREND_MAX_LEAD_AGE_HOURS = 6.0
 # ranked[1:] — the #1 slot stays whatever enforce_top_story_freshness above
 # already decided, so this can never undermine that freshness guarantee.
 ENABLE_TREND_SCORING = False
+
+# --------------------------------------------------------------------------
+# Momentum (cross-source count + spike detection, bot/momentum.py)
+# --------------------------------------------------------------------------
+#
+# Feeds the "momentum" key in RankedStory.score_breakdown that
+# TREND_LEAD_MOMENTUM_FLOOR / TREND_MAX_LEAD_AGE_HOURS above actually gate
+# on. Persistent time-series store of per-cluster mentions across cycles,
+# keyed by a tokenized headline signature (same stem+jaccard matching as
+# clustering) since clusters have no stable ID across cycles.
+
+# Committed back to the repo by the GitHub Actions workflow, same as
+# POST_HISTORY_PATH, so the time series survives across ephemeral runners.
+TREND_HISTORY_PATH = DATA_DIR / "trend_history.json"
+
+# A story's signature is matched against stored signatures with the same
+# similarity logic used for clustering.
+MOMENTUM_SIGNATURE_SIMILARITY_THRESHOLD = CLUSTER_SIMILARITY_THRESHOLD
+
+# Cross-source count: distinct sources mentioning the matched signature in
+# the last N hours (union across hourly buckets, including the current one).
+MOMENTUM_CROSS_SOURCE_WINDOW_HOURS = 6.0
+
+# Cross-source count that maps to a full 1.0 "source breadth" contribution.
+MOMENTUM_SOURCES_FOR_FULL_BREADTH = 5
+
+# Spike detection: the current hour's distinct-source count vs. this
+# signature's own rolling average over the prior N hours (z-score). v1 uses
+# a plain z-score; Kleinberg burst detection would be a more principled
+# upgrade if this proves too noisy in practice — not needed for now.
+MOMENTUM_ZSCORE_WINDOW_HOURS = 24.0
+MOMENTUM_ZSCORE_CUTOFF = 2.0
+
+# A spike only counts once the current hour also clears this minimum
+# distinct-source bar, so a signature can't "spike" from 1 source to 2.
+MOMENTUM_MIN_DISTINCT_SOURCES_FOR_SPIKE = 3
+
+# momentum = MOMENTUM_SOURCE_WEIGHT * source_breadth
+#          + MOMENTUM_SPIKE_WEIGHT * (1.0 if spiking else 0.0)
+# Both weights the same: full source breadth alone, or a spike alone,
+# already clears TREND_LEAD_MOMENTUM_FLOOR (0.35); both together reach 1.0.
+MOMENTUM_SOURCE_WEIGHT = 0.5
+MOMENTUM_SPIKE_WEIGHT = 0.5
+
+# How long a signature's hourly buckets are kept before being pruned as
+# stale. Must comfortably exceed both windows above.
+MOMENTUM_HISTORY_RETENTION_HOURS = 48.0
 
 # --------------------------------------------------------------------------
 # Trend scoring weights and keyword sets
@@ -269,8 +316,8 @@ QUESTION_START_WORDS = {
 # --------------------------------------------------------------------------
 
 # Minimum time between posts. The workflow's cron is scheduled to run every
-# 80 minutes already; this gate is a safety net against cron jitter/overlap.
-POST_MIN_INTERVAL_MINUTES = 80
+# 60 minutes already; this gate is a safety net against cron jitter/overlap.
+POST_MIN_INTERVAL_MINUTES = 60
 
 # How far back to look when checking for duplicates. Should comfortably
 # exceed the posting interval so a story that trends across several

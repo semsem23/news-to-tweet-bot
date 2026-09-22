@@ -1,11 +1,13 @@
 """Ranking: clustering near-duplicate headlines and scoring "trendiness".
 
 Feed position is the dominant signal (65%) since it captures Google's own
-trendiness ranking. Recency (25%, 3h half-life exponential decay), prominence
+trendiness ranking. Recency (25%, 4h half-life exponential decay), prominence
 (5%), and repetition (5%) serve as gentle tiebreakers. A style penalty
 further refines near-ties, slightly down-ranking question/explainer/opinion
 headlines. A hard freshness constraint guarantees the #1 slot goes to a
-recent story (<1h, progressively widened to 6h if needed).
+recent story (<2h, progressively widened to 9h if needed) — unless an older
+story's momentum (bot/momentum.py: cross-source count + spike detection)
+clears TREND_LEAD_MOMENTUM_FLOOR, in which case it may lead instead.
 """
 
 from __future__ import annotations
@@ -31,6 +33,7 @@ from .config import (
     WEIGHT_RECENCY,
     WEIGHT_REPETITION,
 )
+from . import momentum
 from .models import RankedStory
 
 # --------------------------------------------------------------------------
@@ -219,7 +222,7 @@ def enforce_top_story_freshness(
         return scored
 
     top = scored[0]
-    # Momentum override: a trending thread may lead even if not <1h fresh,
+    # Momentum override: a trending thread may lead even if not <2h fresh,
     # as long as it isn't stale (6h+). This preserves the freshness guarantee
     # for non-trending stories while letting sustained coverage rank on merit.
     if (top.score_breakdown.get("momentum", 0.0) >= TREND_LEAD_MOMENTUM_FLOOR
@@ -262,6 +265,7 @@ def rank_articles(articles: list[dict], top_n: int = TOP_N) -> list[RankedStory]
 	now = datetime.now(timezone.utc)
 
 	scored = [score_cluster(c, max_size, feed_len, now) for c in clusters]
+	momentum.annotate_momentum(scored, now)
 	scored.sort(key=lambda s: s.score, reverse=True)
 	scored = enforce_top_story_freshness(scored)
 	return scored[:top_n]

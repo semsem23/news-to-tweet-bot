@@ -106,21 +106,24 @@ class TestStylePenalty:
 class TestFreshnessEnforcement:
     def test_fresh_lower_score_story_promoted_over_stale_high_score(self):
         articles = [
-            # High score (3-source cluster, top sources) but ~2h old
-            art("World leaders reach historic climate accord at summit", "Reuters", 2.0, "https://x1"),
-            art("Historic climate accord reached by world leaders at summit", "BBC", 2.2, "https://x2"),
-            art("Summit ends with world leaders striking historic climate accord", "AP", 1.9, "https://x3"),
+            # High score (3-source cluster, top sources) but ~2.5h old — past
+            # the strict TOP_STORY_MAX_AGE_HOURS (2h) tier.
+            art("World leaders reach historic climate accord at summit", "Reuters", 2.5, "https://x1"),
+            art("Historic climate accord reached by world leaders at summit", "BBC", 2.7, "https://x2"),
+            art("Summit ends with world leaders striking historic climate accord", "AP", 2.4, "https://x3"),
             # Lower score (single low-tier source) but 20 min old
             art("Small plane makes emergency landing near downtown airport", "Regional News Network", 0.33, "https://y1"),
         ]
         top = rank_articles(articles, top_n=5)
         assert top[0].title.startswith("Small plane")
-        assert top[0].age_hours < 1.0
+        assert top[0].age_hours < 2.0
 
     def test_no_fresh_story_falls_back_to_score_order(self):
         articles = [
-            art("Central bank holds interest rates steady", "Reuters", 8.0, "https://z1"),
-            art("Regional election results confirm ruling party majority", "BBC", 12.0, "https://z2"),
+            # Both older than the widest fallback tier (9h), so no window is
+            # ever satisfied and ranking must fall back to plain score order.
+            art("Central bank holds interest rates steady", "Reuters", 10.0, "https://z1"),
+            art("Regional election results confirm ruling party majority", "BBC", 14.0, "https://z2"),
         ]
         top = rank_articles(articles, top_n=5)
         assert top[0].title.startswith("Central bank")  # highest score wins

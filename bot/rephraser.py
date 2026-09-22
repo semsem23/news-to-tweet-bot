@@ -188,7 +188,7 @@ def rephrase_with_claude(title: str, char_budget: int, is_breaking: bool = True)
     system_prompt = REPHRASE_SYSTEM_PROMPT.format(char_budget=char_budget)
     if not is_breaking:
         system_prompt += (
-            "\n- This report is more than 1 hour old — do NOT use urgency/"
+            "\n- This report is more than 2 hours old — do NOT use urgency/"
             "immediacy language such as 'breaking', 'just in', 'happening "
             "now', or 'moments ago'."
         )

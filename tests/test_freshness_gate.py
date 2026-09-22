@@ -71,7 +71,7 @@ class TestMomentumAwarenessFreshness:
     def test_low_momentum_older_story_is_demoted(self):
         """
         A story with age 2.5h and momentum 0.1 (< floor 0.35) should be demoted
-        to make room for a fresh (<1h) story — existing behavior preserved.
+        to make room for a fresh (<2h) story — existing behavior preserved.
         """
         old_low_momentum = make_story(
             "Old news from yesterday",
