@@ -1,6 +1,6 @@
 """Command-line interface.
 
-In GitHub Actions, the workflow triggers `--once` every hour — the runner
+In GitHub Actions, the workflow triggers `--once` four times a day — the runner
 is ephemeral, so no long-lived scheduler is needed there. The built-in
 APScheduler mode remains available for running the bot on your own
 machine or server instead.
@@ -33,13 +33,13 @@ def run_scheduler(client, dry_run: bool, run_immediately: bool) -> None:
 
     scheduler.add_job(
         job,
-        trigger=IntervalTrigger(minutes=60, timezone=PARIS_TZ),
+        trigger=IntervalTrigger(minutes=360, timezone=PARIS_TZ),
         id="interval_post",
         next_run_time=datetime.now(PARIS_TZ) if run_immediately else None,
     )
 
     log.info(
-        "Scheduler started: posting every 60 minutes, Europe/Paris time%s.",
+        "Scheduler started: posting every 6 hours (4 a day), Europe/Paris time%s.",
         " (running first cycle now)" if run_immediately else "",
     )
     scheduler.start()
@@ -57,7 +57,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--no-immediate", action="store_true",
-        help="When starting the local scheduler, wait for the next hour mark instead of posting right away.",
+        help="When starting the local scheduler, wait for the next interval instead of posting right away.",
     )
     args = parser.parse_args()
 

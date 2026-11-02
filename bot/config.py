@@ -315,9 +315,10 @@ QUESTION_START_WORDS = {
 # Posting
 # --------------------------------------------------------------------------
 
-# Minimum time between posts. The workflow's cron is scheduled to run every
-# 60 minutes already; this gate is a safety net against cron jitter/overlap.
-POST_MIN_INTERVAL_MINUTES = 60
+# Minimum time between posts. The workflow's cron runs 4 times a day
+# (07:05, 12:05, 17:05, 22:05 UTC, so runs are at least 5h apart); this gate
+# is a safety net against cron jitter/overlap, so it sits below that spacing.
+POST_MIN_INTERVAL_MINUTES = 240
 
 # How far back to look when checking for duplicates. Should comfortably
 # exceed the posting interval so a story that trends across several

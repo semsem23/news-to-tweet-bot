@@ -1,16 +1,16 @@
-name: Tweet hourly
+name: Tweet 4x daily
 
 on:
   schedule:
-    # Every hour, offset 5 minutes past the hour (UTC — GitHub Actions cron
-    # is always UTC) rather than on the hour, since :00 is the most
-    # congested minute for GitHub Actions' scheduler and gets delayed most
-    # under load.
+    # 4 posts a day at 07:05, 12:05, 17:05 and 22:05 UTC (GitHub Actions
+    # cron is always UTC). Offset 5 minutes past the hour rather than on it,
+    # since :00 is the most congested minute for GitHub Actions' scheduler
+    # and gets delayed most under load.
     # NOTE: GitHub does not guarantee exact timing; scheduled runs can be
     # delayed by several minutes (occasionally more) under load. The
-    # 60-minute interval gate in pipeline.py is a safety net against that
+    # 240-minute interval gate in pipeline.py is a safety net against that
     # jitter (e.g. two runs landing close together after a delay).
-    - cron: "5 * * * *"
+    - cron: "5 7,12,17,22 * * *"
   # Manual trigger button in the Actions tab, for testing.
   workflow_dispatch:
     inputs:
@@ -63,7 +63,7 @@ jobs:
 
       - name: Persist posted history
         # Runners are ephemeral: without this commit, the dedup history
-        # would reset every hour and the bot could re-post the same story.
+        # would reset every run and the bot could re-post the same story.
         # posted_analytics.jsonl rides along — it is append-only, so it also
         # needs committing back or each run's record is lost with the runner.
         run: |

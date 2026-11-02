@@ -1,6 +1,6 @@
 # News-to-Tweet Bot
 
-Fetches [Google News (World edition) RSS](https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en), ranks stories by "trendiness", composes tweet copy, and posts the top story to X/Twitter — **once per hour, fully autonomous**, via GitHub Actions (no server needed).
+Fetches [Google News (World edition) RSS](https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en), ranks stories by "trendiness", composes tweet copy, and posts the top story to X/Twitter — **4 times a day (07:05, 12:05, 17:05, 22:05 UTC), fully autonomous**, via GitHub Actions (no server needed).
 
 ## How it works
 
@@ -29,14 +29,14 @@ Nothing is ever invented — every character comes from an actual published head
 
 **Safeguards**: 48h duplicate prevention (by link *and* headline similarity, committed back to the repo so it survives ephemeral runners), retry with backoff on rate limits and server errors, no retry on auth failures, char-budget validation using X's real counting rules, and a failed post is never recorded as posted.
 
-## Deploy on GitHub Actions (hourly, autonomous)
+## Deploy on GitHub Actions (4 posts a day, autonomous)
 
 ### 1. Create the X app credentials
 In the [X Developer Portal](https://developer.twitter.com/) → your app → **Keys and tokens**:
 - Set app permissions to **Read and Write** *first*, then generate/regenerate the **OAuth 1.0a** Access Token & Secret. (Tokens generated before enabling write are read-only forever.)
 - You need the OAuth **1.0a** section (Consumer Key/Secret + Access Token/Secret) — *not* the OAuth 2.0 Client ID/Secret.
 
-> Note: X's API is pay-per-use for new developers; posting costs money per tweet. Check current pricing before running hourly.
+> Note: X's API is pay-per-use for new developers; posting costs money per tweet. Check current pricing before changing how often it posts.
 
 ### 2. Push this repo to GitHub
 
@@ -63,7 +63,7 @@ Repo → **Settings → Secrets and variables → Actions → New repository sec
 ### 4. Enable and test the workflow
 - Repo → **Actions** tab → enable workflows if prompted.
 - Select **Hourly tweet** → **Run workflow** → tick **Dry run** → run. Check the logs: you should see the composed tweet without anything being posted.
-- Run again without dry-run to post for real. After that, it runs automatically every hour.
+- Run again without dry-run to post for real. After that, it runs automatically at the scheduled times.
 
 ### Things to know about GitHub Actions scheduling
 - Cron is **UTC** and **not exact** — runs can be delayed by several minutes under load. The bot's freshness logic is unaffected.
@@ -77,7 +77,7 @@ pip install -r requirements.txt
 cp .env.example .env       # then fill in your credentials
 python main.py --dry-run --once   # test without posting
 python main.py --once             # single cycle (for your own cron)
-python main.py                    # built-in hourly scheduler (Europe/Paris)
+python main.py                    # built-in scheduler, one post every 6 hours (Europe/Paris)
 ```
 
 ## Run the tests
@@ -91,7 +91,7 @@ pytest -v
 
 ```
 ├── .github/workflows/
-│   ├── hourly-tweet.yml   # hourly posting (cron + manual trigger w/ dry-run)
+│   ├── hourly-tweet.yml   # 4 posts a day (cron + manual trigger w/ dry-run)
 │   └── ci.yml             # tests on push/PR
 ├── bot/
 │   ├── config.py          # every tunable in one place
