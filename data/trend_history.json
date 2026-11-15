@@ -20,6 +20,9 @@
       ],
       "2026-11-15T01:00": [
         "Institute for the Study of War"
+      ],
+      "2026-11-15T09:00": [
+        "Institute for the Study of War"
       ]
     }
   },
@@ -35,9 +38,6 @@
       "resig"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "NPR"
-      ],
       "2026-11-13T22:00": [
         "NPR"
       ],
@@ -46,26 +46,6 @@
       ],
       "2026-11-14T10:00": [
         "NPR"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "bless",
-      "endin",
-      "envoy",
-      "europ",
-      "join",
-      "meeti",
-      "putin",
-      "seek",
-      "talks",
-      "ukrai",
-      "war"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "The Washington Post"
       ]
     }
   },
@@ -84,124 +64,11 @@
       "mum"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Washington Post"
-      ],
       "2026-11-13T16:00": [
         "The Washington Post"
       ],
       "2026-11-13T22:00": [
         "The Washington Post"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "biden",
-      "irish",
-      "objec",
-      "outsi",
-      "pales",
-      "pelt",
-      "pro",
-      "prote",
-      "unive"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "NBC News"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "balti",
-      "diffi",
-      "down",
-      "drone",
-      "fail",
-      "fight",
-      "jets",
-      "nato",
-      "night",
-      "restl",
-      "shoot"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Euronews.com"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "'terr",
-      "air",
-      "argen",
-      "desig",
-      "force",
-      "iran",
-      "navy",
-      "organ",
-      "terro"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Al Jazeera"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "deal",
-      "faces",
-      "hurdl",
-      "iran",
-      "major",
-      "refus",
-      "tehra",
-      "trans",
-      "urani"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "The Jerusalem Post"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "absei",
-      "argen",
-      "arres",
-      "balco",
-      "escap",
-      "house",
-      "kidna"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "BBC"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "alleg",
-      "base",
-      "besse",
-      "irani",
-      "milit",
-      "moves",
-      "reloc",
-      "scott",
-      "secre",
-      "threa",
-      "treas"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "NBC News"
       ]
     }
   },
@@ -219,28 +86,8 @@
       "unite"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Washington Post"
-      ],
       "2026-11-13T16:00": [
         "The Washington Post"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "all",
-      "caugh",
-      "digit",
-      "duoli",
-      "fairn",
-      "rules",
-      "strav",
-      "ticke"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "WIRED"
       ]
     }
   },
@@ -271,22 +118,6 @@
   },
   {
     "signature": [
-      "anato",
-      "grey",
-      "karla",
-      "souza",
-      "spino",
-      "star",
-      "texas"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Deadline"
-      ]
-    }
-  },
-  {
-    "signature": [
       "actre",
       "big",
       "dies",
@@ -300,9 +131,6 @@
       "soul"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The New York Times"
-      ],
       "2026-11-13T16:00": [
         "The New York Times"
       ],
@@ -333,56 +161,6 @@
     "buckets": {
       "2026-11-13T16:00": [
         "Politico"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "ahead",
-      "bukel",
-      "elect",
-      "gambl",
-      "gang",
-      "haiti",
-      "makes",
-      "offen",
-      "polit",
-      "salva"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "AP News"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "calls",
-      "clima",
-      "ecoci",
-      "gaza",
-      "presi",
-      "summi",
-      "turke",
-      "war"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "AP News"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "cheat",
-      "detec",
-      "givin",
-      "tryin",
-      "unive"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Gizmodo"
       ]
     }
   },
@@ -425,27 +203,6 @@
   },
   {
     "signature": [
-      "ahead",
-      "balan",
-      "card",
-      "credi",
-      "fewer",
-      "holid",
-      "mcdon",
-      "more",
-      "recor",
-      "signs",
-      "strai",
-      "trips"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "NBC News"
-      ]
-    }
-  },
-  {
-    "signature": [
       "actor",
       "antho",
       "bosto",
@@ -462,9 +219,6 @@
       "yes"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Los Angeles Times"
-      ],
       "2026-11-13T16:00": [
         "Los Angeles Times"
       ],
@@ -484,83 +238,6 @@
   },
   {
     "signature": [
-      "atlan",
-      "brown",
-      "cance",
-      "chris",
-      "dates",
-      "show",
-      "tour",
-      "turbu",
-      "upcom",
-      "usher"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Atlanta News First"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "deal",
-      "kamar",
-      "lands",
-      "milli",
-      "missi",
-      "retur",
-      "state",
-      "taylo"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "NBC Sports"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "baske",
-      "colle",
-      "domin",
-      "falls",
-      "kansa",
-      "kentu",
-      "mark",
-      "pope'",
-      "ranki",
-      "top",
-      "wildc"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "CBS Sports"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "again",
-      "bridg",
-      "coach",
-      "come",
-      "cross",
-      "door",
-      "leave",
-      "mike",
-      "open",
-      "retur",
-      "tomli",
-      "when"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Yahoo Sports"
-      ]
-    }
-  },
-  {
-    "signature": [
       "brown",
       "limit",
       "patri",
@@ -570,9 +247,6 @@
       "three"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "NBC Sports"
-      ],
       "2026-11-13T16:00": [
         "NBC Sports"
       ]
@@ -639,9 +313,6 @@
       "world"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "WSJ"
-      ],
       "2026-11-13T16:00": [
         "WSJ"
       ]
@@ -667,27 +338,6 @@
   },
   {
     "signature": [
-      "abu",
-      "attac",
-      "balli",
-      "dhabi",
-      "end",
-      "hours",
-      "kyiv",
-      "missi",
-      "peace",
-      "russi",
-      "talks",
-      "ukrai"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "POLITICO.eu"
-      ]
-    }
-  },
-  {
-    "signature": [
       "emper",
       "giant",
       "once",
@@ -698,9 +348,6 @@
       "stood"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "BBC"
-      ],
       "2026-11-13T22:00": [
         "BBC"
       ]
@@ -722,52 +369,9 @@
       ],
       "2026-11-15T01:00": [
         "Institute for the Study of War"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "2026",
-      "novem"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Letters from an American | Heather Cox Richardson"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "dies",
-      "feder",
-      "icono",
-      "influ",
-      "judge",
-      "posne",
-      "richa"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "The Washington Post"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "billi",
-      "black",
-      "deal",
-      "devel",
-      "drug",
-      "fund",
-      "loss",
-      "pfize",
-      "signs",
-      "weigh"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "WSJ"
+      ],
+      "2026-11-15T09:00": [
+        "Institute for the Study of War"
       ]
     }
   },
@@ -830,9 +434,6 @@
       "wreck"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "WESH"
-      ],
       "2026-11-13T16:00": [
         "WESH"
       ]
@@ -890,9 +491,6 @@
       "threa"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "BBC"
-      ],
       "2026-11-13T16:00": [
         "BBC"
       ],
@@ -951,9 +549,6 @@
       "pledg"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "BBC"
-      ],
       "2026-11-13T16:00": [
         "BBC"
       ],
@@ -1023,9 +618,6 @@
       "russi"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Euronews.com"
-      ],
       "2026-11-13T16:00": [
         "Euronews.com"
       ],
@@ -1034,24 +626,6 @@
       ],
       "2026-11-14T03:00": [
         "Euronews.com"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "ancie",
-      "bodie",
-      "buria",
-      "centu",
-      "disco",
-      "packe",
-      "plus",
-      "site",
-      "treas"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Fox News"
       ]
     }
   },
@@ -1067,9 +641,6 @@
       "putin"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Kyiv Independent"
-      ],
       "2026-11-13T16:00": [
         "The Kyiv Independent"
       ],
@@ -1102,48 +673,8 @@
       "ukrai"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Meduza"
-      ],
       "2026-11-13T16:00": [
         "Meduza"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "commi",
-      "criti",
-      "despi",
-      "elect",
-      "globa",
-      "iran",
-      "key",
-      "organ",
-      "overs",
-      "prior"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "The Jerusalem Post"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "backs",
-      "choos",
-      "doesn",
-      "envoy",
-      "eston",
-      "get",
-      "kalla",
-      "peace",
-      "putin"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Kyiv Post"
       ]
     }
   },
@@ -1164,9 +695,6 @@
       "unkno"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Washington Post"
-      ],
       "2026-11-14T10:00": [
         "NBC4 Washington"
       ]
@@ -1184,9 +712,6 @@
       "voyag"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "NPR"
-      ],
       "2026-11-13T22:00": [
         "NPR"
       ]
@@ -1203,9 +728,6 @@
       "war"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Hill"
-      ],
       "2026-11-13T16:00": [
         "The Hill"
       ]
@@ -1222,9 +744,6 @@
       "warns"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Washington Post"
-      ],
       "2026-11-13T16:00": [
         "The Washington Post"
       ]
@@ -1241,9 +760,6 @@
       "south"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Al Jazeera"
-      ],
       "2026-11-13T16:00": [
         "Al Jazeera"
       ]
@@ -1260,9 +776,6 @@
       "losse"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Los Angeles Times"
-      ],
       "2026-11-13T16:00": [
         "Los Angeles Times"
       ]
@@ -1287,9 +800,6 @@
       "thank"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Guardian"
-      ],
       "2026-11-13T22:00": [
         "NBC News"
       ],
@@ -1298,46 +808,9 @@
       ],
       "2026-11-15T01:00": [
         "NPR"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "could",
-      "lot",
-      "messa",
-      "sayed",
-      "there",
-      "trump",
-      "work"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
+      ],
+      "2026-11-15T09:00": [
         "NPR"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "affai",
-      "alleg",
-      "broad",
-      "ceo",
-      "emerg",
-      "fallo",
-      "follo",
-      "huang",
-      "jense",
-      "live",
-      "nvidi",
-      "resig",
-      "riski",
-      "third",
-      "updat"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Yahoo Finance"
       ]
     }
   },
@@ -1352,63 +825,8 @@
       "midte"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The New York Times"
-      ],
       "2026-11-13T16:00": [
         "The New York Times"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "fall",
-      "fourt",
-      "home",
-      "lifti",
-      "mortg",
-      "purch",
-      "rates",
-      "week"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Yahoo Finance"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "deale",
-      "eleme",
-      "futur",
-      "here'",
-      "honda",
-      "inclu",
-      "model",
-      "secre",
-      "showe",
-      "they"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Motor1.com"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "backf",
-      "canad",
-      "damag",
-      "econo",
-      "tarif",
-      "trump",
-      "warns"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Newsweek"
       ]
     }
   },
@@ -1436,27 +854,6 @@
   },
   {
     "signature": [
-      "amd",
-      "analy",
-      "apple",
-      "bigge",
-      "calls",
-      "disne",
-      "here",
-      "more",
-      "nvidi",
-      "space",
-      "thurs",
-      "ulta"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "CNBC"
-      ]
-    }
-  },
-  {
-    "signature": [
       "bms",
       "crist",
       "depar",
@@ -1469,9 +866,6 @@
       "while"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Fierce Biotech"
-      ],
       "2026-11-13T16:00": [
         "Fierce Biotech"
       ],
@@ -1491,63 +885,8 @@
       "worri"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "WSJ"
-      ],
       "2026-11-13T16:00": [
         "WSJ"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "acqui",
-      "corpo",
-      "hanco",
-      "trust",
-      "whitn"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Business Wire"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "arizo",
-      "billi",
-      "build",
-      "cente",
-      "data",
-      "inves",
-      "morat",
-      "plans",
-      "sides",
-      "south",
-      "space",
-      "texas"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "The New York Times"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "'real",
-      "bring",
-      "cute'",
-      "favor",
-      "tiny",
-      "toyot",
-      "truck",
-      "trump"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "USA Today"
       ]
     }
   },
@@ -1565,24 +904,6 @@
     "buckets": {
       "2026-11-14T16:00": [
         "The New York Times"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "'diff",
-      "books",
-      "david",
-      "decis",
-      "face",
-      "libra",
-      "paren",
-      "schoo",
-      "walli"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "BBC"
       ]
     }
   },
@@ -1627,9 +948,6 @@
       "thoma"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "BroadwayWorld"
-      ],
       "2026-11-13T16:00": [
         "BroadwayWorld"
       ],
@@ -1656,9 +974,6 @@
       "twist"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Entertainment Weekly"
-      ],
       "2026-11-13T16:00": [
         "Entertainment Weekly"
       ]
@@ -1677,9 +992,6 @@
       "zero'"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "IndieWire"
-      ],
       "2026-11-13T16:00": [
         "IndieWire"
       ]
@@ -1701,34 +1013,11 @@
       "velas"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "MMA Fighting"
-      ],
       "2026-11-13T16:00": [
         "MMA Fighting"
       ],
       "2026-11-13T22:00": [
         "MMA Fighting"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "comes",
-      "ferna",
-      "fruit",
-      "gutie",
-      "inser",
-      "long",
-      "mendo",
-      "plan",
-      "quart",
-      "raide",
-      "term"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Raiders.com"
       ]
     }
   },
@@ -1758,27 +1047,6 @@
   },
   {
     "signature": [
-      "2026",
-      "card",
-      "divis",
-      "every",
-      "midse",
-      "nfl",
-      "picki",
-      "playo",
-      "predi",
-      "team",
-      "wild",
-      "winne"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "NFL.com"
-      ]
-    }
-  },
-  {
-    "signature": [
       "benga",
       "carne",
       "four",
@@ -1801,40 +1069,6 @@
   },
   {
     "signature": [
-      "bit",
-      "diann",
-      "disas",
-      "media",
-      "retur",
-      "russi",
-      "sport"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Defector"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "back",
-      "demin",
-      "domin",
-      "egor",
-      "first",
-      "game",
-      "injur",
-      "leg",
-      "nets"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "New York Post"
-      ]
-    }
-  },
-  {
-    "signature": [
       "avila",
       "frogs",
       "horne",
@@ -1850,9 +1084,6 @@
       "tcu"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "CBS Sports"
-      ],
       "2026-11-13T16:00": [
         "CBS Sports"
       ],
@@ -1861,58 +1092,6 @@
       ],
       "2026-11-14T03:00": [
         "CBS Sports"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "2027",
-      "bulls",
-      "confi",
-      "lawso",
-      "lindb",
-      "line",
-      "racin",
-      "remai",
-      "team",
-      "uncha"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Formula 1"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "bbwaa",
-      "louis",
-      "mason",
-      "mille",
-      "named",
-      "relie",
-      "varla",
-      "year"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "MLB Trade Rumors"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "explo",
-      "four",
-      "hormu",
-      "iran",
-      "strai",
-      "struc",
-      "tanke"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Reuters"
       ]
     }
   },
@@ -1929,9 +1108,6 @@
       "welco"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Euronews.com"
-      ],
       "2026-11-13T22:00": [
         "Euronews.com"
       ]
@@ -1951,9 +1127,6 @@
       "visit"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "NBC News"
-      ],
       "2026-11-13T16:00": [
         "NBC News"
       ]
@@ -1972,9 +1145,6 @@
       "thunb"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Guardian"
-      ],
       "2026-11-13T16:00": [
         "The Guardian"
       ],
@@ -1999,45 +1169,8 @@
       "suspi"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Kyiv Post"
-      ],
       "2026-11-13T16:00": [
         "Kyiv Post"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "day",
-      "indep",
-      "march",
-      "masse",
-      "polis",
-      "right",
-      "turns"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Reuters"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "call",
-      "clash",
-      "erupt",
-      "hell",
-      "iran",
-      "match",
-      "netan",
-      "shout",
-      "trump"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "The Independent"
       ]
     }
   },
@@ -2055,28 +1188,8 @@
       "zelen"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Al Jazeera"
-      ],
       "2026-11-13T16:00": [
         "Al Jazeera"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "anger",
-      "city",
-      "lack",
-      "missi",
-      "pover",
-      "shelt",
-      "spark",
-      "unvei"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Iran International"
       ]
     }
   },
@@ -2117,9 +1230,6 @@
       "wants"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "POLITICO.eu"
-      ],
       "2026-11-13T16:00": [
         "POLITICO.eu"
       ],
@@ -2145,68 +1255,8 @@
       "ukrai"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Kyiv Independent"
-      ],
       "2026-11-13T16:00": [
         "The Kyiv Independent"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "chief",
-      "exten",
-      "illeg",
-      "indon",
-      "many",
-      "other",
-      "polic",
-      "presi",
-      "wiret"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "AP News"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "cause",
-      "clima",
-      "ditch",
-      "doing",
-      "gaza",
-      "greta",
-      "laugh",
-      "momen",
-      "prote",
-      "she",
-      "start",
-      "still",
-      "they",
-      "thunb"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "New York Post"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "block",
-      "citie",
-      "clock",
-      "ice",
-      "jails",
-      "run",
-      "tacti"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "The New York Times"
       ]
     }
   },
@@ -2220,9 +1270,6 @@
       "veter"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Hill"
-      ],
       "2026-11-13T16:00": [
         "The Hill"
       ],
@@ -2244,31 +1291,8 @@
       "they'"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "CBS News"
-      ],
       "2026-11-13T22:00": [
         "CBS News"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "email",
-      "fatal",
-      "ice",
-      "maine",
-      "migra",
-      "offic",
-      "past",
-      "relev",
-      "share",
-      "shot",
-      "siste"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "MS NOW"
       ]
     }
   },
@@ -2287,30 +1311,11 @@
       "sting"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Hill"
-      ],
       "2026-11-13T16:00": [
         "The Hill"
       ],
       "2026-11-13T22:00": [
         "The Hill"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "annou",
-      "contr",
-      "disba",
-      "mamda",
-      "nypd",
-      "plann",
-      "unit"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Politico"
       ]
     }
   },
@@ -2328,9 +1333,6 @@
       "staff"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Fox 59"
-      ],
       "2026-11-13T16:00": [
         "Fox 59"
       ]
@@ -2356,27 +1358,6 @@
   },
   {
     "signature": [
-      "2027",
-      "401",
-      "annou",
-      "cap",
-      "contr",
-      "irs",
-      "limit",
-      "means",
-      "money",
-      "raise",
-      "savin",
-      "your"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "CNBC"
-      ]
-    }
-  },
-  {
-    "signature": [
       "bloom",
       "merge",
       "news",
@@ -2388,9 +1369,6 @@
       "tesla"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Reuters"
-      ],
       "2026-11-14T10:00": [
         "Bloomberg.com"
       ]
@@ -2437,9 +1415,6 @@
       "year"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Yahoo Finance"
-      ],
       "2026-11-13T16:00": [
         "Yahoo Finance"
       ]
@@ -2459,9 +1434,6 @@
       "thc"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Guardian"
-      ],
       "2026-11-13T16:00": [
         "The Guardian"
       ],
@@ -2481,9 +1453,6 @@
       "tradi"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Reuters"
-      ],
       "2026-11-13T16:00": [
         "Reuters"
       ],
@@ -2511,9 +1480,6 @@
       "these"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Cleveland.com"
-      ],
       "2026-11-13T16:00": [
         "Cleveland.com"
       ],
@@ -2533,45 +1499,6 @@
   },
   {
     "signature": [
-      "cyber",
-      "dieha",
-      "elon",
-      "end",
-      "musk",
-      "plug",
-      "pulls",
-      "tesla",
-      "turn"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "The Verge"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "befor",
-      "buyin",
-      "crash",
-      "histo",
-      "inves",
-      "like",
-      "never",
-      "nvidi",
-      "patie",
-      "retai",
-      "stock",
-      "urges"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Yahoo Finance"
-      ]
-    }
-  },
-  {
-    "signature": [
       "affor",
       "favor",
       "four",
@@ -2585,32 +1512,11 @@
       "thing"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "KCCI",
-        "WBAL-TV"
-      ],
       "2026-11-13T16:00": [
         "WMTW"
       ],
       "2026-11-13T22:00": [
         "WBAL-TV"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "aucti",
-      "brace",
-      "estim",
-      "milli",
-      "roman",
-      "sapph",
-      "sells",
-      "smash"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "CNN"
       ]
     }
   },
@@ -2625,31 +1531,8 @@
       "tikto"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Bloomberg.com"
-      ],
       "2026-11-13T16:00": [
         "Bloomberg.com"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "analy",
-      "away",
-      "backs",
-      "huang",
-      "jense",
-      "nvidi",
-      "sayin",
-      "stree",
-      "uncer",
-      "unfol",
-      "wall"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Yahoo Finance"
       ]
     }
   },
@@ -2665,9 +1548,6 @@
       "zac"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Vulture"
-      ],
       "2026-11-13T16:00": [
         "Vulture"
       ]
@@ -2686,9 +1566,6 @@
       "you"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Hollywood Reporter"
-      ],
       "2026-11-13T16:00": [
         "The Hollywood Reporter"
       ],
@@ -2714,64 +1591,8 @@
       "wars"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Deadline"
-      ],
       "2026-11-13T16:00": [
         "Deadline"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "buddi",
-      "colum",
-      "datin",
-      "show",
-      "tradw",
-      "vow",
-      "welco"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "The Washington Post"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "cost",
-      "cutti",
-      "drive",
-      "exit",
-      "gunn",
-      "james",
-      "part",
-      "peter",
-      "repor",
-      "safra",
-      "studi"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "SlashFilm"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "bumme",
-      "dewan",
-      "dwts",
-      "elimi",
-      "follo",
-      "jenna",
-      "she",
-      "shock"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Entertainment Weekly"
       ]
     }
   },
@@ -2786,26 +1607,8 @@
       "ricky"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Cut"
-      ],
       "2026-11-13T16:00": [
         "The Cut"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "broad",
-      "debut",
-      "make",
-      "miche",
-      "schmi",
-      "visag"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Playbill"
       ]
     }
   },
@@ -2821,9 +1624,6 @@
       "seven"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Variety"
-      ],
       "2026-11-13T16:00": [
         "Variety"
       ],
@@ -2840,25 +1640,6 @@
   },
   {
     "signature": [
-      "2027",
-      "buffa",
-      "check",
-      "comin",
-      "july",
-      "last",
-      "morga",
-      "time",
-      "tour",
-      "walle"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Buffalo Bills"
-      ]
-    }
-  },
-  {
-    "signature": [
       "credi",
       "expla",
       "post",
@@ -2868,9 +1649,6 @@
       "visio"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "TVLine"
-      ],
       "2026-11-13T16:00": [
         "TVLine"
       ],
@@ -2927,9 +1705,6 @@
       "part"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "NPR"
-      ],
       "2026-11-13T16:00": [
         "NPR"
       ]
@@ -2949,9 +1724,6 @@
       "tript"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Hollywood Reporter"
-      ],
       "2026-11-13T16:00": [
         "Variety"
       ],
@@ -2975,9 +1747,6 @@
       "take"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "WBUR"
-      ],
       "2026-11-13T22:00": [
         "WBUR"
       ]
@@ -2999,9 +1768,6 @@
       "team"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "PFF"
-      ],
       "2026-11-13T16:00": [
         "PFF"
       ]
@@ -3023,46 +1789,8 @@
       "trade"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The New York Times"
-      ],
       "2026-11-13T16:00": [
         "ESPN"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "hospi",
-      "mcmil",
-      "overd",
-      "possi",
-      "repor",
-      "taken",
-      "tommy"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "MMA Fighting"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "100",
-      "acre",
-      "bears",
-      "billi",
-      "bronz",
-      "devel",
-      "plan",
-      "proje",
-      "stadi",
-      "unvei"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Block Club Chicago"
       ]
     }
   },
@@ -3081,9 +1809,6 @@
       "weeks"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "NBC Sports"
-      ],
       "2026-11-13T16:00": [
         "NBC Sports"
       ],
@@ -3108,9 +1833,6 @@
       "win"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "CBS Sports"
-      ],
       "2026-11-13T16:00": [
         "CBS Sports"
       ]
@@ -3127,9 +1849,6 @@
       "two"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "247Sports"
-      ],
       "2026-11-13T16:00": [
         "247Sports"
       ],
@@ -3169,9 +1888,6 @@
       "why"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "On3"
-      ],
       "2026-11-13T16:00": [
         "On3"
       ],
@@ -3193,9 +1909,6 @@
       "week"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Bleacher Report"
-      ],
       "2026-11-13T16:00": [
         "Bleacher Report"
       ],
@@ -3220,9 +1933,6 @@
       "year"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "MLB Trade Rumors"
-      ],
       "2026-11-13T16:00": [
         "MLB Trade Rumors"
       ]
@@ -3244,9 +1954,6 @@
       "ugly"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Guardian"
-      ],
       "2026-11-14T03:00": [
         "The Guardian"
       ]
@@ -3269,9 +1976,6 @@
       "week"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "CBS Sports"
-      ],
       "2026-11-13T22:00": [
         "CBS Sports"
       ],
@@ -3323,29 +2027,8 @@
       "wish"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "NFL.com"
-      ],
       "2026-11-13T16:00": [
         "NFL.com"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "award",
-      "brewe",
-      "cam",
-      "jacob",
-      "misio",
-      "schli",
-      "win",
-      "yanke",
-      "young"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "NBC Sports"
       ]
     }
   },
@@ -3399,25 +2082,8 @@
       "trade"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "NBC Sports"
-      ],
       "2026-11-13T16:00": [
         "Niners Nation"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "book",
-      "caitl",
-      "clark",
-      "kids",
-      "star"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "The New York Times"
       ]
     }
   },
@@ -3433,30 +2099,8 @@
       "unifo"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "NESN"
-      ],
       "2026-11-13T16:00": [
         "NESN"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "again",
-      "ago",
-      "alleg",
-      "knew",
-      "offic",
-      "recor",
-      "sport",
-      "state",
-      "train",
-      "years"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "ESPN"
       ]
     }
   },
@@ -3473,9 +2117,6 @@
       "unann"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Reuters"
-      ],
       "2026-11-13T16:00": [
         "Reuters"
       ],
@@ -3495,63 +2136,6 @@
   },
   {
     "signature": [
-      "away",
-      "franc",
-      "gaza",
-      "hits",
-      "hospi",
-      "israe",
-      "leade",
-      "midea",
-      "news",
-      "other",
-      "settl",
-      "turns"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "AP News"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "austr",
-      "campe",
-      "going",
-      "missi",
-      "nearl",
-      "old",
-      "rescu",
-      "watch",
-      "week",
-      "wilde",
-      "year"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "FOX Weather"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "blue",
-      "brazi",
-      "cop",
-      "elect",
-      "matte",
-      "meh",
-      "wave"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "POLITICO.eu"
-      ]
-    }
-  },
-  {
-    "signature": [
       "appro",
       "decre",
       "elect",
@@ -3562,9 +2146,6 @@
       "trigg"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Reuters"
-      ],
       "2026-11-13T16:00": [
         "Reuters"
       ],
@@ -3589,9 +2170,6 @@
       "resid"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Barron's"
-      ],
       "2026-11-13T16:00": [
         "Barron's"
       ],
@@ -3611,27 +2189,6 @@
   },
   {
     "signature": [
-      "bleak",
-      "death",
-      "don",
-      "edito",
-      "gaza",
-      "guard",
-      "let",
-      "miser",
-      "mount",
-      "pales",
-      "view",
-      "winte"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "The Guardian"
-      ]
-    }
-  },
-  {
-    "signature": [
       "actio",
       "headi",
       "irrec",
@@ -3641,9 +2198,6 @@
       "world"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Climate Action Tracker"
-      ],
       "2026-11-13T16:00": [
         "Climate Action Tracker"
       ]
@@ -3663,28 +2217,8 @@
       "two"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Times of Israel"
-      ],
       "2026-11-13T22:00": [
         "The Times of Israel"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "defea",
-      "four",
-      "left",
-      "only",
-      "plans",
-      "putin",
-      "two",
-      "ukrai"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "WSJ"
       ]
     }
   },
@@ -3698,9 +2232,6 @@
       "start"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The New York Times"
-      ],
       "2026-11-13T16:00": [
         "The New York Times"
       ]
@@ -3717,9 +2248,6 @@
       "wealt"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Bloomberg.com"
-      ],
       "2026-11-13T16:00": [
         "Bloomberg.com"
       ],
@@ -3743,9 +2271,6 @@
       "tarif"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Bloomberg.com"
-      ],
       "2026-11-13T16:00": [
         "Bloomberg.com"
       ],
@@ -3766,27 +2291,8 @@
       "war"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "UnHerd"
-      ],
       "2026-11-13T22:00": [
         "UnHerd"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "brown",
-      "died",
-      "fortu",
-      "magaz",
-      "publi",
-      "rober",
-      "soldi"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "The New York Times"
       ]
     }
   },
@@ -3801,9 +2307,6 @@
       "publi"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "POLITICO.eu"
-      ],
       "2026-11-13T16:00": [
         "POLITICO.eu"
       ],
@@ -3812,22 +2315,6 @@
       ],
       "2026-11-14T10:00": [
         "POLITICO.eu"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "deny",
-      "fight",
-      "houth",
-      "inten",
-      "mecca",
-      "targe",
-      "yemen"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Al Jazeera"
       ]
     }
   },
@@ -3842,9 +2329,6 @@
       "turne"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The New York Times"
-      ],
       "2026-11-13T16:00": [
         "The New York Times"
       ]
@@ -3862,9 +2346,6 @@
       "syste"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Financial Times"
-      ],
       "2026-11-13T16:00": [
         "Financial Times"
       ],
@@ -3888,62 +2369,8 @@
       "war"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Financial Times"
-      ],
       "2026-11-14T16:00": [
         "Financial Times"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "agita",
-      "camer",
-      "lose",
-      "socia",
-      "them",
-      "turn",
-      "watch",
-      "when"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Fox News"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "adrif",
-      "alive",
-      "boat",
-      "foot",
-      "found",
-      "month",
-      "peopl",
-      "sea",
-      "tiny"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Fox News"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "calls",
-      "chaba",
-      "crimi",
-      "faces",
-      "inves",
-      "psak",
-      "rov"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Anash.org"
       ]
     }
   },
@@ -3956,80 +2383,8 @@
       "warme"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Yale Climate Connections"
-      ],
       "2026-11-14T16:00": [
         "Yale Climate Connections"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "accid",
-      "fujai",
-      "injur",
-      "kille",
-      "traff",
-      "uae"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Reuters"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "blue",
-      "briti",
-      "carri",
-      "cca",
-      "confi",
-      "drone",
-      "fly",
-      "grumm",
-      "north",
-      "plans",
-      "talon"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "TWZ"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "attac",
-      "attri",
-      "build",
-      "frust",
-      "gunma",
-      "maint"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "The Washington Post"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "charg",
-      "china",
-      "chips",
-      "criti",
-      "diver",
-      "lutni",
-      "nvidi",
-      "preve",
-      "sensi",
-      "shoul"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "CBS News"
       ]
     }
   },
@@ -4047,51 +2402,11 @@
       "van"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "NPR"
-      ],
       "2026-11-13T16:00": [
         "AP News"
       ],
       "2026-11-13T22:00": [
         "BBC"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "behin",
-      "flip",
-      "helpe",
-      "meet",
-      "missi",
-      "old",
-      "prote",
-      "year"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Politico"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "'corr",
-      "blunt",
-      "crime",
-      "focus",
-      "home",
-      "iran",
-      "shift",
-      "targe",
-      "tells",
-      "trump",
-      "vance"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "AP News"
       ]
     }
   },
@@ -4109,9 +2424,6 @@
       "trial"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Intercept"
-      ],
       "2026-11-13T16:00": [
         "The Intercept"
       ]
@@ -4129,9 +2441,6 @@
       "waves"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The New York Times"
-      ],
       "2026-11-13T16:00": [
         "The New York Times"
       ],
@@ -4156,9 +2465,6 @@
       "wins"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "NPR"
-      ],
       "2026-11-13T16:00": [
         "PBS"
       ],
@@ -4186,9 +2492,6 @@
       "tomki"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Anchorage Daily News"
-      ],
       "2026-11-13T16:00": [
         "Anchorage Daily News"
       ]
@@ -4207,9 +2510,6 @@
       "varia"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "WSTM"
-      ],
       "2026-11-13T22:00": [
         "WSTM"
       ]
@@ -4225,9 +2525,6 @@
       "words"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "NBC News"
-      ],
       "2026-11-13T16:00": [
         "NBC News"
       ],
@@ -4236,26 +2533,6 @@
       ],
       "2026-11-14T10:00": [
         "NBC News"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "appro",
-      "can",
-      "house",
-      "lobby",
-      "longe",
-      "meet",
-      "memo",
-      "prior",
-      "staff",
-      "white",
-      "witho"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Politico"
       ]
     }
   },
@@ -4273,9 +2550,6 @@
       "score"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "AP News"
-      ],
       "2026-11-13T16:00": [
         "AP News"
       ]
@@ -4292,9 +2566,6 @@
       "suppo"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Oregon Public Broadcasting - OPB"
-      ],
       "2026-11-13T16:00": [
         "Oregon Public Broadcasting - OPB"
       ],
@@ -4321,9 +2592,6 @@
       "victo"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Alaska Public Media"
-      ],
       "2026-11-13T16:00": [
         "Alaska Public Media"
       ],
@@ -4348,9 +2616,6 @@
       "ukrai"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Hill"
-      ],
       "2026-11-13T16:00": [
         "The Hill"
       ],
@@ -4372,72 +2637,11 @@
       "outsi"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Seattle Times"
-      ],
       "2026-11-13T16:00": [
         "The Seattle Times"
       ],
       "2026-11-13T22:00": [
         "The Seattle Times"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "area",
-      "areas",
-      "effec",
-      "heavy",
-      "inche",
-      "lake",
-      "michi",
-      "one",
-      "snow"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "MLive.com"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "angel",
-      "days",
-      "divor",
-      "final",
-      "ken",
-      "loss",
-      "paxto",
-      "per",
-      "repor",
-      "sen",
-      "senat",
-      "state"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "The Texas Tribune"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "beezy",
-      "conju",
-      "convi",
-      "day",
-      "murde",
-      "one",
-      "per",
-      "showe",
-      "visit",
-      "yella"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "TMZ"
       ]
     }
   },
@@ -4457,9 +2661,6 @@
       "senat"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "PBS"
-      ],
       "2026-11-13T16:00": [
         "PBS"
       ],
@@ -4481,9 +2682,6 @@
       "video"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "localmemphis.com"
-      ],
       "2026-11-13T16:00": [
         "localmemphis.com"
       ]
@@ -4504,9 +2702,6 @@
       "victi"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "NBC News"
-      ],
       "2026-11-13T16:00": [
         "NBC News"
       ],
@@ -4535,9 +2730,6 @@
       "tried"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "CBS News"
-      ],
       "2026-11-13T16:00": [
         "CBS News"
       ],
@@ -4557,9 +2749,6 @@
       "venez"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Al Jazeera"
-      ],
       "2026-11-13T16:00": [
         "Al Jazeera"
       ],
@@ -4580,9 +2769,6 @@
       "turne"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "PBS"
-      ],
       "2026-11-13T16:00": [
         "PBS"
       ],
@@ -4591,42 +2777,6 @@
       ],
       "2026-11-14T03:00": [
         "PBS"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "backu",
-      "betwe",
-      "bridg",
-      "cargo",
-      "causi",
-      "jerse",
-      "phila",
-      "ship",
-      "strik",
-      "traff"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "AP News"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "admin",
-      "contr",
-      "drug",
-      "fund",
-      "iboga",
-      "psych",
-      "resea",
-      "trump"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "AP News"
       ]
     }
   },
@@ -4641,9 +2791,6 @@
       "possi"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Hill"
-      ],
       "2026-11-13T16:00": [
         "The Hill"
       ]
@@ -4666,9 +2813,6 @@
       "won"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "NBC News"
-      ],
       "2026-11-13T22:00": [
         "The Washington Post"
       ],
@@ -4690,9 +2834,6 @@
       "sen"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "PBS"
-      ],
       "2026-11-13T16:00": [
         "PBS"
       ],
@@ -4715,74 +2856,8 @@
       "texas"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "AP News"
-      ],
       "2026-11-13T16:00": [
         "CBS News"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "choke",
-      "damag",
-      "decla",
-      "emerg",
-      "ferry",
-      "islan",
-      "orcas",
-      "suppl",
-      "termi"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "The Seattle Times"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "alleg",
-      "befor",
-      "cruis",
-      "galve",
-      "get",
-      "husba",
-      "kille",
-      "mothe",
-      "not",
-      "ship",
-      "susan",
-      "warne",
-      "watfo"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Click2Houston"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "accum",
-      "accuw",
-      "advis",
-      "alert",
-      "area",
-      "chica",
-      "frida",
-      "inche",
-      "parts",
-      "possi",
-      "sever",
-      "snow",
-      "weath",
-      "winte"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "ABC7 Chicago"
       ]
     }
   },
@@ -4800,69 +2875,8 @@
       "white"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Hill"
-      ],
       "2026-11-13T16:00": [
         "The Hill"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "acces",
-      "email",
-      "globa",
-      "leave",
-      "micro",
-      "milli",
-      "other",
-      "outag",
-      "outlo",
-      "teams",
-      "tools",
-      "witho"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "CNN"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "asian",
-      "cauti",
-      "marke",
-      "nvidi",
-      "oil",
-      "open",
-      "set",
-      "stock",
-      "wrap"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Bloomberg.com"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "about",
-      "ahead",
-      "anthr",
-      "crame",
-      "histo",
-      "ipo",
-      "jim",
-      "linge",
-      "quest",
-      "three"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "CNBC"
       ]
     }
   },
@@ -4878,30 +2892,8 @@
       "worst"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Washington Post"
-      ],
       "2026-11-14T03:00": [
         "The Washington Post"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "congr",
-      "contr",
-      "expor",
-      "follo",
-      "high",
-      "nvidi",
-      "proba",
-      "pushe",
-      "scand",
-      "tight"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Semafor"
       ]
     }
   },
@@ -4918,9 +2910,6 @@
       "worth"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "ABC News - Breaking News, Latest News and Videos"
-      ],
       "2026-11-13T16:00": [
         "AP News"
       ],
@@ -4940,24 +2929,6 @@
   },
   {
     "signature": [
-      "cool",
-      "huang",
-      "jacke",
-      "jense",
-      "leath",
-      "now",
-      "punch",
-      "they'",
-      "used"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Business Insider"
-      ]
-    }
-  },
-  {
-    "signature": [
       "alleg",
       "doj",
       "falls",
@@ -4968,34 +2939,8 @@
       "super"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Barron's"
-      ],
       "2026-11-13T16:00": [
         "Barron's"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "2022",
-      "bigge",
-      "bond",
-      "expec",
-      "fed",
-      "grow",
-      "hikes",
-      "just",
-      "more",
-      "rate",
-      "saw",
-      "since",
-      "surge",
-      "yield"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "MarketWatch"
       ]
     }
   },
@@ -5010,31 +2955,8 @@
       "trump"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "MS NOW"
-      ],
       "2026-11-13T16:00": [
         "MS NOW"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "attem",
-      "catch",
-      "doubl",
-      "histo",
-      "landi",
-      "launc",
-      "nov",
-      "space",
-      "stars",
-      "today",
-      "watch"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Space"
       ]
     }
   },
@@ -5051,9 +2973,6 @@
       "relie"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Gothamist"
-      ],
       "2026-11-13T16:00": [
         "Gothamist"
       ],
@@ -5082,9 +3001,6 @@
       "tech"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Politico"
-      ],
       "2026-11-13T16:00": [
         "Politico"
       ],
@@ -5118,28 +3034,8 @@
       "trigg"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "CoinDesk"
-      ],
       "2026-11-13T16:00": [
         "CoinDesk"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "befor",
-      "belit",
-      "execu",
-      "him",
-      "huang",
-      "jense",
-      "ouste",
-      "repla"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "WSJ"
       ]
     }
   },
@@ -5157,49 +3053,11 @@
       "tough"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Axios"
-      ],
       "2026-11-13T16:00": [
         "Axios"
       ],
       "2026-11-13T22:00": [
         "Axios"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "ban",
-      "feder",
-      "get",
-      "head",
-      "hemp",
-      "some",
-      "start",
-      "state",
-      "upcom"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "NPR"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "back",
-      "histo",
-      "inves",
-      "less",
-      "run",
-      "sello",
-      "stock",
-      "week"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "WSJ"
       ]
     }
   },
@@ -5214,9 +3072,6 @@
       "year"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Seattle Times"
-      ],
       "2026-11-13T16:00": [
         "The Seattle Times"
       ]
@@ -5237,9 +3092,6 @@
       "worth"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "NBC News"
-      ],
       "2026-11-13T16:00": [
         "NBC News"
       ]
@@ -5257,9 +3109,6 @@
       "press"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Bloomberg.com"
-      ],
       "2026-11-13T16:00": [
         "Bloomberg.com"
       ],
@@ -5278,55 +3127,11 @@
       "stock"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Barron's"
-      ],
       "2026-11-13T16:00": [
         "Barron's"
       ],
       "2026-11-13T22:00": [
         "Barron's"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "130b",
-      "ballo",
-      "budge",
-      "cuts",
-      "falls",
-      "far",
-      "mamda",
-      "mayor",
-      "nearl",
-      "savin",
-      "short",
-      "targe"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "New York Post"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "appea",
-      "compl",
-      "contr",
-      "discl",
-      "fda",
-      "lette",
-      "pause",
-      "progr",
-      "respo",
-      "revie",
-      "speed"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Fierce Pharma"
       ]
     }
   },
@@ -5342,9 +3147,6 @@
       "merce"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "DW.com"
-      ],
       "2026-11-13T16:00": [
         "DW.com"
       ],
@@ -5364,9 +3166,6 @@
       "suppo"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Bloomberg.com"
-      ],
       "2026-11-13T16:00": [
         "Bloomberg.com"
       ],
@@ -5389,9 +3188,6 @@
       "vehic"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Motor1.com"
-      ],
       "2026-11-13T16:00": [
         "Motor1.com"
       ]
@@ -5411,9 +3207,6 @@
       "warni"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "TheStreet"
-      ],
       "2026-11-13T16:00": [
         "TheStreet"
       ]
@@ -5432,9 +3225,6 @@
       "sues"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "WPBN"
-      ],
       "2026-11-13T16:00": [
         "WPBN"
       ],
@@ -5443,115 +3233,6 @@
       ],
       "2026-11-14T03:00": [
         "WPBN"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "2026",
-      "corpo",
-      "finan",
-      "life",
-      "provi",
-      "quart",
-      "repor",
-      "resul",
-      "scien",
-      "sella",
-      "third",
-      "updat"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Sellas Life Sciences"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "befor",
-      "chick",
-      "cult",
-      "custo",
-      "days",
-      "favor",
-      "fil",
-      "left",
-      "order",
-      "sandw",
-      "vanis"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Fox News"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "debat",
-      "democ",
-      "econo",
-      "page",
-      "playb",
-      "takin",
-      "trump"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Axios"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "backl",
-      "calls",
-      "faces",
-      "gemin",
-      "googl",
-      "morat",
-      "pilot",
-      "schoo"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Ars Technica"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "ceo",
-      "china",
-      "chip",
-      "curbs",
-      "expla",
-      "likel",
-      "nvidi",
-      "resig",
-      "sales",
-      "tough"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Yahoo"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "all",
-      "along",
-      "brand",
-      "caugh",
-      "evil",
-      "got",
-      "russe"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "The Hollywood Reporter"
       ]
     }
   },
@@ -5572,9 +3253,6 @@
       "you"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Hollywood Reporter"
-      ],
       "2026-11-13T16:00": [
         "The Hollywood Reporter"
       ],
@@ -5583,69 +3261,6 @@
       ],
       "2026-11-14T03:00": [
         "The Hollywood Reporter"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "'lux",
-      "2026",
-      "album",
-      "award",
-      "cappi",
-      "gramm",
-      "latin",
-      "night",
-      "rosal",
-      "thril",
-      "wins",
-      "year"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "AP News"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "about",
-      "broth",
-      "comme",
-      "dance",
-      "derek",
-      "doing",
-      "dwts",
-      "hough",
-      "intim",
-      "julia",
-      "react"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Entertainment Weekly"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "befor",
-      "bono",
-      "death",
-      "dolly",
-      "duet",
-      "featu",
-      "final",
-      "just",
-      "parto",
-      "recor",
-      "torn",
-      "vocal",
-      "weeks"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Yahoo"
       ]
     }
   },
@@ -5668,9 +3283,6 @@
       "talk"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "E! News"
-      ],
       "2026-11-13T16:00": [
         "Page Six"
       ],
@@ -5700,9 +3312,6 @@
       "thril"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Entertainment Weekly"
-      ],
       "2026-11-13T16:00": [
         "Entertainment Weekly"
       ],
@@ -5739,9 +3348,6 @@
       "there"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Variety"
-      ],
       "2026-11-13T16:00": [
         "Variety"
       ],
@@ -5750,45 +3356,6 @@
       ],
       "2026-11-14T16:00": [
         "Variety"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "beach",
-      "burgl",
-      "cars",
-      "chris",
-      "dolla",
-      "hemsw",
-      "milli",
-      "multi",
-      "retre",
-      "stole",
-      "targe",
-      "three"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Forex Factory"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "'dist",
-      "'is",
-      "dead",
-      "karda",
-      "khlo",
-      "lamar",
-      "me'",
-      "move",
-      "odom"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "USA Today"
       ]
     }
   },
@@ -5804,9 +3371,6 @@
       "win"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Newser"
-      ],
       "2026-11-13T16:00": [
         "Newser"
       ]
@@ -5831,9 +3395,6 @@
       "tiger"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "IndieWire"
-      ],
       "2026-11-13T16:00": [
         "IndieWire"
       ]
@@ -5851,9 +3412,6 @@
       "tomat"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Forbes"
-      ],
       "2026-11-13T16:00": [
         "Forbes"
       ],
@@ -5882,9 +3440,6 @@
       "tribu"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Empire"
-      ],
       "2026-11-13T16:00": [
         "Empire"
       ]
@@ -5903,9 +3458,6 @@
       "unexp"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Deadline"
-      ],
       "2026-11-13T16:00": [
         "Deadline"
       ],
@@ -5929,62 +3481,7 @@
       "tells"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Variety"
-      ],
       "2026-11-13T16:00": [
-        "Variety"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "2026",
-      "cara",
-      "carpe",
-      "delev",
-      "men",
-      "more",
-      "party",
-      "red",
-      "tinas",
-      "year"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Page Six"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "bank",
-      "heist",
-      "humor",
-      "revie",
-      "rob",
-      "tikto",
-      "worth"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "The New York Times"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "'sexu",
-      "about",
-      "affle",
-      "alani",
-      "askin",
-      "ben",
-      "moris",
-      "slams"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
         "Variety"
       ]
     }
@@ -6004,9 +3501,6 @@
       "son"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The Hollywood Reporter"
-      ],
       "2026-11-13T16:00": [
         "The Hollywood Reporter"
       ]
@@ -6024,68 +3518,8 @@
       "travi"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Page Six"
-      ],
       "2026-11-14T03:00": [
         "Page Six"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "dakot",
-      "johns",
-      "lane",
-      "mgk",
-      "night",
-      "penny",
-      "pop",
-      "punk",
-      "stu",
-      "trans"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Vogue"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "band",
-      "birmi",
-      "duran",
-      "quits",
-      "roger",
-      "taylo",
-      "tinni"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "BBC"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "based",
-      "befor",
-      "book",
-      "brook",
-      "danie",
-      "kenne",
-      "let",
-      "parri",
-      "peaco",
-      "ryan",
-      "serie",
-      "star",
-      "teyon"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Deadline"
       ]
     }
   },
@@ -6107,9 +3541,6 @@
       "young"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Page Six"
-      ],
       "2026-11-13T16:00": [
         "Page Six"
       ]
@@ -6128,126 +3559,8 @@
       "survi"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Entertainment Weekly"
-      ],
       "2026-11-13T16:00": [
         "Entertainment Weekly"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "don",
-      "exits",
-      "gison",
-      "gunn",
-      "james",
-      "know",
-      "lot",
-      "peter",
-      "react",
-      "safra",
-      "skyle",
-      "still",
-      "there"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "The Hollywood Reporter"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "comma",
-      "diggs",
-      "footb",
-      "gives",
-      "late",
-      "night",
-      "stefo",
-      "thurs",
-      "win"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "NBC Sports"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "alvar",
-      "armst",
-      "astro",
-      "crow",
-      "cubs'",
-      "mvp",
-      "pete",
-      "unani",
-      "winne",
-      "yorda"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "ESPN"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "amand",
-      "harri",
-      "kayla",
-      "not",
-      "nunes",
-      "oppon",
-      "revea",
-      "tough"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "MMA Fighting"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "athle",
-      "contr",
-      "half",
-      "manch",
-      "mauri",
-      "poche",
-      "sign",
-      "two",
-      "unite",
-      "year"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "The New York Times"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "abu",
-      "arres",
-      "barre",
-      "brawl",
-      "dhabi",
-      "event",
-      "hotel",
-      "nurma",
-      "peopl",
-      "raf",
-      "usman"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Yahoo Sports"
       ]
     }
   },
@@ -6263,33 +3576,8 @@
       "take"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "NBC Sports"
-      ],
       "2026-11-13T22:00": [
         "NBC Sports"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "ban",
-      "basse",
-      "cente",
-      "charl",
-      "game",
-      "guard",
-      "hande",
-      "houst",
-      "marcu",
-      "rocke",
-      "smart",
-      "swing",
-      "warri"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Fox News"
       ]
     }
   },
@@ -6310,29 +3598,11 @@
       "smith"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "PFF"
-      ],
       "2026-11-13T16:00": [
         "PFF"
       ],
       "2026-11-13T22:00": [
         "PFF"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "'cras",
-      "briss",
-      "charg",
-      "cours",
-      "immer",
-      "raven"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "ESPN"
       ]
     }
   },
@@ -6350,9 +3620,6 @@
       "troll"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Bleacher Report"
-      ],
       "2026-11-13T22:00": [
         "Bleacher Report"
       ]
@@ -6368,9 +3635,6 @@
       "vikin"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Green Bay Packers – packers.com"
-      ],
       "2026-11-13T16:00": [
         "Green Bay Packers – packers.com"
       ],
@@ -6400,9 +3664,6 @@
       "wide"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Yahoo Sports"
-      ],
       "2026-11-13T16:00": [
         "Yahoo Sports"
       ]
@@ -6423,9 +3684,6 @@
       "selec"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Fox News"
-      ],
       "2026-11-13T16:00": [
         "Fox News"
       ]
@@ -6443,30 +3701,8 @@
       "wilso"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "ESPN"
-      ],
       "2026-11-13T16:00": [
         "ESPN"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "colli",
-      "cris",
-      "decid",
-      "game",
-      "ident",
-      "match",
-      "may",
-      "night",
-      "sunda",
-      "well"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Steelers Depot"
       ]
     }
   },
@@ -6487,9 +3723,6 @@
       "set"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "LA Kings Insider"
-      ],
       "2026-11-13T16:00": [
         "LA Kings Insider"
       ],
@@ -6509,9 +3742,6 @@
       "your"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "LetsRun.com"
-      ],
       "2026-11-13T16:00": [
         "LetsRun.com"
       ],
@@ -6531,46 +3761,8 @@
       "turna"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Dallas News"
-      ],
       "2026-11-13T16:00": [
         "Dallas News"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "coach",
-      "forme",
-      "head",
-      "longt",
-      "nfl",
-      "phili",
-      "repor",
-      "river",
-      "set",
-      "state",
-      "wolfp"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Yahoo Sports"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "actio",
-      "baker",
-      "byu",
-      "dawso",
-      "retur",
-      "soon"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Deseret News"
       ]
     }
   },
@@ -6584,9 +3776,6 @@
       "ryan"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "NBC Sports"
-      ],
       "2026-11-13T16:00": [
         "NBC Sports"
       ]
@@ -6605,9 +3794,6 @@
       "travi"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "ESPN"
-      ],
       "2026-11-13T16:00": [
         "ESPN"
       ]
@@ -6626,33 +3812,8 @@
       "tried"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Arrowhead Addict"
-      ],
       "2026-11-13T16:00": [
         "Arrowhead Addict"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "atkin",
-      "befor",
-      "boise",
-      "brade",
-      "furth",
-      "game",
-      "going",
-      "hand",
-      "injur",
-      "orego",
-      "state",
-      "testi",
-      "throu"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "OregonLive.com"
       ]
     }
   },
@@ -6673,35 +3834,8 @@
       "wake"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "The New York Times"
-      ],
       "2026-11-13T16:00": [
         "The New York Times"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "'what",
-      "about",
-      "confe",
-      "don't",
-      "drake",
-      "durin",
-      "germa",
-      "know",
-      "maye",
-      "press",
-      "repor",
-      "talki",
-      "tells",
-      "they",
-      "they'"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Fox News"
       ]
     }
   },
@@ -6721,30 +3855,8 @@
       "week"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "CBS Sports"
-      ],
       "2026-11-13T16:00": [
         "CBS Sports"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "again",
-      "board",
-      "candi",
-      "case",
-      "coach",
-      "each",
-      "flori",
-      "head",
-      "hot",
-      "state"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "247Sports"
       ]
     }
   },
@@ -6760,32 +3872,8 @@
       "whamm"
     ],
     "buckets": {
-      "2026-11-13T07:00": [
-        "Sports Illustrated"
-      ],
       "2026-11-13T16:00": [
         "Sports Illustrated"
-      ]
-    }
-  },
-  {
-    "signature": [
-      "agent",
-      "arnol",
-      "avail",
-      "benga",
-      "best",
-      "ebike",
-      "edge",
-      "faile",
-      "free",
-      "rushe",
-      "targe",
-      "trade"
-    ],
-    "buckets": {
-      "2026-11-13T07:00": [
-        "Cincy Jungle"
       ]
     }
   },
@@ -6937,6 +4025,9 @@
         "The New York Times"
       ],
       "2026-11-14T16:00": [
+        "The New York Times"
+      ],
+      "2026-11-15T09:00": [
         "The New York Times"
       ]
     }
@@ -7737,6 +4828,9 @@
       ],
       "2026-11-15T01:00": [
         "ProPublica"
+      ],
+      "2026-11-15T09:00": [
+        "ProPublica"
       ]
     }
   },
@@ -8273,6 +5367,9 @@
       ],
       "2026-11-15T01:00": [
         "CNBC"
+      ],
+      "2026-11-15T09:00": [
+        "CNBC"
       ]
     }
   },
@@ -8542,6 +5639,9 @@
       ],
       "2026-11-15T01:00": [
         "WFLA"
+      ],
+      "2026-11-15T09:00": [
+        "NewsNation"
       ]
     }
   },
@@ -8803,6 +5903,9 @@
         "Los Angeles Times"
       ],
       "2026-11-15T01:00": [
+        "Los Angeles Times"
+      ],
+      "2026-11-15T09:00": [
         "Los Angeles Times"
       ]
     }
@@ -10007,6 +7110,9 @@
       ],
       "2026-11-15T01:00": [
         "NBC News"
+      ],
+      "2026-11-15T09:00": [
+        "NBC News"
       ]
     }
   },
@@ -10161,6 +7267,9 @@
       ],
       "2026-11-15T01:00": [
         "DW.com"
+      ],
+      "2026-11-15T09:00": [
+        "DW.com"
       ]
     }
   },
@@ -10193,6 +7302,9 @@
         "BBC"
       ],
       "2026-11-15T01:00": [
+        "BBC"
+      ],
+      "2026-11-15T09:00": [
         "BBC"
       ]
     }
@@ -10567,6 +7679,9 @@
     "buckets": {
       "2026-11-13T22:00": [
         "ABC News - Breaking News, Latest News and Videos"
+      ],
+      "2026-11-15T09:00": [
+        "ABC News - Breaking News, Latest News and Videos"
       ]
     }
   },
@@ -10624,6 +7739,9 @@
         "Democracy Docket"
       ],
       "2026-11-14T21:00": [
+        "Democracy Docket"
+      ],
+      "2026-11-15T09:00": [
         "Democracy Docket"
       ]
     }
@@ -10835,6 +7953,9 @@
         "Forbes"
       ],
       "2026-11-14T10:00": [
+        "Forbes"
+      ],
+      "2026-11-15T09:00": [
         "Forbes"
       ]
     }
@@ -11258,6 +8379,9 @@
       ],
       "2026-11-15T01:00": [
         "WKTV"
+      ],
+      "2026-11-15T09:00": [
+        "WKTV"
       ]
     }
   },
@@ -11634,6 +8758,9 @@
         "The Hollywood Reporter"
       ],
       "2026-11-15T01:00": [
+        "Los Angeles Times"
+      ],
+      "2026-11-15T09:00": [
         "Los Angeles Times"
       ]
     }
@@ -12054,6 +9181,9 @@
       ],
       "2026-11-15T01:00": [
         "Consequence of Sound"
+      ],
+      "2026-11-15T09:00": [
+        "Consequence of Sound"
       ]
     }
   },
@@ -12168,6 +9298,9 @@
         "Yahoo Sports"
       ],
       "2026-11-14T16:00": [
+        "Yahoo Sports"
+      ],
+      "2026-11-15T09:00": [
         "Yahoo Sports"
       ]
     }
@@ -13042,6 +10175,9 @@
       ],
       "2026-11-15T01:00": [
         "Defense News"
+      ],
+      "2026-11-15T09:00": [
+        "Defense News"
       ]
     }
   },
@@ -13139,6 +10275,9 @@
       ],
       "2026-11-15T01:00": [
         "DW.com"
+      ],
+      "2026-11-15T09:00": [
+        "DW.com"
       ]
     }
   },
@@ -13217,6 +10356,9 @@
         "The Harvard Crimson"
       ],
       "2026-11-15T01:00": [
+        "The Harvard Crimson"
+      ],
+      "2026-11-15T09:00": [
         "The Harvard Crimson"
       ]
     }
@@ -13368,6 +10510,9 @@
       ],
       "2026-11-15T01:00": [
         "Bloomberg.com"
+      ],
+      "2026-11-15T09:00": [
+        "Bloomberg.com"
       ]
     }
   },
@@ -13398,6 +10543,9 @@
         "Reuters"
       ],
       "2026-11-15T01:00": [
+        "Reuters"
+      ],
+      "2026-11-15T09:00": [
         "Reuters"
       ]
     }
@@ -13486,6 +10634,9 @@
       ],
       "2026-11-14T16:00": [
         "The New York Times"
+      ],
+      "2026-11-15T09:00": [
+        "The New York Times"
       ]
     }
   },
@@ -13524,6 +10675,9 @@
     ],
     "buckets": {
       "2026-11-14T03:00": [
+        "Gothamist"
+      ],
+      "2026-11-15T09:00": [
         "Gothamist"
       ]
     }
@@ -13571,6 +10725,9 @@
         "CNN"
       ],
       "2026-11-14T21:00": [
+        "The Guardian"
+      ],
+      "2026-11-15T09:00": [
         "The Guardian"
       ]
     }
@@ -14281,6 +11438,9 @@
       ],
       "2026-11-15T01:00": [
         "Ars Technica"
+      ],
+      "2026-11-15T09:00": [
+        "Ars Technica"
       ]
     }
   },
@@ -14681,6 +11841,9 @@
       ],
       "2026-11-15T01:00": [
         "NHTSA | National Highway Traffic Safety Administration (.gov)"
+      ],
+      "2026-11-15T09:00": [
+        "NHTSA | National Highway Traffic Safety Administration (.gov)"
       ]
     }
   },
@@ -14797,6 +11960,9 @@
         "Variety"
       ],
       "2026-11-14T21:00": [
+        "Variety"
+      ],
+      "2026-11-15T09:00": [
         "Variety"
       ]
     }
@@ -14927,6 +12093,9 @@
       ],
       "2026-11-15T01:00": [
         "AP News"
+      ],
+      "2026-11-15T09:00": [
+        "AP News"
       ]
     }
   },
@@ -14993,6 +12162,9 @@
         "Deadline"
       ],
       "2026-11-15T01:00": [
+        "Deadline"
+      ],
+      "2026-11-15T09:00": [
         "Deadline"
       ]
     }
@@ -15078,6 +12250,9 @@
         "CBS News"
       ],
       "2026-11-14T10:00": [
+        "CBS News"
+      ],
+      "2026-11-15T09:00": [
         "CBS News"
       ]
     }
@@ -15869,6 +13044,9 @@
       ],
       "2026-11-15T01:00": [
         "ESPN"
+      ],
+      "2026-11-15T09:00": [
+        "ESPN"
       ]
     }
   },
@@ -16175,6 +13353,9 @@
       ],
       "2026-11-14T21:00": [
         "The Telegraph"
+      ],
+      "2026-11-15T09:00": [
+        "The Telegraph"
       ]
     }
   },
@@ -16471,6 +13652,8 @@
     "signature": [
       "aggre",
       "chief",
+      "crisi",
+      "faces",
       "first",
       "frene",
       "house",
@@ -16494,6 +13677,9 @@
       ],
       "2026-11-15T01:00": [
         "CNN"
+      ],
+      "2026-11-15T09:00": [
+        "The Washington Post"
       ]
     }
   },
@@ -16647,6 +13833,9 @@
       ],
       "2026-11-14T21:00": [
         "Reuters"
+      ],
+      "2026-11-15T09:00": [
+        "Reuters"
       ]
     }
   },
@@ -16664,6 +13853,9 @@
     ],
     "buckets": {
       "2026-11-14T10:00": [
+        "The New York Times"
+      ],
+      "2026-11-15T09:00": [
         "The New York Times"
       ]
     }
@@ -17083,6 +14275,9 @@
       ],
       "2026-11-15T01:00": [
         "SFGATE"
+      ],
+      "2026-11-15T09:00": [
+        "SFGATE"
       ]
     }
   },
@@ -17244,6 +14439,9 @@
       ],
       "2026-11-15T01:00": [
         "Yahoo News New Zealand"
+      ],
+      "2026-11-15T09:00": [
+        "Yahoo News New Zealand"
       ]
     }
   },
@@ -17266,6 +14464,9 @@
         "E! News"
       ],
       "2026-11-14T16:00": [
+        "E! News"
+      ],
+      "2026-11-15T09:00": [
         "E! News"
       ]
     }
@@ -17338,6 +14539,9 @@
         "Deadline"
       ],
       "2026-11-15T01:00": [
+        "Deadline"
+      ],
+      "2026-11-15T09:00": [
         "Deadline"
       ]
     }
@@ -17458,6 +14662,9 @@
       ],
       "2026-11-14T21:00": [
         "Los Angeles Times"
+      ],
+      "2026-11-15T09:00": [
+        "Los Angeles Times"
       ]
     }
   },
@@ -17501,6 +14708,9 @@
         "Deadline"
       ],
       "2026-11-14T21:00": [
+        "The Hollywood Reporter"
+      ],
+      "2026-11-15T09:00": [
         "The Hollywood Reporter"
       ]
     }
@@ -17647,8 +14857,10 @@
     "signature": [
       "'man",
       "aroun",
+      "film",
       "going",
       "gunn",
+      "hasn'",
       "james",
       "lot",
       "one",
@@ -17662,6 +14874,9 @@
     "buckets": {
       "2026-11-14T10:00": [
         "Deadline"
+      ],
+      "2026-11-15T09:00": [
+        "The Hollywood Reporter"
       ]
     }
   },
@@ -17772,6 +14987,9 @@
       ],
       "2026-11-14T16:00": [
         "247Sports"
+      ],
+      "2026-11-15T09:00": [
+        "247Sports"
       ]
     }
   },
@@ -17850,6 +15068,9 @@
     "buckets": {
       "2026-11-14T10:00": [
         "Deseret News"
+      ],
+      "2026-11-15T09:00": [
+        "Deseret News"
       ]
     }
   },
@@ -17876,6 +15097,9 @@
       ],
       "2026-11-15T01:00": [
         "New York Post"
+      ],
+      "2026-11-15T09:00": [
+        "New York Post"
       ]
     }
   },
@@ -17898,6 +15122,9 @@
         "University of North Carolina Athletics"
       ],
       "2026-11-14T21:00": [
+        "University of North Carolina Athletics"
+      ],
+      "2026-11-15T09:00": [
         "University of North Carolina Athletics"
       ]
     }
@@ -18028,6 +15255,9 @@
         "LetsRun.com"
       ],
       "2026-11-15T01:00": [
+        "LetsRun.com"
+      ],
+      "2026-11-15T09:00": [
         "LetsRun.com"
       ]
     }
@@ -18377,6 +15607,9 @@
       ],
       "2026-11-15T01:00": [
         "BBC"
+      ],
+      "2026-11-15T09:00": [
+        "BBC"
       ]
     }
   },
@@ -18439,6 +15672,9 @@
         "CBS News"
       ],
       "2026-11-15T01:00": [
+        "CBS News"
+      ],
+      "2026-11-15T09:00": [
         "CBS News"
       ]
     }
@@ -18508,6 +15744,9 @@
       ],
       "2026-11-14T21:00": [
         "AP News"
+      ],
+      "2026-11-15T09:00": [
+        "AP News"
       ]
     }
   },
@@ -18566,6 +15805,9 @@
       ],
       "2026-11-15T01:00": [
         "Reuters"
+      ],
+      "2026-11-15T09:00": [
+        "Reuters"
       ]
     }
   },
@@ -18587,6 +15829,9 @@
         "POLITICO.eu"
       ],
       "2026-11-14T21:00": [
+        "POLITICO.eu"
+      ],
+      "2026-11-15T09:00": [
         "POLITICO.eu"
       ]
     }
@@ -18720,6 +15965,9 @@
       ],
       "2026-11-14T21:00": [
         "The New York Times"
+      ],
+      "2026-11-15T09:00": [
+        "The New York Times"
       ]
     }
   },
@@ -18777,6 +16025,9 @@
         "Phys.org"
       ],
       "2026-11-14T21:00": [
+        "Phys.org"
+      ],
+      "2026-11-15T09:00": [
         "Phys.org"
       ]
     }
@@ -18852,16 +16103,22 @@
   {
     "signature": [
       "bomb",
+      "centr",
       "ethan",
       "evacu",
+      "force",
       "found",
       "illin",
+      "near",
       "plant",
       "promp"
     ],
     "buckets": {
       "2026-11-14T16:00": [
         "The Guardian"
+      ],
+      "2026-11-15T09:00": [
+        "NPR"
       ]
     }
   },
@@ -18884,6 +16141,9 @@
         "The Hill"
       ],
       "2026-11-14T21:00": [
+        "The Hill"
+      ],
+      "2026-11-15T09:00": [
         "The Hill"
       ]
     }
@@ -18973,6 +16233,9 @@
       ],
       "2026-11-15T01:00": [
         "The Colorado Sun"
+      ],
+      "2026-11-15T09:00": [
+        "The Colorado Sun"
       ]
     }
   },
@@ -19010,6 +16273,9 @@
     ],
     "buckets": {
       "2026-11-14T16:00": [
+        "The Hill"
+      ],
+      "2026-11-15T09:00": [
         "The Hill"
       ]
     }
@@ -19094,6 +16360,9 @@
         "The Times of Israel"
       ],
       "2026-11-15T01:00": [
+        "The Times of Israel"
+      ],
+      "2026-11-15T09:00": [
         "The Times of Israel"
       ]
     }
@@ -19465,6 +16734,9 @@
       ],
       "2026-11-15T01:00": [
         "CNBC"
+      ],
+      "2026-11-15T09:00": [
+        "CNBC"
       ]
     }
   },
@@ -19540,6 +16812,9 @@
     "buckets": {
       "2026-11-14T16:00": [
         "Jalopnik"
+      ],
+      "2026-11-15T09:00": [
+        "Jalopnik"
       ]
     }
   },
@@ -19553,6 +16828,9 @@
     ],
     "buckets": {
       "2026-11-14T16:00": [
+        "Newser"
+      ],
+      "2026-11-15T09:00": [
         "Newser"
       ]
     }
@@ -19601,6 +16879,9 @@
       ],
       "2026-11-15T01:00": [
         "WIRED"
+      ],
+      "2026-11-15T09:00": [
+        "WIRED"
       ]
     }
   },
@@ -19626,6 +16907,9 @@
         "Fortune"
       ],
       "2026-11-15T01:00": [
+        "Fortune"
+      ],
+      "2026-11-15T09:00": [
         "Fortune"
       ]
     }
@@ -19700,6 +16984,9 @@
       ],
       "2026-11-15T01:00": [
         "News Channel 5 Nashville"
+      ],
+      "2026-11-15T09:00": [
+        "News Channel 5 Nashville"
       ]
     }
   },
@@ -19742,6 +17029,9 @@
         "AP News"
       ],
       "2026-11-15T01:00": [
+        "AP News"
+      ],
+      "2026-11-15T09:00": [
         "AP News"
       ]
     }
@@ -19812,6 +17102,9 @@
       ],
       "2026-11-15T01:00": [
         "ABC News - Breaking News, Latest News and Videos"
+      ],
+      "2026-11-15T09:00": [
+        "ABC News - Breaking News, Latest News and Videos"
       ]
     }
   },
@@ -19881,6 +17174,9 @@
         "Yahoo Finance"
       ],
       "2026-11-15T01:00": [
+        "Yahoo Finance"
+      ],
+      "2026-11-15T09:00": [
         "Yahoo Finance"
       ]
     }
@@ -19971,6 +17267,9 @@
       ],
       "2026-11-14T21:00": [
         "EatingWell"
+      ],
+      "2026-11-15T09:00": [
+        "EatingWell"
       ]
     }
   },
@@ -20019,6 +17318,9 @@
         "BBC"
       ],
       "2026-11-15T01:00": [
+        "BBC"
+      ],
+      "2026-11-15T09:00": [
         "BBC"
       ]
     }
@@ -20215,6 +17517,9 @@
       ],
       "2026-11-15T01:00": [
         "Variety"
+      ],
+      "2026-11-15T09:00": [
+        "Variety"
       ]
     }
   },
@@ -20245,6 +17550,9 @@
         "WWE"
       ],
       "2026-11-15T01:00": [
+        "WWE"
+      ],
+      "2026-11-15T09:00": [
         "WWE"
       ]
     }
@@ -20372,6 +17680,9 @@
         "BBC"
       ],
       "2026-11-14T21:00": [
+        "BBC"
+      ],
+      "2026-11-15T09:00": [
         "BBC"
       ]
     }
@@ -20573,6 +17884,9 @@
     "buckets": {
       "2026-11-14T16:00": [
         "PennLive.com"
+      ],
+      "2026-11-15T09:00": [
+        "PennLive.com"
       ]
     }
   },
@@ -20748,6 +18062,9 @@
       ],
       "2026-11-15T01:00": [
         "A Sea Of Blue"
+      ],
+      "2026-11-15T09:00": [
+        "A Sea Of Blue"
       ]
     }
   },
@@ -20789,6 +18106,9 @@
         "Tomahawk Nation"
       ],
       "2026-11-15T01:00": [
+        "Tomahawk Nation"
+      ],
+      "2026-11-15T09:00": [
         "Tomahawk Nation"
       ]
     }
@@ -20912,6 +18232,9 @@
     "buckets": {
       "2026-11-14T16:00": [
         "NFL.com"
+      ],
+      "2026-11-15T09:00": [
+        "NFL.com"
       ]
     }
   },
@@ -20978,6 +18301,9 @@
         "Barca Blaugranes"
       ],
       "2026-11-15T01:00": [
+        "Barca Blaugranes"
+      ],
+      "2026-11-15T09:00": [
         "Barca Blaugranes"
       ]
     }
@@ -21062,6 +18388,9 @@
         "CBS Sports"
       ],
       "2026-11-15T01:00": [
+        "CBS Sports"
+      ],
+      "2026-11-15T09:00": [
         "CBS Sports"
       ]
     }
@@ -21163,6 +18492,7 @@
   {
     "signature": [
       "887",
+      "887m",
       "acces",
       "andro",
       "data",
@@ -21170,7 +18500,9 @@
       "italy",
       "meta",
       "milli",
-      "users"
+      "photo",
+      "users",
+      "video"
     ],
     "buckets": {
       "2026-11-14T21:00": [
@@ -21178,6 +18510,9 @@
       ],
       "2026-11-15T01:00": [
         "Reuters"
+      ],
+      "2026-11-15T09:00": [
+        "The Guardian"
       ]
     }
   },
@@ -21196,6 +18531,9 @@
     ],
     "buckets": {
       "2026-11-14T21:00": [
+        "CBS News"
+      ],
+      "2026-11-15T09:00": [
         "CBS News"
       ]
     }
@@ -21216,6 +18554,9 @@
         "NPR"
       ],
       "2026-11-15T01:00": [
+        "NPR"
+      ],
+      "2026-11-15T09:00": [
         "NPR"
       ]
     }
@@ -21256,6 +18597,9 @@
       ],
       "2026-11-15T01:00": [
         "Council, European Union"
+      ],
+      "2026-11-15T09:00": [
+        "Council, European Union"
       ]
     }
   },
@@ -21280,6 +18624,9 @@
       ],
       "2026-11-15T01:00": [
         "Fox News"
+      ],
+      "2026-11-15T09:00": [
+        "Fox News"
       ]
     }
   },
@@ -21301,6 +18648,9 @@
       ],
       "2026-11-15T01:00": [
         "POLITICO.eu"
+      ],
+      "2026-11-15T09:00": [
+        "POLITICO.eu"
       ]
     }
   },
@@ -21318,6 +18668,9 @@
     ],
     "buckets": {
       "2026-11-14T21:00": [
+        "NDTV"
+      ],
+      "2026-11-15T09:00": [
         "NDTV"
       ]
     }
@@ -21339,6 +18692,9 @@
         "The Daily Beast"
       ],
       "2026-11-15T01:00": [
+        "The Daily Beast"
+      ],
+      "2026-11-15T09:00": [
         "The Daily Beast"
       ]
     }
@@ -21366,11 +18722,13 @@
     "signature": [
       "about",
       "ahead",
+      "east",
       "elect",
       "follo",
       "iran",
       "leave",
       "limbo",
+      "middl",
       "midea",
       "path",
       "rheto",
@@ -21383,6 +18741,9 @@
       ],
       "2026-11-15T01:00": [
         "AP News"
+      ],
+      "2026-11-15T09:00": [
+        "PBS"
       ]
     }
   },
@@ -21444,6 +18805,9 @@
       ],
       "2026-11-15T01:00": [
         "BBC"
+      ],
+      "2026-11-15T09:00": [
+        "BBC"
       ]
     }
   },
@@ -21504,6 +18868,9 @@
       ],
       "2026-11-15T01:00": [
         "The Washington Post"
+      ],
+      "2026-11-15T09:00": [
+        "The Washington Post"
       ]
     }
   },
@@ -21523,6 +18890,9 @@
         "Iran International"
       ],
       "2026-11-15T01:00": [
+        "Iran International"
+      ],
+      "2026-11-15T09:00": [
         "Iran International"
       ]
     }
@@ -21549,6 +18919,9 @@
       ],
       "2026-11-15T01:00": [
         "Fox News"
+      ],
+      "2026-11-15T09:00": [
+        "Fox News"
       ]
     }
   },
@@ -21563,6 +18936,9 @@
     ],
     "buckets": {
       "2026-11-14T21:00": [
+        "Euronews.com"
+      ],
+      "2026-11-15T09:00": [
         "Euronews.com"
       ]
     }
@@ -21624,6 +19000,9 @@
       ],
       "2026-11-15T01:00": [
         "ScienceAlert"
+      ],
+      "2026-11-15T09:00": [
+        "ScienceAlert"
       ]
     }
   },
@@ -21650,6 +19029,9 @@
       ],
       "2026-11-15T01:00": [
         "Business Insider"
+      ],
+      "2026-11-15T09:00": [
+        "Business Insider"
       ]
     }
   },
@@ -21664,6 +19046,9 @@
     ],
     "buckets": {
       "2026-11-14T21:00": [
+        "Financial Times"
+      ],
+      "2026-11-15T09:00": [
         "Financial Times"
       ]
     }
@@ -21785,6 +19170,9 @@
       ],
       "2026-11-15T01:00": [
         "NPR"
+      ],
+      "2026-11-15T09:00": [
+        "NPR"
       ]
     }
   },
@@ -21805,6 +19193,9 @@
         "The Independent"
       ],
       "2026-11-15T01:00": [
+        "The Independent"
+      ],
+      "2026-11-15T09:00": [
         "The Independent"
       ]
     }
@@ -21859,6 +19250,9 @@
       ],
       "2026-11-15T01:00": [
         "USA Today"
+      ],
+      "2026-11-15T09:00": [
+        "USA Today"
       ]
     }
   },
@@ -21874,6 +19268,9 @@
     ],
     "buckets": {
       "2026-11-14T21:00": [
+        "The New York Times"
+      ],
+      "2026-11-15T09:00": [
         "The New York Times"
       ]
     }
@@ -21895,6 +19292,9 @@
       ],
       "2026-11-15T01:00": [
         "KCRA"
+      ],
+      "2026-11-15T09:00": [
+        "KCRA"
       ]
     }
   },
@@ -21907,7 +19307,8 @@
       "possi",
       "progr",
       "towar",
-      "trade"
+      "trade",
+      "trump"
     ],
     "buckets": {
       "2026-11-14T21:00": [
@@ -21915,6 +19316,9 @@
       ],
       "2026-11-15T01:00": [
         "The Washington Post"
+      ],
+      "2026-11-15T09:00": [
+        "The Hill"
       ]
     }
   },
@@ -22101,6 +19505,9 @@
     "buckets": {
       "2026-11-14T21:00": [
         "The Washington Post"
+      ],
+      "2026-11-15T09:00": [
+        "The Washington Post"
       ]
     }
   },
@@ -22258,6 +19665,9 @@
       ],
       "2026-11-15T01:00": [
         "Yahoo Finance"
+      ],
+      "2026-11-15T09:00": [
+        "Yahoo Finance"
       ]
     }
   },
@@ -22280,6 +19690,9 @@
         "CoinDesk"
       ],
       "2026-11-15T01:00": [
+        "CoinDesk"
+      ],
+      "2026-11-15T09:00": [
         "CoinDesk"
       ]
     }
@@ -22321,6 +19734,9 @@
         "Yahoo Finance"
       ],
       "2026-11-15T01:00": [
+        "Yahoo Finance"
+      ],
+      "2026-11-15T09:00": [
         "Yahoo Finance"
       ]
     }
@@ -22428,6 +19844,9 @@
       ],
       "2026-11-15T01:00": [
         "The Verge"
+      ],
+      "2026-11-15T09:00": [
+        "The Verge"
       ]
     }
   },
@@ -22446,6 +19865,9 @@
         "TheStreet"
       ],
       "2026-11-15T01:00": [
+        "TheStreet"
+      ],
+      "2026-11-15T09:00": [
         "TheStreet"
       ]
     }
@@ -22546,6 +19968,9 @@
       ],
       "2026-11-15T01:00": [
         "CBS News"
+      ],
+      "2026-11-15T09:00": [
+        "CBS News"
       ]
     }
   },
@@ -22605,6 +20030,9 @@
         "WRAL"
       ],
       "2026-11-15T01:00": [
+        "WRAL"
+      ],
+      "2026-11-15T09:00": [
         "WRAL"
       ]
     }
@@ -22688,6 +20116,9 @@
       ],
       "2026-11-15T01:00": [
         "The Hollywood Reporter"
+      ],
+      "2026-11-15T09:00": [
+        "The Hollywood Reporter"
       ]
     }
   },
@@ -22763,6 +20194,9 @@
     ],
     "buckets": {
       "2026-11-14T21:00": [
+        "Page Six"
+      ],
+      "2026-11-15T09:00": [
         "Page Six"
       ]
     }
@@ -22901,6 +20335,9 @@
       ],
       "2026-11-15T01:00": [
         "Page Six"
+      ],
+      "2026-11-15T09:00": [
+        "Page Six"
       ]
     }
   },
@@ -22955,6 +20392,9 @@
       ],
       "2026-11-15T01:00": [
         "Wrestling Inc."
+      ],
+      "2026-11-15T09:00": [
+        "Wrestling Inc."
       ]
     }
   },
@@ -22973,6 +20413,9 @@
         "Rolling Stone"
       ],
       "2026-11-15T01:00": [
+        "Rolling Stone"
+      ],
+      "2026-11-15T09:00": [
         "Rolling Stone"
       ]
     }
@@ -23017,6 +20460,9 @@
         "CBS News"
       ],
       "2026-11-15T01:00": [
+        "CBS News"
+      ],
+      "2026-11-15T09:00": [
         "CBS News"
       ]
     }
@@ -23101,6 +20547,9 @@
       ],
       "2026-11-15T01:00": [
         "E! News"
+      ],
+      "2026-11-15T09:00": [
+        "E! News"
       ]
     }
   },
@@ -23122,6 +20571,9 @@
     "buckets": {
       "2026-11-14T21:00": [
         "Entertainment Weekly"
+      ],
+      "2026-11-15T09:00": [
+        "Entertainment Weekly"
       ]
     }
   },
@@ -23141,6 +20593,9 @@
         "The Independent"
       ],
       "2026-11-15T01:00": [
+        "The Independent"
+      ],
+      "2026-11-15T09:00": [
         "The Independent"
       ]
     }
@@ -23212,6 +20667,9 @@
       ],
       "2026-11-15T01:00": [
         "Page Six"
+      ],
+      "2026-11-15T09:00": [
+        "Page Six"
       ]
     }
   },
@@ -23232,6 +20690,9 @@
     ],
     "buckets": {
       "2026-11-14T21:00": [
+        "Page Six"
+      ],
+      "2026-11-15T09:00": [
         "Page Six"
       ]
     }
@@ -23276,6 +20737,9 @@
         "Lyndy's Sports Annuals"
       ],
       "2026-11-15T01:00": [
+        "Lyndy's Sports Annuals"
+      ],
+      "2026-11-15T09:00": [
         "Lyndy's Sports Annuals"
       ]
     }
@@ -23428,6 +20892,9 @@
       ],
       "2026-11-15T01:00": [
         "Bleacher Report"
+      ],
+      "2026-11-15T09:00": [
+        "Bleacher Report"
       ]
     }
   },
@@ -23452,6 +20919,9 @@
       ],
       "2026-11-15T01:00": [
         "MLive.com"
+      ],
+      "2026-11-15T09:00": [
+        "MLive.com"
       ]
     }
   },
@@ -23470,6 +20940,9 @@
     ],
     "buckets": {
       "2026-11-14T21:00": [
+        "USA Today"
+      ],
+      "2026-11-15T09:00": [
         "USA Today"
       ]
     }
@@ -23610,6 +21083,9 @@
         "Bleeding Green Nation"
       ],
       "2026-11-15T01:00": [
+        "Bleeding Green Nation"
+      ],
+      "2026-11-15T09:00": [
         "Bleeding Green Nation"
       ]
     }
@@ -23938,6 +21414,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "Reuters"
+      ],
+      "2026-11-15T09:00": [
+        "Reuters"
       ]
     }
   },
@@ -23957,6 +21436,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "CBS News"
+      ],
+      "2026-11-15T09:00": [
+        "CBS News"
       ]
     }
   },
@@ -23974,6 +21456,9 @@
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "Al Jazeera"
+      ],
+      "2026-11-15T09:00": [
         "Al Jazeera"
       ]
     }
@@ -23996,6 +21481,9 @@
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "CNN"
+      ],
+      "2026-11-15T09:00": [
         "CNN"
       ]
     }
@@ -24054,6 +21542,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "BBC"
+      ],
+      "2026-11-15T09:00": [
+        "BBC"
       ]
     }
   },
@@ -24069,6 +21560,9 @@
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "Politico"
+      ],
+      "2026-11-15T09:00": [
         "Politico"
       ]
     }
@@ -24167,11 +21661,16 @@
       "judo",
       "presi",
       "race",
+      "riner",
       "shake",
-      "surpr"
+      "surpr",
+      "teddy"
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "BBC"
+      ],
+      "2026-11-15T09:00": [
         "BBC"
       ]
     }
@@ -24192,6 +21691,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "The Kyiv Independent"
+      ],
+      "2026-11-15T09:00": [
+        "The Kyiv Independent"
       ]
     }
   },
@@ -24205,6 +21707,9 @@
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "Noema Magazine"
+      ],
+      "2026-11-15T09:00": [
         "Noema Magazine"
       ]
     }
@@ -24225,6 +21730,9 @@
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "New York Post"
+      ],
+      "2026-11-15T09:00": [
         "New York Post"
       ]
     }
@@ -24297,6 +21805,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "BBC"
+      ],
+      "2026-11-15T09:00": [
+        "BBC"
       ]
     }
   },
@@ -24332,6 +21843,9 @@
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "San Francisco Chronicle"
+      ],
+      "2026-11-15T09:00": [
         "San Francisco Chronicle"
       ]
     }
@@ -24388,6 +21902,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "Fox Business"
+      ],
+      "2026-11-15T09:00": [
+        "Fox Business"
       ]
     }
   },
@@ -24407,6 +21924,9 @@
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "PBS"
+      ],
+      "2026-11-15T09:00": [
         "PBS"
       ]
     }
@@ -24497,6 +22017,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "AP News"
+      ],
+      "2026-11-15T09:00": [
+        "AP News"
       ]
     }
   },
@@ -24510,6 +22033,9 @@
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "KTLA"
+      ],
+      "2026-11-15T09:00": [
         "KTLA"
       ]
     }
@@ -24527,6 +22053,9 @@
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "The Hill"
+      ],
+      "2026-11-15T09:00": [
         "The Hill"
       ]
     }
@@ -24577,6 +22106,9 @@
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "Block Club Chicago"
+      ],
+      "2026-11-15T09:00": [
         "Block Club Chicago"
       ]
     }
@@ -24711,6 +22243,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "Investor's Business Daily"
+      ],
+      "2026-11-15T09:00": [
+        "Investor's Business Daily"
       ]
     }
   },
@@ -24770,6 +22305,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "Newser"
+      ],
+      "2026-11-15T09:00": [
+        "Newser"
       ]
     }
   },
@@ -24807,6 +22345,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "NBC News"
+      ],
+      "2026-11-15T09:00": [
+        "NBC News"
       ]
     }
   },
@@ -24824,6 +22365,9 @@
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "Reuters"
+      ],
+      "2026-11-15T09:00": [
         "Reuters"
       ]
     }
@@ -24845,6 +22389,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "Fortune"
+      ],
+      "2026-11-15T09:00": [
+        "Fortune"
       ]
     }
   },
@@ -24862,6 +22409,9 @@
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "Bloomberg.com"
+      ],
+      "2026-11-15T09:00": [
         "Bloomberg.com"
       ]
     }
@@ -24902,6 +22452,9 @@
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "WSTM"
+      ],
+      "2026-11-15T09:00": [
         "WSTM"
       ]
     }
@@ -25032,6 +22585,9 @@
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "The Hollywood Reporter"
+      ],
+      "2026-11-15T09:00": [
         "The Hollywood Reporter"
       ]
     }
@@ -25168,6 +22724,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "IGN"
+      ],
+      "2026-11-15T09:00": [
+        "IGN"
       ]
     }
   },
@@ -25190,6 +22749,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "The Hollywood Reporter"
+      ],
+      "2026-11-15T09:00": [
+        "The Hollywood Reporter"
       ]
     }
   },
@@ -25210,6 +22772,9 @@
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "iLovetheUpperWestSide.com"
+      ],
+      "2026-11-15T09:00": [
         "iLovetheUpperWestSide.com"
       ]
     }
@@ -25248,6 +22813,9 @@
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "Fox News"
+      ],
+      "2026-11-15T09:00": [
         "Fox News"
       ]
     }
@@ -25288,6 +22856,9 @@
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "InStyle"
+      ],
+      "2026-11-15T09:00": [
         "InStyle"
       ]
     }
@@ -25351,6 +22922,9 @@
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "Inc.com"
+      ],
+      "2026-11-15T09:00": [
         "Inc.com"
       ]
     }
@@ -25424,6 +22998,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "Cleveland.com"
+      ],
+      "2026-11-15T09:00": [
+        "Cleveland.com"
       ]
     }
   },
@@ -25442,6 +23019,9 @@
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "The New York Times"
+      ],
+      "2026-11-15T09:00": [
         "The New York Times"
       ]
     }
@@ -25477,6 +23057,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "Field Gulls"
+      ],
+      "2026-11-15T09:00": [
+        "Field Gulls"
       ]
     }
   },
@@ -25505,6 +23088,7 @@
       "casar",
       "cfb",
       "commi",
+      "died",
       "dies",
       "emerg",
       "georg",
@@ -25515,6 +23099,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "Bleacher Report"
+      ],
+      "2026-11-15T09:00": [
+        "ESPN"
       ]
     }
   },
@@ -25550,6 +23137,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "NBC News"
+      ],
+      "2026-11-15T09:00": [
+        "NBC News"
       ]
     }
   },
@@ -25572,6 +23162,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "RMNB"
+      ],
+      "2026-11-15T09:00": [
+        "RMNB"
       ]
     }
   },
@@ -25592,6 +23185,9 @@
     ],
     "buckets": {
       "2026-11-15T01:00": [
+        "The Denver Post"
+      ],
+      "2026-11-15T09:00": [
         "The Denver Post"
       ]
     }
@@ -25692,6 +23288,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "Yahoo Sports"
+      ],
+      "2026-11-15T09:00": [
+        "Yahoo Sports"
       ]
     }
   },
@@ -25759,6 +23358,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "NBC Sports"
+      ],
+      "2026-11-15T09:00": [
+        "NBC Sports"
       ]
     }
   },
@@ -25777,6 +23379,9 @@
     "buckets": {
       "2026-11-15T01:00": [
         "Block Club Chicago"
+      ],
+      "2026-11-15T09:00": [
+        "Block Club Chicago"
       ]
     }
   },
@@ -25793,6 +23398,2279 @@
     "buckets": {
       "2026-11-15T01:00": [
         "Daily Cannon"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "canad",
+      "dies",
+      "fifth",
+      "fire",
+      "injur",
+      "milit",
+      "soldi",
+      "train"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "NBC News"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "coali",
+      "drone",
+      "houth",
+      "inter",
+      "led",
+      "missi",
+      "saudi",
+      "suspe"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Al Jazeera"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "'suff",
+      "andes",
+      "commu",
+      "leo",
+      "pope",
+      "remot",
+      "speak",
+      "town",
+      "visit"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "BBC"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "china",
+      "house",
+      "meet",
+      "putin",
+      "trump",
+      "white"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Euronews.com"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "build",
+      "burni",
+      "canno",
+      "chief",
+      "cop31",
+      "farew",
+      "peace",
+      "plane",
+      "speec",
+      "tells",
+      "you"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "The Guardian"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "conse",
+      "fifth",
+      "franc",
+      "natio",
+      "prote",
+      "satur",
+      "sees"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Euronews"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "anti",
+      "deplo",
+      "dogs",
+      "gang",
+      "haiti",
+      "mount",
+      "opera",
+      "rifle",
+      "robot",
+      "stadi"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Fox News"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "deleg",
+      "dicta",
+      "mosco",
+      "not",
+      "parti",
+      "talks",
+      "ukrai"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Euronews"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "conti",
+      "hospi",
+      "kyiv",
+      "live",
+      "restr",
+      "russi",
+      "stars",
+      "strik",
+      "ukrai",
+      "war"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "The Independent"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "banff",
+      "boss",
+      "crowd",
+      "draws",
+      "grizz",
+      "known",
+      "park",
+      "rules"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "The New York Times"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "attac",
+      "drone",
+      "facil",
+      "fire",
+      "indus",
+      "repor",
+      "russi",
+      "tatar"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "The Kyiv Independent"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "arres",
+      "artis",
+      "autho",
+      "him",
+      "hits",
+      "mexic",
+      "sang",
+      "show",
+      "some",
+      "stopp",
+      "then"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "The New York Times"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "blood",
+      "dares",
+      "gasol",
+      "iran",
+      "not",
+      "novem",
+      "ratio",
+      "repri",
+      "seven",
+      "years"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Iran International"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "ashes",
+      "astur",
+      "cerem",
+      "guate",
+      "home",
+      "honor",
+      "mayan",
+      "migue",
+      "ngel",
+      "nobel",
+      "retur",
+      "winne"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "AP News"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "angel",
+      "biden",
+      "donal",
+      "merke",
+      "reall",
+      "revea",
+      "thoug",
+      "trump"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Newsweek"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "100",
+      "befor",
+      "china",
+      "ships",
+      "summi",
+      "surro",
+      "taiwa",
+      "trump"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Yahoo"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "afric",
+      "compe",
+      "conte",
+      "force",
+      "miss",
+      "restr",
+      "some",
+      "unive",
+      "visa"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "HuffPost"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "black",
+      "coast",
+      "comme",
+      "days",
+      "drone",
+      "near",
+      "roman",
+      "sea",
+      "ships",
+      "struc",
+      "three",
+      "two"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "The Kyiv Independent"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "arres",
+      "chaba",
+      "man",
+      "massa",
+      "mumba",
+      "spyin",
+      "years"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "COLlive"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "'mirr",
+      "able",
+      "could",
+      "detec",
+      "end",
+      "fear",
+      "human",
+      "life'",
+      "may",
+      "now",
+      "scien"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "ScienceAlert"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "about",
+      "faa",
+      "groun",
+      "leadi",
+      "natio",
+      "repai",
+      "risks",
+      "stop",
+      "warne",
+      "years"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "The Washington Post"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "block",
+      "cours",
+      "golf",
+      "histo",
+      "judge",
+      "plan",
+      "renov",
+      "trump"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "The Guardian"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "belov",
+      "case",
+      "commu",
+      "disap",
+      "dogs",
+      "helpe",
+      "inves",
+      "orego",
+      "solve",
+      "woman"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "CBS News"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "alask",
+      "ballo",
+      "measu",
+      "open",
+      "prima",
+      "ranke",
+      "rejec",
+      "repea",
+      "seeki",
+      "syste",
+      "voter",
+      "votin"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "PBS"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "'cove",
+      "alask",
+      "campa",
+      "corne",
+      "democ",
+      "every",
+      "guber",
+      "kreis",
+      "succe",
+      "tomki"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "AP News"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "colli",
+      "cross",
+      "day",
+      "groun",
+      "miami",
+      "natio",
+      "plane",
+      "runwa"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "CNN"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "bizar",
+      "fixat",
+      "hanni",
+      "lecte",
+      "takes",
+      "trump",
+      "turn"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "The Daily Beast"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "beat",
+      "campa",
+      "colom",
+      "messa",
+      "missi",
+      "odds",
+      "poor",
+      "rich",
+      "scott"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Vox"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "alask",
+      "court",
+      "embar",
+      "exper",
+      "lawsu",
+      "rejec",
+      "tell",
+      "trump",
+      "votin"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Democracy Docket"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "celeb",
+      "democ",
+      "feder",
+      "mix",
+      "shock",
+      "socie",
+      "sweep"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "The Hill"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "closu",
+      "portl",
+      "publi",
+      "recom",
+      "schoo",
+      "super"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "OPB"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "crash",
+      "drive",
+      "fatal",
+      "leads",
+      "racin",
+      "sough",
+      "suspe",
+      "vehic"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "KING5.com"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "asset",
+      "barri",
+      "pass",
+      "perso",
+      "propo",
+      "taxes",
+      "voter"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Los Angeles Times"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "advis",
+      "attac",
+      "barri",
+      "hold",
+      "iran",
+      "may",
+      "off",
+      "provo",
+      "sourc",
+      "tells",
+      "trump"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Reuters"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "ameri",
+      "biden",
+      "book",
+      "joe",
+      "promi",
+      "revie"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "The New York Times"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "corte",
+      "democ",
+      "ocasi",
+      "presi",
+      "run",
+      "socia",
+      "urge"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "The New York Times"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "cultu",
+      "democ",
+      "elect",
+      "gop",
+      "gov",
+      "moder",
+      "texas",
+      "trade",
+      "vows",
+      "wars"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "The Washington Post"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "000",
+      "100",
+      "big",
+      "ceo",
+      "huang",
+      "inclu",
+      "jense",
+      "names",
+      "nvidi",
+      "petit",
+      "reins",
+      "signa",
+      "some"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Business Insider"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "catch",
+      "earth",
+      "part",
+      "retur",
+      "rocke",
+      "space",
+      "stars",
+      "succe"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "BBC"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "compa",
+      "micro",
+      "outag",
+      "resto",
+      "servi",
+      "wides"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "WSJ"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "000",
+      "2027",
+      "401",
+      "caps",
+      "contr",
+      "incre",
+      "irs",
+      "limit",
+      "raise",
+      "retir",
+      "savin"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Fox Business"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "annou",
+      "cyber",
+      "drive",
+      "goes",
+      "major",
+      "makes",
+      "sale",
+      "tesla",
+      "vehic"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Fox Business"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "below",
+      "deman",
+      "diese",
+      "easin",
+      "gallo",
+      "low",
+      "month",
+      "tensi",
+      "weake"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Reuters"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "guide",
+      "hater",
+      "megas",
+      "premi"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Ed Zitron's Where's Your Ed At"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "bette",
+      "comin",
+      "even",
+      "fans",
+      "garde",
+      "meal",
+      "olive",
+      "roadh",
+      "texas"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Allrecipes"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "circu",
+      "claim",
+      "deals",
+      "delib",
+      "finan",
+      "gpu",
+      "high",
+      "kept",
+      "nvidi",
+      "price",
+      "repor",
+      "throu"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "TechSpot"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "accor",
+      "alway",
+      "best",
+      "chefs",
+      "foods",
+      "froze",
+      "hand"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "EatingWell"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "advis",
+      "away",
+      "can",
+      "give",
+      "help",
+      "milli",
+      "money",
+      "want",
+      "wealt"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "WSJ"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "aarp",
+      "chang",
+      "econo",
+      "secur",
+      "short",
+      "socia",
+      "worse"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "NewsNation"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "close",
+      "louis",
+      "resta",
+      "stapl",
+      "vince",
+      "years"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "WHAS11"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "2tn",
+      "boom",
+      "centr",
+      "const",
+      "data",
+      "lose",
+      "stock",
+      "trade",
+      "unrav"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Financial Times"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "delaw"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "The Harvard Law School Forum on Corporate Governance"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "apple",
+      "buy",
+      "despi",
+      "five",
+      "headw",
+      "leads",
+      "near",
+      "nvidi",
+      "other",
+      "point",
+      "stand",
+      "stock",
+      "tall"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Investor's Business Daily"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "acros",
+      "draw",
+      "indus",
+      "inves",
+      "lot",
+      "money",
+      "outdo",
+      "rents",
+      "risin",
+      "stora",
+      "stree",
+      "wall"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "CNBC"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "750",
+      "await",
+      "boost",
+      "caltr",
+      "downt",
+      "exten",
+      "gets",
+      "long",
+      "milli"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "SFist"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "calif",
+      "celeb",
+      "locat",
+      "newes",
+      "openi",
+      "south"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "KTLA"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "compa",
+      "hit",
+      "major",
+      "other",
+      "outag",
+      "targe",
+      "walma"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Yahoo Tech"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "downf",
+      "expos",
+      "huang",
+      "jense",
+      "lawsu",
+      "nvidi",
+      "possi"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Financial Times"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "bitco",
+      "colla",
+      "crash",
+      "crypt",
+      "don't",
+      "fall",
+      "fears",
+      "free",
+      "price",
+      "sudde",
+      "surpr",
+      "trigg",
+      "trill",
+      "wait"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Forbes"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "appea",
+      "credi",
+      "drama",
+      "gain",
+      "juicy",
+      "nvidi",
+      "weekl",
+      "yield"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Bloomberg.com"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "2001",
+      "added",
+      "cuts",
+      "debt",
+      "econo",
+      "equal",
+      "now",
+      "since",
+      "tax",
+      "trill",
+      "whole"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Fortune"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "'snl'",
+      "bowen",
+      "cold",
+      "crash",
+      "huang",
+      "jense",
+      "john",
+      "mulan",
+      "open",
+      "yang"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Variety"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "among",
+      "award",
+      "bts",
+      "choic",
+      "demon",
+      "hunte",
+      "kids",
+      "kpop",
+      "nicke",
+      "stran",
+      "thing",
+      "winne"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Deadline"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "'snl'",
+      "john",
+      "kenne",
+      "mocks",
+      "monol",
+      "mulan",
+      "rober"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Variety"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "black",
+      "brand",
+      "durin",
+      "face",
+      "glanv",
+      "healt",
+      "mass",
+      "myste",
+      "night",
+      "ongoi",
+      "remov",
+      "surge"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Page Six"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "asia",
+      "bangk",
+      "carme",
+      "debut",
+      "eurov",
+      "filip",
+      "singe",
+      "storm",
+      "victo"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "AP News"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "aeros",
+      "all",
+      "big",
+      "billy",
+      "dmc's",
+      "fame",
+      "hall",
+      "idol'",
+      "iron",
+      "jam",
+      "live",
+      "maide",
+      "outro",
+      "party",
+      "rock",
+      "rocki",
+      "roll",
+      "run",
+      "star",
+      "updat"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Los Angeles Times"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "album",
+      "contr",
+      "del",
+      "dua",
+      "gta",
+      "lana",
+      "larss",
+      "lipa",
+      "music",
+      "rey",
+      "zara"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Rolling Stone"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "180",
+      "art",
+      "colle",
+      "confi",
+      "gogh",
+      "marke",
+      "milli",
+      "tests",
+      "van"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "CNBC"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "bache",
+      "cance",
+      "disgr",
+      "frank",
+      "hartm",
+      "paul",
+      "sam",
+      "seaso",
+      "shoot",
+      "shot",
+      "taylo"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Page Six"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "bass",
+      "boys",
+      "dies",
+      "oak",
+      "richa",
+      "ridge",
+      "singe",
+      "sterb"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "The New York Times"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "final",
+      "front",
+      "journ",
+      "just",
+      "made",
+      "repla",
+      "surpr",
+      "tour"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Ultimate Classic Rock"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "about",
+      "autho",
+      "didn",
+      "expla",
+      "games",
+      "haymi",
+      "hunge",
+      "katni",
+      "peeta",
+      "rebel",
+      "tell",
+      "why"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Gizmodo"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "actor",
+      "cat",
+      "compa",
+      "dies",
+      "elect",
+      "fritz",
+      "hinna",
+      "skip",
+      "voice"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "The Hollywood Reporter"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "about",
+      "askin",
+      "darli",
+      "don",
+      "gets",
+      "keep",
+      "olivi",
+      "peopl",
+      "why",
+      "wilde",
+      "worry"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Vulture"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "chanc",
+      "count",
+      "crisi",
+      "devas",
+      "docto",
+      "durin",
+      "gave",
+      "healt",
+      "just",
+      "legen",
+      "randy",
+      "revea",
+      "survi",
+      "travi",
+      "wife"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Page Six"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "actor",
+      "anne",
+      "canad",
+      "dawn",
+      "dies",
+      "gable",
+      "green",
+      "rever",
+      "stage",
+      "star"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Deadline"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "air",
+      "here",
+      "horos",
+      "lil'",
+      "love",
+      "novem",
+      "spark",
+      "sunda",
+      "there",
+      "your"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "YourTango"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "'the",
+      "arc",
+      "arond",
+      "cruz",
+      "emoti",
+      "ismae",
+      "power",
+      "rdova",
+      "react",
+      "rings",
+      "seaso"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Collider"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "boat",
+      "both",
+      "explo",
+      "full",
+      "heart",
+      "heavy",
+      "husba",
+      "infer",
+      "irela",
+      "kathy",
+      "rescu",
+      "revea",
+      "terri"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Page Six"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "airpo",
+      "chaos",
+      "eugen",
+      "faa",
+      "movie",
+      "stars",
+      "stran",
+      "throw"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "OregonLive.com"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "above",
+      "aew",
+      "beyon",
+      "chaos",
+      "despi",
+      "full",
+      "gear",
+      "get",
+      "goes",
+      "outki",
+      "phoen",
+      "plane",
+      "priva",
+      "roadt",
+      "trave"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Fox News"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "box",
+      "capsi",
+      "drop",
+      "godzi",
+      "minus",
+      "offic",
+      "unpre",
+      "week",
+      "zero"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "ScreenRant"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "adam",
+      "ben",
+      "crimi",
+      "debat",
+      "disne",
+      "drive",
+      "felt",
+      "hunt",
+      "killi",
+      "make",
+      "movie",
+      "soder",
+      "solo",
+      "star",
+      "steve",
+      "wants",
+      "wars"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Variety"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "fligh",
+      "hooba",
+      "insid",
+      "mid",
+      "perfo",
+      "plan",
+      "plane",
+      "simpl",
+      "where"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "The Hollywood Reporter"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "accen",
+      "greek",
+      "paper",
+      "thick",
+      "tiger",
+      "trage",
+      "york"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Rolling Stone"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "gorge",
+      "green",
+      "karda",
+      "kim",
+      "merma",
+      "momen",
+      "seasi",
+      "style",
+      "ultim"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Sports Illustrated Swimsuit"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "2027",
+      "campa",
+      "corre",
+      "oscar",
+      "run",
+      "swift",
+      "taylo"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Vulture"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "brits",
+      "clear",
+      "get",
+      "harry",
+      "markl",
+      "megha",
+      "messa",
+      "princ",
+      "royal",
+      "tour"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Yahoo"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "arres",
+      "below",
+      "brawl",
+      "dead",
+      "deck",
+      "leave",
+      "old",
+      "star",
+      "year"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Fox News"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "arch",
+      "drive",
+      "game",
+      "leads",
+      "lsu",
+      "manni",
+      "stuns",
+      "texas",
+      "winni"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "ESPN"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "334",
+      "card",
+      "ciryl",
+      "fight",
+      "gane",
+      "highl",
+      "hokit",
+      "josh",
+      "resul",
+      "ufc",
+      "winne",
+      "york"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "CBS Sports"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "boost",
+      "colle",
+      "footb",
+      "hoosi",
+      "hopes",
+      "india",
+      "outki",
+      "playo",
+      "troja",
+      "usc",
+      "win"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Fox News"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "autho",
+      "cfp",
+      "georg",
+      "hold",
+      "ranki",
+      "shoul",
+      "shuff"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "DawgNation"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "belic",
+      "betwe",
+      "bill",
+      "brawl",
+      "ends",
+      "game",
+      "louis",
+      "unc"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "NBC Sports"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "334",
+      "amand",
+      "harri",
+      "kayla",
+      "nunes",
+      "retur",
+      "spoil",
+      "submi",
+      "ufc",
+      "wins"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "ESPN"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "baylo",
+      "byu",
+      "highl",
+      "key",
+      "photo",
+      "plays",
+      "win"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Deseret News"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "disgr",
+      "loss",
+      "michi",
+      "orego",
+      "takea"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Maize n Brew"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "doubl",
+      "farew",
+      "haiti",
+      "leads",
+      "poche",
+      "pulis",
+      "rout",
+      "tour"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "The Guardian"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "iowa",
+      "nebra",
+      "sweep",
+      "takea",
+      "two",
+      "volle"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Sports Illustrated"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "334",
+      "cries",
+      "joe",
+      "kick",
+      "retir",
+      "rogan",
+      "spinn",
+      "steph",
+      "thomp",
+      "ufc",
+      "wheel"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Bloody Elbow"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "'i'm",
+      "frust",
+      "game",
+      "greg",
+      "mysel",
+      "post",
+      "schia",
+      "very"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "247Sports"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "2026",
+      "brack",
+      "cfb",
+      "pictu",
+      "playo",
+      "predi",
+      "seaso",
+      "stand",
+      "week"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Bleacher Report"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "baile",
+      "becau",
+      "cfp",
+      "dream",
+      "get",
+      "job",
+      "miss",
+      "oklah",
+      "ole",
+      "one",
+      "pipe",
+      "sec"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "USA Today"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "arizo",
+      "becom",
+      "bowl",
+      "disru",
+      "eligi",
+      "fligh",
+      "overc",
+      "state",
+      "ucf"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "azcentral.com and The Arizona Republic"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "annou",
+      "fligh",
+      "follo",
+      "footb",
+      "groun",
+      "natio",
+      "plan",
+      "stop",
+      "tenne",
+      "trave",
+      "updat"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Rocky Top Insider"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "advan",
+      "best",
+      "bets",
+      "chief",
+      "last",
+      "minut",
+      "nfl",
+      "picks",
+      "quirk",
+      "sched",
+      "steel",
+      "take",
+      "week"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "CBS Sports"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "adame",
+      "again",
+      "carlo",
+      "dud",
+      "gerom",
+      "warbu",
+      "wins"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "BoxingScene"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "broad",
+      "dame",
+      "dan",
+      "heart",
+      "hicks",
+      "late",
+      "messa",
+      "notre",
+      "play",
+      "repla",
+      "voice"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "New York Post"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "500",
+      "cerem",
+      "check",
+      "famil",
+      "gusta",
+      "kuemp",
+      "lates",
+      "line",
+      "panar",
+      "previ",
+      "reaso",
+      "turco"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "LA Kings Insider"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "atlan",
+      "chief",
+      "chris",
+      "jones",
+      "own",
+      "rejoi",
+      "trave"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "NBC Sports"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "ally",
+      "athle",
+      "belar",
+      "compl",
+      "conde",
+      "insul",
+      "oppon",
+      "russi",
+      "tsikh",
+      "ukrai",
+      "war"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "The Kyiv Independent"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "'like",
+      "bowl'",
+      "color",
+      "deion",
+      "houst",
+      "just",
+      "sande",
+      "super",
+      "upset",
+      "won"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "USA Today"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "coach",
+      "head",
+      "patie",
+      "run",
+      "start",
+      "thin",
+      "week"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "ESPN"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "bruin",
+      "conte",
+      "cup",
+      "defen",
+      "dropp",
+      "forgo",
+      "forme",
+      "stanl",
+      "waive"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Causeway Crowd"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "about",
+      "cousi",
+      "first",
+      "kirk",
+      "midda",
+      "monda",
+      "raide",
+      "reach",
+      "repor",
+      "vikin"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "NBC Sports"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "activ",
+      "etien",
+      "expec",
+      "fanta",
+      "footb",
+      "injur",
+      "news",
+      "nfl",
+      "play",
+      "reser",
+      "sunda",
+      "travi"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "RotoBaller"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "alrea",
+      "andre",
+      "final",
+      "lates",
+      "mirra",
+      "recor",
+      "seren",
+      "surpa",
+      "willi",
+      "win",
+      "wta"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Tennishead"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "bigge",
+      "even",
+      "leave",
+      "mauri",
+      "mess",
+      "poche",
+      "usmnt"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Defector"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "due",
+      "groun",
+      "other",
+      "refer",
+      "roles",
+      "stop",
+      "sunda",
+      "three",
+      "worki"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "NBC Sports"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "all",
+      "belie",
+      "black",
+      "capta",
+      "dewi",
+      "histo",
+      "lake",
+      "wales",
+      "zeala"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "BBC"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "'go",
+      "back",
+      "fans",
+      "heckl",
+      "kyle",
+      "loss",
+      "michi",
+      "orego",
+      "utah",
+      "whitt"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Yahoo Sports"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "annou",
+      "big",
+      "chann",
+      "game",
+      "kicko",
+      "nebra",
+      "ohio",
+      "state",
+      "ten",
+      "time"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "247Sports"
+      ]
+    }
+  },
+  {
+    "signature": [
+      "austi",
+      "colli",
+      "injur",
+      "laker",
+      "more",
+      "reave",
+      "repor",
+      "sexto",
+      "updat"
+    ],
+    "buckets": {
+      "2026-11-15T09:00": [
+        "Lakers Nation"
       ]
     }
   }
